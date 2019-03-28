@@ -18,8 +18,10 @@ export class Website {
 
     proposito:string;
 
+    url:string;
 
-    constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string) {
+
+    constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string, url :string) {
         this.audienciaesperada = audienciaesperada;
         this.id = id;
         this.descripcion = descripcion;
@@ -27,6 +29,7 @@ export class Website {
         this.imagen = imagen;
         this.nombre = nombre;
         this.proposito = proposito;
+        this.url = url;
     }
 }
 

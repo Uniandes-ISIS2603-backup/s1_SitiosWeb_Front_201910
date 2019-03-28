@@ -1,10 +1,10 @@
 <div class="card-deck">
   <div class="col-3" *ngFor = "let site of websites">
   <div class="card" style="width: 18rem;">
-    <img src="../../../assets/sicua.png" height="180" width="286"/>
+    <img src="{{site.imagen}}" height="180" width="286" id="thumbnail"/>
     <div class="card-body">
       <h5 class="card-title">{{site.nombre}}</h5>
-      <p class="card-text">{{site.descripcion}}</p>
+      <p class="card-text">{{site.proposito}}</p>
       <a href="#" class="btn btn-primary">OK</a>
     </div>
   </div>
