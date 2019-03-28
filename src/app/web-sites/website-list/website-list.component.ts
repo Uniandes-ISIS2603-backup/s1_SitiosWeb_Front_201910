@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Website } from '../website';
 import { WebsiteService } from '../website.service';
 
+
 import {st} from "@angular/core/src/render3";
 
 
@@ -12,17 +13,23 @@ import {st} from "@angular/core/src/render3";
 })
 export class WebsiteListComponent implements OnInit {
 
+
   constructor(private websiteService: WebsiteService) { }
 
   websites : Website[] ;
 
   getEditorials(): void {
-    this.websiteService.getSites().subscribe(sites =>
-        this.websites = sites);
+    var thumbnaiAPI= "https://api.thumbnail.ws/api/ab18504260d333b42490e206a93767ae1b0adff77399/thumbnail/get?width=480&url=";
+    this.websiteService.getSites().subscribe(sites =>{
+        this.websites = sites;
+        this.websites.forEach(value => value.imagen=thumbnaiAPI+value.url);
+    });
   }
 
   ngOnInit() {
     this.getEditorials();
+
+
   }
 
 }

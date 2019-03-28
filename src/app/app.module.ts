@@ -18,6 +18,7 @@ import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
 import {MatTabsModule} from "@angular/material";
+import {MatTabsModule, MatToolbarModule} from "@angular/material";
 
 
 
@@ -45,7 +46,6 @@ import {MatTabsModule} from "@angular/material";
         NgxPermissionsModule.forRoot(),
         NgbModule,
         WebSitesModule,
-        EstadosWebModule,
         MatTabsModule
     ],
     bootstrap: [AppComponent],
