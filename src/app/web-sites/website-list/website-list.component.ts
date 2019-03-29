@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Website } from '../website';
 import { WebsiteService } from '../website.service';
+import { EstadosWebService} from "../../estados-web/estados-web.service";
 
 
 import {st} from "@angular/core/src/render3";
+import {EstadoWeb} from "../../estados-web/estadoWeb";
 
 
 @Component({
@@ -14,7 +16,7 @@ import {st} from "@angular/core/src/render3";
 export class WebsiteListComponent implements OnInit {
 
 
-  constructor(private websiteService: WebsiteService) { }
+  constructor(private websiteService: WebsiteService,private webstateService: EstadosWebService ) { }
 
   websites : Website[] ;
 
@@ -23,13 +25,16 @@ export class WebsiteListComponent implements OnInit {
     this.websiteService.getSites().subscribe(sites =>{
         this.websites = sites;
         this.websites.forEach(value => value.imagen=thumbnaiAPI+value.url);
+        this.websites.forEach(value => {
+                    var estado= this.webstateService.getEstadoActual(value.id);
+                    console.log(`sitio:${value.id} estado:${this.webstateService.getEstadoActual(value.id)}`);
+            }
+        );
     });
   }
 
   ngOnInit() {
     this.getEditorials();
-
-
   }
 
 }

@@ -20,6 +20,8 @@ export class Website {
 
     url:string;
 
+    state:string;
+
 
     constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string, url :string) {
         this.audienciaesperada = audienciaesperada;
@@ -30,6 +32,10 @@ export class Website {
         this.nombre = nombre;
         this.proposito = proposito;
         this.url = url;
+    }
+
+    public toString = () : string => {
+        return `Sitio; ${this.nombre}`;
     }
 }
 
