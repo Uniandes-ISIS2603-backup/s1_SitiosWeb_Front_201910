@@ -11,7 +11,6 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import { ModalDialogModule } from 'ngx-modal-dialog';
 
 
-
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
@@ -24,10 +23,13 @@ import {MatTabsModule, MatToolbarModule} from "@angular/material";
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent
     ],
+    entryComponents:[AppComponent]
+    ,
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -36,6 +38,7 @@ import {MatTabsModule, MatToolbarModule} from "@angular/material";
         ModalDialogModule.forRoot(),
         AuthModule,
         FormsModule,
+
         ToastrModule.forRoot({
             timeOut: 10000,
             positionClass: 'toast-bottom-right',

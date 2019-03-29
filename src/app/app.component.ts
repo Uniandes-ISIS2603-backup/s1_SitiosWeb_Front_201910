@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { AuthService } from './auth/auth.service';
+import {AuthService} from './auth/auth.service';
+
 
 /**
  * The app component. This component is the base of sXXX_ZZZ-Front
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
      * Assigns a title to the web page
      */
     ngOnInit(): void {
-        this.title = "sXXX_ZZZ-Front";
+        this.title = "CMSites";
         this.authService.start();
     }
 
@@ -33,9 +34,5 @@ export class AppComponent implements OnInit {
         this.authService.logout()
     }
 
+
 }
-
-
-
-
-
