@@ -2,9 +2,12 @@
     display: flex;
     flex-wrap: wrap;
 }
-.activo{
+.ACTIVO{
     background: #4b802a;
 }
-.activo{
-    background: #4b802a;
+.INACTIVO{
+    background: #d1c42f;
+}
+.ENFALLA{
+    background: #801e19;
 }

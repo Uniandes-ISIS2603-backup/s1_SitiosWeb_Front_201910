@@ -26,8 +26,8 @@ export class WebsiteListComponent implements OnInit {
         this.websites = sites;
         this.websites.forEach(value => value.imagen=thumbnaiAPI+value.url);
         this.websites.forEach(value => {
-                    var estado= this.webstateService.getEstadoActual(value.id);
-                    console.log(`sitio:${value.id} estado:${this.webstateService.getEstadoActual(value.id)}`);
+                    var estado= this.webstateService.getEstadoActual(value.id).subscribe(value1 => value.state=value1);
+                    console.log(`sitio:${value.id} estado:${estado}`);
             }
         );
     });

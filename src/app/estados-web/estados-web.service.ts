@@ -22,8 +22,8 @@ export class EstadosWebService {
     return this.http.get<EstadoWeb[]>(API_URL+`websites/${sitio}/states`);
   }
 
-  getEstadoActual(sitio:number) : EstadoWeb
+  getEstadoActual(sitio:number) : Observable<EstadoWeb>
   {
-      return null;
+    return this.http.get<EstadoWeb>(API_URL+`websites/${sitio}/states/last`);
   }
 }

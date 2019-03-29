@@ -2,6 +2,8 @@
  * This class represents an editorial of the BookStore.
  * It contains all the information relevant to the editorial.
  */
+import {EstadoWeb} from "../estados-web/estadoWeb";
+
 export class Website {
 
     audienciaesperada: number;
@@ -20,7 +22,7 @@ export class Website {
 
     url:string;
 
-    state:string;
+    state: EstadoWeb;
 
 
     constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string, url :string) {
