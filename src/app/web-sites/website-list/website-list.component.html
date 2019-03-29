@@ -5,7 +5,7 @@
     <div class="card-body" >
       <h5 class="card-title">{{site.nombre}}</h5>
       <mat-menu #appMenu="matMenu">
-        <button mat-menu-item>Historial Estados</button>
+        <button mat-menu-item (click)="consultarEstados(site.id)">Historial Estados</button>
         <button mat-menu-item>Informacion</button>
       </mat-menu>
       <div style="display: flex;justify-content: space-between">

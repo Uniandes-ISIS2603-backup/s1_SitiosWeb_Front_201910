@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Website } from '../website';
 import { WebsiteService } from '../website.service';
 import { EstadosWebService} from "../../estados-web/estados-web.service";
@@ -18,9 +18,11 @@ export class WebsiteListComponent implements OnInit {
 
   constructor(private websiteService: WebsiteService,private webstateService: EstadosWebService ) { }
 
+  @Output() consultaEstados = new EventEmitter<number>();
+
   websites : Website[] ;
 
-  getEditorials(): void {
+  getWebSites(): void {
     var thumbnaiAPI= "https://api.thumbnail.ws/api/ab18504260d333b42490e206a93767ae1b0adff77399/thumbnail/get?width=480&url=";
     this.websiteService.getSites().subscribe(sites =>{
         this.websites = sites;
@@ -31,10 +33,18 @@ export class WebsiteListComponent implements OnInit {
             }
         );
     });
+
+
+
   }
 
+    consultarEstados(site:number){
+        this.consultaEstados.emit(site);
+    }
+
   ngOnInit() {
-    this.getEditorials();
+    this.getWebSites();
   }
+
 
 }

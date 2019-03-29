@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -16,7 +16,8 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
-import {MatTabsModule, MatToolbarModule} from "@angular/material";
+import {MatSidenavModule, MatTabsModule, MatToolbarModule} from "@angular/material";
+import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
 
 
 
@@ -50,7 +51,8 @@ import {MatTabsModule, MatToolbarModule} from "@angular/material";
         WebSitesModule,
         MatTabsModule,
         MatToolbarModule,
-        EstadosWebModule
+        EstadosWebModule,
+        MatSidenavModule
     ],
     bootstrap: [AppComponent],
     providers: [
@@ -61,4 +63,5 @@ import {MatTabsModule, MatToolbarModule} from "@angular/material";
         }
     ]
 })
-export class AppModule {}
+export class AppModule {
+}

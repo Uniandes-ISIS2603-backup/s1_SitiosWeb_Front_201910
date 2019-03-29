@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EstadoWeb } from '../estadoWeb';
 import { EstadosWebService } from '../estados-web.service';
-import {MatBottomSheetRef} from "@angular/material/bottom-sheet";
 
 import {st} from "@angular/core/src/render3";
 
@@ -11,24 +10,14 @@ import {st} from "@angular/core/src/render3";
   templateUrl: './estados-web-list.component.html',
   styleUrls: ['./estados-web-list.component.css']
 })
-export class EstadosWebListComponent implements OnInit {
+export class EstadosWebListComponent  {
 
-  constructor(private bottomSheetRef: MatBottomSheetRef<EstadosWebListComponent>,private estadosWebService: EstadosWebService) { }
+  constructor(private estadosWebService: EstadosWebService) { }
 
   estadosWeb : EstadoWeb[] ;
 
-  getEstadosWeb(): void {
-    this.estadosWebService.getEstadosWeb().subscribe(estados =>
+  getEstadosWeb(sitio:number): void {
+    this.estadosWebService.getEstadosSitio(sitio).subscribe(estados =>
         this.estadosWeb = estados);
   }
-
-  ngOnInit() {
-    this.getEstadosWeb();
-  }
-
-  openLink(event: MouseEvent): void {
-    this.bottomSheetRef.dismiss();
-    event.preventDefault();
-  }
-
 }
