@@ -19,7 +19,7 @@ import {EstadosWebModule} from "./estados-web/estados-web.module";
 import {
     MatButtonModule,
     MatChipsModule,
-    MatIconModule,
+    MatIconModule, MatMenuModule,
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule
@@ -62,7 +62,8 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,
-        MatChipsModule
+        MatChipsModule,
+        MatMenuModule
     ],
     bootstrap: [AppComponent],
     providers: [

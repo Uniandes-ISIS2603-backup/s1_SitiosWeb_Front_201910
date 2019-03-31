@@ -4,7 +4,12 @@
     CMSites
     <span class="toolbar-spacer"></span>
     <div *ngxPermissionsOnly="['GUEST']">
-        <button mat-flat-button color="primary"  (click)="change()">Login
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item >Login</button>
+            <button mat-menu-item >Register</button>
+        </mat-menu>
+
+        <button mat-flat-button color="primary"  [matMenuTriggerFor]="appMenu">Ingresar
             <mat-icon>
                 face
             </mat-icon>
@@ -15,6 +20,8 @@
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
+
+
 
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="over">
