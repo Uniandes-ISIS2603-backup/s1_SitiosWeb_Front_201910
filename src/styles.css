@@ -26,4 +26,3 @@ body {
     width: 100%;
     z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
-

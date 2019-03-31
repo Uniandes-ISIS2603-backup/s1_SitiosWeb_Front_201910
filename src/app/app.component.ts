@@ -43,6 +43,11 @@ export class AppComponent implements OnInit {
         $(this.modal.nativeElement).modal('show');
     }
 
+    change():void
+    {
+        this.authService.printRole()
+        this.authService.start()
+    }
 
 
 }

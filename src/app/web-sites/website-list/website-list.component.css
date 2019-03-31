@@ -11,3 +11,7 @@
 .ENFALLA{
     background: #801e19;
 }
+*:focus{
+    outline: none;
+    border: 0;
+}
