@@ -6,7 +6,7 @@
       <h5 class="card-title">{{site.nombre}}</h5>
       <mat-menu #appMenu="matMenu">
         <button mat-menu-item (click)="consultarEstados(site.id)">Historial Estados</button>
-        <button mat-menu-item>Informacion</button>
+        <button mat-menu-item (click)="consultarDetalle(site.id)">Informacion</button>
       </mat-menu>
       <div style="display: flex;justify-content: space-between">
         <mat-chip-list><mat-chip [ngClass]="{'ACTIVO' : site.state.estado=='ACTIVO' ,'INACTIVO' : site.state.estado=='INACTIVO','ENFALLA' : site.state.estado=='ENFALLA' }">{{site.state.estado}}</mat-chip></mat-chip-list>

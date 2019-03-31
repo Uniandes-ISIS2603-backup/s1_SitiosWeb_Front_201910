@@ -18,7 +18,9 @@ export class WebsiteListComponent implements OnInit {
 
   constructor(private websiteService: WebsiteService,private webstateService: EstadosWebService ) { }
 
-  @Output() consultaEstados = new EventEmitter<number>();
+  @Output() consultaEstados = new EventEmitter<number>()
+
+    @Output() sitioDetail = new EventEmitter<number>();
 
   websites : Website[] ;
 
@@ -40,6 +42,10 @@ export class WebsiteListComponent implements OnInit {
 
     consultarEstados(site:number){
         this.consultaEstados.emit(site);
+    }
+
+    consultarDetalle(site:number){
+        this.sitioDetail.emit(site);
     }
 
   ngOnInit() {

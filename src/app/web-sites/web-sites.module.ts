@@ -9,6 +9,7 @@ import {
     MatIconModule,
     MatMenuModule
 } from "@angular/material";
+import { WebsiteDetailsComponent } from './website-details/website-details.component';
 
 @NgModule({
     imports: [
@@ -20,9 +21,10 @@ import {
         MatChipsModule,
         MatGridListModule
     ],
-  exports: [
-    WebsiteListComponent
-  ],
-  declarations: [WebsiteListComponent]
+    exports: [
+        WebsiteListComponent,
+        WebsiteDetailsComponent
+    ],
+  declarations: [WebsiteListComponent, WebsiteDetailsComponent]
 })
 export class WebSitesModule { }
