@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import { AuthService } from './auth/auth.service';
+import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {AuthService} from './auth/auth.service';
 
+
+declare let $: any;
 /**
  * The app component. This component is the base of sXXX_ZZZ-Front
  */
@@ -16,12 +18,15 @@ export class AppComponent implements OnInit {
      */
     title: String;
 
+    @ViewChild('DetailModal')  modal : ElementRef;
+
     /**
      * Assigns a title to the web page
      */
     ngOnInit(): void {
-        this.title = "sXXX_ZZZ-Front";
+        this.title = "CMSites";
         this.authService.start();
+        document.getElementById("DetailModal");
     }
 
        /**
@@ -33,9 +38,11 @@ export class AppComponent implements OnInit {
         this.authService.logout()
     }
 
+    showSiteDetail():void
+    {
+        $(this.modal.nativeElement).modal('show');
+    }
+
+
+
 }
-
-
-
-
-

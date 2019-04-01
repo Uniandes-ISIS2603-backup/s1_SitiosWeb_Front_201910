@@ -1,26 +1,22 @@
-<div class="container-fluid">
-  <div class="col-md-2">
-    <table class="table table-striped">
-      <thead class="thead-dark">
-      <tr>
-        <th>id</th>
-        <th>nombre</th>
-        <th>audiencia</th>
-        <th>fechalanzamiento</th>
-        <th>descripcion</th>
-        <th>proposito</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor = "let website of websites">
-        <td>{{website.id}}</td>
-        <td>{{website.nombre}}</td>
-        <td>{{website.audienciaesperada}}</td>
-        <td>{{website.fechaLanzamiento}}</td>
-        <td>{{website.descripcion}}</td>
-        <td>{{website.proposito}}</td>
-      </tr>
-      </tbody>
-    </table>
+<div class="masonry-with-columns">
+  <div *ngFor = "let site of websites" style="margin: 2vmin">
+  <div class="card" style="width: 18rem;">
+    <img src="{{site.imagen}}" height="180" width="286" id="thumbnail"/>
+    <div class="card-body" >
+      <h5 class="card-title">{{site.nombre}}</h5>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="consultarEstados(site.id)">Historial Estados</button>
+        <button mat-menu-item (click)="consultarDetalle(site.id)">Informacion</button>
+      </mat-menu>
+      <div style="display: flex;justify-content: space-between">
+        <mat-chip-list><mat-chip [ngClass]="{'ACTIVO' : site.state.estado=='ACTIVO' ,'INACTIVO' : site.state.estado=='INACTIVO','ENFALLA' : site.state.estado=='ENFALLA' }">{{site.state.estado}}</mat-chip></mat-chip-list>
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
   </div>
+  </div>
+</div>
+<!-- [ngClass]="{'activo': site.status == "activo"},{''}" -->
 

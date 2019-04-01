@@ -2,6 +2,8 @@
  * This class represents an editorial of the BookStore.
  * It contains all the information relevant to the editorial.
  */
+import {EstadoWeb} from "../estados-web/estadoWeb";
+
 export class Website {
 
     audienciaesperada: number;
@@ -18,8 +20,12 @@ export class Website {
 
     proposito:string;
 
+    url:string;
 
-    constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string) {
+    state: EstadoWeb;
+
+
+    constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string, url :string) {
         this.audienciaesperada = audienciaesperada;
         this.id = id;
         this.descripcion = descripcion;
@@ -27,6 +33,11 @@ export class Website {
         this.imagen = imagen;
         this.nombre = nombre;
         this.proposito = proposito;
+        this.url = url;
+    }
+
+    public toString = () : string => {
+        return `Sitio; ${this.nombre}`;
     }
 }
 

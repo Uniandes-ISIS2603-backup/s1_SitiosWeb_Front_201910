@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -11,12 +11,14 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import { ModalDialogModule } from 'ngx-modal-dialog';
 
 
-
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
-import {MatTabsModule} from "@angular/material";
+import {EstadosWebModule} from "./estados-web/estados-web.module";
+import {MatSidenavModule, MatTabsModule, MatToolbarModule} from "@angular/material";
+import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
+
 
 
 
@@ -27,6 +29,8 @@ import {MatTabsModule} from "@angular/material";
     declarations: [
         AppComponent
     ],
+    entryComponents:[AppComponent]
+    ,
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -35,6 +39,7 @@ import {MatTabsModule} from "@angular/material";
         ModalDialogModule.forRoot(),
         AuthModule,
         FormsModule,
+
         ToastrModule.forRoot({
             timeOut: 10000,
             positionClass: 'toast-bottom-right',
@@ -44,7 +49,10 @@ import {MatTabsModule} from "@angular/material";
         NgxPermissionsModule.forRoot(),
         NgbModule,
         WebSitesModule,
-        MatTabsModule
+        MatTabsModule,
+        MatToolbarModule,
+        EstadosWebModule,
+        MatSidenavModule
     ],
     bootstrap: [AppComponent],
     providers: [
@@ -55,4 +63,5 @@ import {MatTabsModule} from "@angular/material";
         }
     ]
 })
-export class AppModule {}
+export class AppModule {
+}
