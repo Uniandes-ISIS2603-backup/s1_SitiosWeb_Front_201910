@@ -1,5 +1,6 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {AuthService} from './auth/auth.service';
+import {viewAttached} from "@angular/core/src/render3/instructions";
 
 
 declare let $: any;
@@ -17,8 +18,15 @@ export class AppComponent implements OnInit {
      * The title that appears on the NavBar and the web browser
      */
     title: String;
+    name: String;
+
+
 
     @ViewChild('DetailModal')  modal : ElementRef;
+    @ViewChild('LoginModal') loginModal : ElementRef;
+    @ViewChild('RegisterModal') registerModal : ElementRef;
+    @ViewChild('loginComponent') logincomponent :ElementRef;
+    @ViewChild('authSignUpComponent') registercomponent :ElementRef;
 
     /**
      * Assigns a title to the web page
@@ -27,6 +35,7 @@ export class AppComponent implements OnInit {
         this.title = "CMSites";
         this.authService.start();
         document.getElementById("DetailModal");
+        this.setUserName();
     }
 
        /**
@@ -48,6 +57,21 @@ export class AppComponent implements OnInit {
     {
         this.authService.printRole()
         this.authService.start()
+    }
+
+    showRegisterPane():void
+    {
+        $(this.registerModal.nativeElement).modal('show');
+    }
+    showLoginPane():void
+    {
+        $(this.loginModal.nativeElement).modal('show');
+    }
+
+    setUserName():void
+    {
+        this.name = localStorage.getItem('name');
+
     }
 
 
