@@ -1,5 +1,6 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {AuthService} from './auth/auth.service';
+import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
 
 
@@ -36,12 +37,13 @@ export class AppComponent implements OnInit {
         this.authService.start();
         document.getElementById("DetailModal");
         this.setUserName();
+        console.log(this.statesService.getStateBarValue());
     }
 
        /**
      * @ignore
      */
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService,private statesService:EstadosWebService) { }
 
     logout(): void {
         this.authService.logout()
