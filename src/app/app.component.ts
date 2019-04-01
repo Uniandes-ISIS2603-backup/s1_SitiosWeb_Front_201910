@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
     showSiteDetail():void
     {
         $(this.modal.nativeElement).modal('show');
+        this.change();
     }
 
     change():void
