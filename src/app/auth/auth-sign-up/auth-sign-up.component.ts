@@ -30,7 +30,9 @@ export class AuthSignUpComponent implements OnInit {
     */
     signUp(): void {
         this.authService.login(this.user.role);
+        localStorage.setItem('name', this.user.name);
         this.toastrService.success('Successfully signed up')
+
     }
 
     /**

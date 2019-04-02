@@ -32,6 +32,7 @@ export class AuthLoginComponent implements OnInit {
     */
     login(): void {
         this.authService.login(this.user.role);
+        localStorage.setItem('name', this.user.name);
         this.toastrService.success('Logged in')
     }
 

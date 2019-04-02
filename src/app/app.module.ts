@@ -16,7 +16,14 @@ import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
-import {MatSidenavModule, MatTabsModule, MatToolbarModule} from "@angular/material";
+import {
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule, MatMenuModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatToolbarModule
+} from "@angular/material";
 import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
 
 
@@ -52,7 +59,11 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         MatTabsModule,
         MatToolbarModule,
         EstadosWebModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatButtonModule,
+        MatIconModule,
+        MatChipsModule,
+        MatMenuModule
     ],
     bootstrap: [AppComponent],
     providers: [

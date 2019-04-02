@@ -1,6 +1,7 @@
 .masonry-with-columns{
     display: flex;
     flex-wrap: wrap;
+    min-height: 95vh;
 }
 .ACTIVO{
     background: #4b802a;
@@ -9,5 +10,9 @@
     background: #d1c42f;
 }
 .ENFALLA{
-    background: #801e19;
+    background: #a71a0f;
+}
+*:focus{
+    outline: none;
+    border: 0;
 }
