@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
         this.authService.start();
         document.getElementById("DetailModal");
         this.setUserName();
-        console.log(this.statesService.getStateBarValue());
+        this.statesService.getStateBarValue().then(value => console.log(value));
     }
 
        /**
@@ -64,6 +64,7 @@ export class AppComponent implements OnInit {
     showRegisterPane():void
     {
         $(this.registerModal.nativeElement).modal('show');
+
     }
     showLoginPane():void
     {
