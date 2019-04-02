@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AppConstants } from '../appConstants'
 
 const API_URL = AppConstants.baseURL;
-const editorials = 'websites';
+const websites = 'websites';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,6 @@ export class WebsiteService {
   }
 
   getSites() : Observable<Website[]> {
-    return this.http.get<Website[]>(API_URL + editorials);
+    return this.http.get<Website[]>(API_URL + websites);
   }
 }

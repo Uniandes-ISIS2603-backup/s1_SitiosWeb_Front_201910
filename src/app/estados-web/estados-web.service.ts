@@ -78,12 +78,28 @@ export class EstadosWebService {
 
   getEstadosSitio(sitio:number) : Observable<EstadoWeb[]>
   {
-    return this.http.get<EstadoWeb[]>(API_URL+`websites/${sitio}/states`);
+      return new Observable<EstadoWeb[]>(subscriber => {
+          this.http.get<EstadoWeb[]>(API_URL + `websites/${sitio}/states`).subscribe(value => {
+              subscriber.next(value);
+          });
+         setInterval(() => {
+             this.http.get<EstadoWeb[]>(API_URL + `websites/${sitio}/states`).subscribe(value => {
+                subscriber.next(value);
+             });
+             }, 1000);
+      });
   }
 
   getEstadoActual(sitio:number) : Observable<EstadoWeb>
   {
-    return this.http.get<EstadoWeb>(API_URL+`websites/${sitio}/states/last`);
+      return new Observable<EstadoWeb>(subscriber => {
+          this.http.get<EstadoWeb>(API_URL+`websites/${sitio}/states/last`).subscribe(value =>
+              subscriber.next(value));
+         setInterval(()=>{
+                this.http.get<EstadoWeb>(API_URL+`websites/${sitio}/states/last`).subscribe(value =>
+                subscriber.next(value))
+         },1000) ;
+      });
   }
 
 
