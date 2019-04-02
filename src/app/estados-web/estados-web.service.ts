@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { EstadoWeb } from './estadoWeb';
-import { Observable } from 'rxjs';
-import { AppConstants } from '../appConstants'
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {EstadoWeb} from './estadoWeb';
+import {Observable} from 'rxjs';
+import {AppConstants} from '../appConstants'
+import {States} from "./states";
 
 const API_URL = AppConstants.baseURL;
 const estadosWeb = 'estadosWeb';
@@ -14,9 +15,26 @@ export class EstadosWebService {
 
   constructor(private http: HttpClient) { }
 
-  getStateBarValue() : Promise<number[]> {
+    getStatesValues():Observable<States>
+    {
+        return new Observable<States>(observer => {
 
-      let tempPromise= new Promise<number[]>(((resolve) => {
+            setInterval(() => {
+                this.getStateBarValue().then(
+                    value => {
+                        console.log("getting states");
+                        observer.next(value);
+                    }
+                );
+            }, 2000);
+        });
+
+    }
+
+  getStateBarValue() : Promise<States> {
+
+      let tempPromise= new Promise<States>(((resolve) => {
+
 
           let a = this.http.get<EstadoWeb[]>(API_URL + estadosWeb);
           let b :EstadoWeb[];
@@ -48,7 +66,8 @@ export class EstadosWebService {
               inavtivos = (inavtivos / totales)*100;
               falla = (falla / totales)*100;
               otros = (otros / totales)*100;
-              let response = [activos, inavtivos, falla, otros];
+              let response = new States(activos, inavtivos, falla, otros);
+
               resolve(response);
 
           });

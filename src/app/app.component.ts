@@ -84,16 +84,16 @@ export class AppComponent implements OnInit {
 
     establecerBarra():void
     {
-        this.statesService.getStateBarValue().then(value => {
+        this.statesService.getStatesValues().subscribe(value => {
             let strActivo:string;
             let strInactivo:string;
             let strFalla:string;
             let strOtro:string;
 
-            strActivo=value[0]+"%";
-            strInactivo=value[1]+"%";
-            strFalla=value[2]+"%";
-            strOtro=value[3]+"%";
+            strActivo=value.active+"%";
+            strInactivo=value.inactive+"%";
+            strFalla=value.onfailure+"%";
+            strOtro=value.other+"%";
 
 
             document.getElementById("activo").style.cssText="width: "+strActivo
@@ -102,7 +102,6 @@ export class AppComponent implements OnInit {
             document.getElementById("otros").style.cssText="width: "+strOtro
 
         });
-
     }
 
 }
