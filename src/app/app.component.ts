@@ -29,6 +29,11 @@ export class AppComponent implements OnInit {
     @ViewChild('loginComponent') logincomponent :ElementRef;
     @ViewChild('authSignUpComponent') registercomponent :ElementRef;
 
+    @ViewChild('activo') barActivo :ElementRef;
+    @ViewChild('inactivo') barInactivo :ElementRef;
+    @ViewChild('falla') barDalla :ElementRef;
+    @ViewChild('otros') barOtros :ElementRef;
+
     /**
      * Assigns a title to the web page
      */
@@ -37,7 +42,7 @@ export class AppComponent implements OnInit {
         this.authService.start();
         document.getElementById("DetailModal");
         this.setUserName();
-        this.statesService.getStateBarValue().then(value => console.log(value));
+        this.establecerBarra();
     }
 
        /**
@@ -77,5 +82,27 @@ export class AppComponent implements OnInit {
 
     }
 
+    establecerBarra():void
+    {
+        this.statesService.getStateBarValue().then(value => {
+            let strActivo:string;
+            let strInactivo:string;
+            let strFalla:string;
+            let strOtro:string;
+
+            strActivo=value[0]+"%";
+            strInactivo=value[1]+"%";
+            strFalla=value[2]+"%";
+            strOtro=value[3]+"%";
+
+
+            document.getElementById("activo").style.cssText="width: "+strActivo
+            document.getElementById("incativo").style.cssText="width: "+strInactivo
+            document.getElementById("falla").style.cssText="width: "+strFalla
+            document.getElementById("otros").style.cssText="width: "+strOtro
+
+        });
+
+    }
 
 }

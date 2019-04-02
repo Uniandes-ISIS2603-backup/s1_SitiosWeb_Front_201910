@@ -14,16 +14,16 @@ export class EstadosWebService {
 
   constructor(private http: HttpClient) { }
 
-  getStateBarValue() : Promise<any> {
+  getStateBarValue() : Promise<number[]> {
 
-      let tempPromise= new Promise(((resolve) => {
+      let tempPromise= new Promise<number[]>(((resolve) => {
 
           let a = this.http.get<EstadoWeb[]>(API_URL + estadosWeb);
           let b :EstadoWeb[];
-          let activos: number =1 ;
-          let inavtivos: number =1;
-          let falla: number =1;
-          let otros: number =1;
+          let activos: number =0 ;
+          let inavtivos: number =0;
+          let falla: number =0;
+          let otros: number =0;
 
           let promise = a.toPromise().then(value => {
               b = value
@@ -32,7 +32,7 @@ export class EstadosWebService {
                       case 'ACTIVO':
                           activos++;
                           break;
-                      case'INCATIVO':
+                      case'INACTIVO':
                           inavtivos++;
                           break;
                       case 'ENFALLA':
@@ -44,10 +44,10 @@ export class EstadosWebService {
                   }
               });
               let totales = activos + inavtivos + falla + otros;
-              activos = activos / totales;
-              inavtivos = inavtivos / totales;
-              falla = falla / totales;
-              otros = otros / totales;
+              activos = (activos / totales)*100;
+              inavtivos = (inavtivos / totales)*100;
+              falla = (falla / totales)*100;
+              otros = (otros / totales)*100;
               let response = [activos, inavtivos, falla, otros];
               resolve(response);
 
