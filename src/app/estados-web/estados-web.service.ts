@@ -102,5 +102,11 @@ export class EstadosWebService {
       });
   }
 
+  getEstadoActualStatic(sitio:number):Observable<EstadoWeb>
+  {
+      return    this.http.get<EstadoWeb>(API_URL+`websites/${sitio}/states/last`);
+  }
+
+
 
 }

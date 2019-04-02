@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Website } from './website';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../appConstants'
+import {EstadoWeb} from "../estados-web/estadoWeb";
 
 const API_URL = AppConstants.baseURL;
 const websites = 'websites';
@@ -16,6 +17,14 @@ export class WebsiteService {
   }
 
   getSites() : Observable<Website[]> {
-    return this.http.get<Website[]>(API_URL + websites);
+
+    return new Observable<Website[]>(subscriber => {
+      this.http.get<Website[]>(API_URL + websites).subscribe(value =>
+          subscriber.next(value));
+      setInterval(()=>{
+        this.http.get<Website[]>(API_URL + websites).subscribe(value =>
+            subscriber.next(value))
+      },60000) ;
+    });
   }
 }
