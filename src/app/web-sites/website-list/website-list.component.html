@@ -9,7 +9,7 @@
         <button mat-menu-item (click)="consultarDetalle(site.id)">Informacion</button>
       </mat-menu>
       <div style="display: flex;justify-content: space-between">
-        <mat-chip-list><mat-chip [ngClass]="{'ACTIVO' : site.state.estado=='ACTIVO' ,'INACTIVO' : site.state.estado=='INACTIVO','ENFALLA' : site.state.estado=='ENFALLA' }">{{site.state.estado}}</mat-chip></mat-chip-list>
+        <mat-chip-list><mat-chip [ngClass]="{'ACTIVO' : site.state?.estado=='ACTIVO' ,'INACTIVO' : site.state?.estado=='INACTIVO','ENFALLA' : site.state?.estado=='ENFALLA' }">{{site.state?.estado}}</mat-chip></mat-chip-list>
         <button mat-icon-button [matMenuTriggerFor]="appMenu">
           <mat-icon>more_vert</mat-icon>
         </button>
