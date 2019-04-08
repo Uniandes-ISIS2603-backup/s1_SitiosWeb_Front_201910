@@ -8,3 +8,9 @@
 .mat-menu-item:focus{
     outline: 0;
 }
+
+.masonry-with-columns{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 95vh;
+}

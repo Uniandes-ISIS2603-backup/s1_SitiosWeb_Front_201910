@@ -1,4 +1,5 @@
 <h4>Lista de Usuarios</h4>
+<div class="masonry-with-columns">
 <div *ngFor="let u of users" class="card" style="width: 18rem;">
   <img src="" class="card-img-top" alt="">
   <div class="card-body">
@@ -9,4 +10,5 @@
       <li class="card-text">Numero de Tickets: {{u.numeroTickets}} </li>
       <a class="btn btn-primary">Ver perfil</a>
   </div>
+</div>
 </div>
