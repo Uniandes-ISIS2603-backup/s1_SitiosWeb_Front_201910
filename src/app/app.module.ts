@@ -15,6 +15,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
+import {UsersModule} from "./users/users.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
 import {
     MatButtonModule,
@@ -59,6 +60,7 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         MatTabsModule,
         MatToolbarModule,
         EstadosWebModule,
+        UsersModule,
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,
