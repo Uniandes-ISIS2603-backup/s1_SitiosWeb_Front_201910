@@ -2,6 +2,7 @@
     <mat-toolbar-row>
     <img src="../assets/logo.png" height="64" width="64"/>
     CMSites
+        <button mat-button data-toggle="modal" data-target="#UserListModal">Usuarios</button>
     <span class="toolbar-spacer"></span>
     <div *ngxPermissionsOnly="['GUEST']">
         <mat-menu #appMenu="matMenu">
@@ -77,6 +78,20 @@
             </div>
             <div class="modal-body">
             <app-auth-sign-up id="registercomponent" #authSignUpComponent></app-auth-sign-up>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="UserListModal" tabindex="-1" role="dialog" aria-hidden="true" #UserListModal>
+    <div class="modal-dialog modal-lg" role="document" >
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">¿
+                <app-users-list id="userListComponent" #userListComponent></app-users-list>
             </div>
             <div class="modal-footer">
             </div>
