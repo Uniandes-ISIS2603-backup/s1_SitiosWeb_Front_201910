@@ -1,3 +1,12 @@
-<p>
-  users-list works!
-</p>
+<h4>Lista de Usuarios</h4>
+<div *ngFor="let u of users" class="card" style="width: 18rem;">
+  <img src="" class="card-img-top" alt="">
+  <div class="card-body">
+      <h5 class="card-title">{{u.userName}}</h5>
+      <li class="card-text">Nombre: {{u.nombre}}</li>
+      <li class="card-text">Correo: {{u.email}} </li>
+      <li class="card-text">Telefono: {{u.telefono}} </li>
+      <li class="card-text">Numero de Tickets: {{u.numeroTickets}} </li>
+      <a class="btn btn-primary">Ver perfil</a>
+  </div>
+</div>

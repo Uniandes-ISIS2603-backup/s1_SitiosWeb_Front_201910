@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 
@@ -9,11 +9,16 @@ import { UsersService } from './users.service';
 import { UsersDetailComponent } from './users-detail/users-detail.component';
 import { UsersCreateComponent } from './users-create/users-create.component';
 
+
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
   ],
   declarations: [UsersListComponent, UsersDetailComponent, UsersCreateComponent],
   providers: [UsersService],

@@ -13,7 +13,7 @@ export class UserDetail {
 
     password:string;
 
-    telephone:string;
+    telefono:string;
 
     tickets:any[];
 

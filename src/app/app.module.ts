@@ -23,7 +23,8 @@ import {
     MatIconModule, MatMenuModule,
     MatSidenavModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule
 } from "@angular/material";
 import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
 
@@ -47,7 +48,7 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         ModalDialogModule.forRoot(),
         AuthModule,
         FormsModule,
-
+        MatFormFieldModule,
         ToastrModule.forRoot({
             timeOut: 10000,
             positionClass: 'toast-bottom-right',
@@ -65,7 +66,7 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         MatButtonModule,
         MatIconModule,
         MatChipsModule,
-        MatMenuModule
+        MatMenuModule,
     ],
     bootstrap: [AppComponent],
     providers: [

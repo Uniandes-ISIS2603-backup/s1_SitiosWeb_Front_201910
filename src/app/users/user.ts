@@ -2,15 +2,18 @@ export class User {
 
     id:number;
 
-    name:string;
+    nombre:string;
 
-    username:string;
+    userName:string;
 
     email:string;
 
     numeroTickets:number;
 
     password:string;
+
+    telefono:string;
+
 
 //    constructor(id:number, name:string, username:string, email:string, numeroTickets:number){
 //        this.id = id;
