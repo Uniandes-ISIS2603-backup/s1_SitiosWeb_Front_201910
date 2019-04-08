@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
     name: String;
 
 
+    selectedIndex = 1;
 
-    @ViewChild('DetailModal')  modal : ElementRef;
     @ViewChild('LoginModal') loginModal : ElementRef;
     @ViewChild('RegisterModal') registerModal : ElementRef;
     @ViewChild('loginComponent') logincomponent :ElementRef;
@@ -54,10 +54,8 @@ export class AppComponent implements OnInit {
         this.authService.logout()
     }
 
-    showSiteDetail():void
-    {
-        $(this.modal.nativeElement).modal('show');
-        this.change();
+    selectTab(index: number): void {
+        this.selectedIndex = index;
     }
 
     change():void

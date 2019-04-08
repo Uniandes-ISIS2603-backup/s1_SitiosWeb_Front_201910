@@ -6,6 +6,10 @@ body {
     margin: 0;
 }
 
+.mat-tab-list {
+    display: none !important;
+}
+
 .app-toolbar {
     position: sticky;
     position: -webkit-sticky; /* For macOS/iOS Safari */

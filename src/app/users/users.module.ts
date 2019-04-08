@@ -11,15 +11,16 @@ import { UsersCreateComponent } from './users-create/users-create.component';
 
 
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material';
+import {MatButtonModule, MatFormFieldModule} from '@angular/material';
 @NgModule({
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatFormFieldModule,
-  ],
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+    ],
   declarations: [UsersListComponent, UsersDetailComponent, UsersCreateComponent],
   providers: [UsersService],
   exports: [UsersListComponent, UsersDetailComponent, UsersCreateComponent]
