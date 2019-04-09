@@ -20,6 +20,8 @@ export class WebsiteListComponent implements OnInit {
 
   @Output() consultaEstados = new EventEmitter<number>()
 
+  @Output() agregarEstado = new EventEmitter<number>()
+
     @Output() sitioDetail = new EventEmitter<number>();
 
   websites : Website[] ;
@@ -42,11 +44,17 @@ export class WebsiteListComponent implements OnInit {
 
     consultarEstados(site:number){
         this.consultaEstados.emit(site);
+        
+
     }
 
     consultarDetalle(site:number){
         this.sitioDetail.emit(site);
     }
+
+    agregarUnEstado(site:number){
+      this.agregarEstado.emit(site);
+  }
 
   ngOnInit() {
     this.getWebSites();

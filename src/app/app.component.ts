@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
 
     @ViewChild('LoginModal') loginModal : ElementRef;
     @ViewChild('RegisterModal') registerModal : ElementRef;
+    @ViewChild('createEstadoWebModal') createEstadoWebModal : ElementRef;
     @ViewChild('loginComponent') logincomponent :ElementRef;
     @ViewChild('authSignUpComponent') registercomponent :ElementRef;
 
@@ -74,7 +75,10 @@ export class AppComponent implements OnInit {
     {
         $(this.loginModal.nativeElement).modal('show');
     }
-
+    showCreateEstadoModal():void
+    {
+        $(this.createEstadoWebModal.nativeElement).modal('show');
+    }
     setUserName():void
     {
         this.name = localStorage.getItem('name');
