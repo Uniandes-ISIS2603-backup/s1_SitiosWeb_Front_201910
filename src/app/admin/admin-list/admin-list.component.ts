@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Admin } from '../admin';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin-list',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminListComponent implements OnInit {
 
-  constructor() { }
+  admins: Admin[];
 
-  ngOnInit() {
+  constructor(private adminService: AdminService) { }
+
+
+  /**
+    * Asks the service to update the list of admins
+    */
+  getAdmins(): void {
+    this.adminService.getUsers()
+      .subscribe(admins => {
+        this.admins = admins;
+      });
   }
 
+  ngOnInit() {
+    this.getAdmins();
+  }
 }

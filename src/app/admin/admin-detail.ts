@@ -1,5 +1,5 @@
-export class Admin {
-    
+export class AdminDetail {
+
     id:number;
 
     nombre:string;
@@ -17,4 +17,6 @@ export class Admin {
     //dependencia:Dependencia;
 
     //sitioWeb:SitioWeb;
+
+    notificaciones:any[];
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UsersService } from '../users.service';
 import { User } from '../user';
+import { FormBuilder,  Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-users-create',
@@ -9,22 +10,28 @@ import { User } from '../user';
   styleUrls: ['./users-create.component.css']
 })
 export class UsersCreateComponent implements OnInit {
-
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
+  fifthFormGroup: FormGroup;
 
   constructor(
     private userService: UsersService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private _formBuilder: FormBuilder
   ) { }
+ 
 
   /**
   * The new user
   */
   user: User;
 
-/**
-   * The output which tells the parent component
-   * that the user no longer wants to create an user
-   */
+  /**
+     * The output which tells the parent component
+     * that the user no longer wants to create an user
+     */
   @Output() cancel = new EventEmitter();
 
   /**
@@ -49,7 +56,7 @@ export class UsersCreateComponent implements OnInit {
 
 
   }
-  
+
 
   /**
      * Informs the parent component that the user no longer wants to create an editorial
@@ -61,6 +68,21 @@ export class UsersCreateComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+      fourthCtrl: ['', Validators.required]
+    });
+    this.fifthFormGroup = this._formBuilder.group({
+      fifthCtrl: ['', Validators.required]
+    });
   }
 
 }
