@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
@@ -11,7 +11,8 @@ declare let $: any;
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
 

@@ -24,7 +24,8 @@
 </mat-toolbar>
 
 
-<mat-tab-group id #mtg class="header-less-tabs"[selectedIndex]="selectedIndex">
+
+<mat-tab-group id #mtg class="header-less-tabs"[selectedIndex]="selectedIndex" >
     <mat-tab label="Usuarios">
         <app-users-list id="userListComponent" #userListComponent></app-users-list>
     </mat-tab>
