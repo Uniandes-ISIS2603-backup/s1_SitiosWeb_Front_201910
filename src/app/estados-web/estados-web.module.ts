@@ -6,9 +6,10 @@ import { EstadosWebCreateComponentComponent } from './estados-web-create-compone
 @NgModule({
   imports: [
     CommonModule
-  ],exports: [
-    EstadosWebListComponent
-  ],
+  ], exports: [
+        EstadosWebListComponent,
+        EstadosWebCreateComponentComponent
+    ],
   declarations: [EstadosWebListComponent, EstadosWebCreateComponentComponent]
 })
 export class EstadosWebModule { }
