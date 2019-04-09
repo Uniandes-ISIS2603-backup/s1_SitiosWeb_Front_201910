@@ -1,19 +1,21 @@
-<form (ngSubmit)="createUser()" #User="ngForm">  
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nombre" required [(ngModel)]="user.nombre" name="nombre" #nombre="ngModel">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-         <input matInput placeholder="Usuario" value="Usuario" required [(ngModel)]="user.userName" name="userName" #userName="ngModel">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Correo" value="Correo" required [(ngModel)]="user.email" name="email">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Contraseña" value="Contraseña" required [(ngModel)]="user.password" name="password" #password="ngModel">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Telefono" value="Telefono" [(ngModel)]="user.telefono" name="telefono" #telefono="ngModel">
-        </mat-form-field>
-    </form>
+<form (ngSubmit)="createUser()" #User="ngForm">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nombre" required [(ngModel)]="user.nombre" name="nombre" #nombre="ngModel">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Usuario" value="Usuario" required [(ngModel)]="user.userName" name="userName"
+      #userName="ngModel">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Correo" value="Correo" required [(ngModel)]="user.email" name="email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Contraseña" value="Contraseña" required [(ngModel)]="user.password" name="password"
+      #password="ngModel">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Telefono" value="Telefono" [(ngModel)]="user.telefono" name="telefono"
+      #telefono="ngModel">
+  </mat-form-field>
+</form>
 
-  

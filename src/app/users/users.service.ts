@@ -19,7 +19,7 @@ export class UsersService {
 
   /**
     * Returns the Observable object containing the list of user retrieved from the API
-    * @returns The list of books in real time
+    * @returns The list of admins in real time
     */
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(API_URL + users);

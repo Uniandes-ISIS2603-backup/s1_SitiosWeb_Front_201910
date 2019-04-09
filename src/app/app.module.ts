@@ -27,6 +27,7 @@ import {
     MatFormFieldModule
 } from "@angular/material";
 import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -62,6 +63,7 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         MatToolbarModule,
         EstadosWebModule,
         UsersModule,
+        AdminModule,
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,

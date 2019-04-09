@@ -29,23 +29,20 @@ export class UsersDetailComponent implements OnInit {
 
 
 
-  /**
-    * The method which retrieves the books of an editorial
-    */
-   getEditorialDetail(): void {
+  getEditorialDetail(): void {
     this.userService.getUserDetail(this.usuario_id)
-        .subscribe(userDetail => {
-            this.userDetail = userDetail
-        });
-}
+      .subscribe(userDetail => {
+        this.userDetail = userDetail
+      });
+  }
 
-/**
-* The method which initializes the component
-* We need to initialize the editorial so it is never considered as undefined
-*/
-ngOnInit() {
+  /**
+  * The method which initializes the component
+  * We need to initialize the user so it is never considered as undefined
+  */
+  ngOnInit() {
     this.usuario_id = +this.route.snapshot.paramMap.get('id');
     this.userDetail = new UserDetail();
     this.getEditorialDetail();
-}
+  }
 }
