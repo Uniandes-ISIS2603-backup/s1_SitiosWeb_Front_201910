@@ -5,6 +5,9 @@ import {NgxPermissionsGuard} from 'ngx-permissions';
 
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
+import {UsersListComponent} from "../users/users-list/users-list.component";
+import {AppComponent} from "../app.component";
+import {WebsiteListComponent} from "../web-sites/website-list/website-list.component";
 
 const routes: Routes = [
 
@@ -35,11 +38,15 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        component: AuthLoginComponent
+        component: AppComponent
     },
     {
-        path: '**',
-        redirectTo: 'home',
+        path: 'SiteList',
+        component: WebsiteListComponent
+    },
+    {
+        path: 'users',
+        component: UsersListComponent
     }
 ];
 

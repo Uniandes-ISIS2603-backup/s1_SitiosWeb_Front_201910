@@ -1,3 +1,21 @@
+
+
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card style="margin: 2vmin" class="detailPane">
+      <div class="container">
+      <img src="{{site.imagen}}" class="rounded"/>
+        <!-- Content here -->
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card style="margin: 2vmin" class="detailPane">
+      Simple card
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
 <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
