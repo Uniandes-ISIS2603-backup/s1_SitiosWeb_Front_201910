@@ -1,6 +1,6 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Website} from "../website";
-
+import {TechnologiesListComponent} from '../../technologies/technologies-list/technologies-list.component';
 
 @Component({
   selector: 'app-website-details',

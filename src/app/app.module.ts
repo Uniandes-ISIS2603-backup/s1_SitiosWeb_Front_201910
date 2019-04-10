@@ -17,6 +17,7 @@ import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
 import {UsersModule} from "./users/users.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
+import {TechnologiesModule} from "./technologies/technologies.module";
 import {
     MatButtonModule,
     MatChipsModule,
@@ -64,6 +65,7 @@ import { AdminModule } from './admin/admin.module';
         EstadosWebModule,
         UsersModule,
         AdminModule,
+        TechnologiesModule,
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,
