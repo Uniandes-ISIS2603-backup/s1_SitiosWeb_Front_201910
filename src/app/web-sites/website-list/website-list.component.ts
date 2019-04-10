@@ -22,7 +22,7 @@ export class WebsiteListComponent implements OnInit {
 
   @Output() agregarEstado = new EventEmitter<number>()
 
-    @Output() sitioDetail = new EventEmitter<number>();
+    @Output() sitioDetail = new EventEmitter<Website>();
 
   websites : Website[] ;
 
@@ -48,7 +48,7 @@ export class WebsiteListComponent implements OnInit {
 
     }
 
-    consultarDetalle(site:number){
+    consultarDetalle(site:Website){
         this.sitioDetail.emit(site);
     }
 

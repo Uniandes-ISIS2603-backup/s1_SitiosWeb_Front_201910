@@ -31,12 +31,12 @@
         <app-users-list id="userListComponent" #userListComponent></app-users-list>
     </mat-tab>
     <mat-tab label="SitiosWeb">
-        <mat-sidenav-container class="example-container">
-            <mat-sidenav #sidenav mode="over">
+        <mat-sidenav-container class="example-container" (backdropClick)="historial.kill()" >
+            <mat-sidenav #sidenav mode="over" style="width: 50%" (keydown.escape)="historial.kill()" >
                 <app-estados-web-list #historial ></app-estados-web-list>
             </mat-sidenav>
             <mat-sidenav-content>
-                <app-website-list (sitioDetail)="detalle.getDetails($event);selectTab(2)" (agregarEstado)="showCreateEstadoModal()" (consultaEstados)="sidenav.toggle();historial.getEstadosWeb($event)"></app-website-list>
+                <app-website-list (sitioDetail)="detalle.setSite($event);selectTab(2)" (agregarEstado)="showCreateEstadoModal()" (consultaEstados)="sidenav.toggle();historial.getEstadosWeb($event)"></app-website-list>
             </mat-sidenav-content>
         </mat-sidenav-container>
     </mat-tab>

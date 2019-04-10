@@ -6,7 +6,7 @@
       <h5 class="card-title">{{site.nombre}}</h5>
       <mat-menu #appMenu="matMenu">
           <button mat-menu-item [matMenuTriggerFor]="estadosWeb">Estados Web</button>       
-        <button mat-menu-item (click)="consultarDetalle(site.id)">Informacion</button>
+        <button mat-menu-item (click)="consultarDetalle(site)">Informacion</button>
       </mat-menu>
 
       <mat-menu #estadosWeb>
