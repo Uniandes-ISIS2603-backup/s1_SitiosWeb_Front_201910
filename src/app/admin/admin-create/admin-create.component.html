@@ -1,3 +1,73 @@
-<p>
-  admin-create works!
-</p>
+<mat-vertical-stepper linear #stepper>
+	<mat-step [stepControl]="firstFormGroup">
+		<form [formGroup]="firstFormGroup">
+			<ng-template matStepLabel>Nombre completo</ng-template>
+			<mat-form-field>
+				<input matInput placeholder="Nombre" formControlName="firstCtrl" required [(ngModel)]="admin.name">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Correo electronico</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="secondCtrl" required [(ngModel)]="admin.email">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Contraseña</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="thirdCtrl" required [(ngModel)]="admin.password">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFrmGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Telefono</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Telefono" formControlName="fourthCtrl" required [(ngModel)]="admin.telefono">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel>Nombre cargo</ng-template>
+      <mat-form-field>
+        <mat-select #fontSize value="Responsable" [(ngModel)]="admin.nombreCargo">
+          <mat-option value="Responsable">Responsable</mat-option>
+          <mat-option value="Dueño">Dueño</mat-option>
+          <mat-option value="Supervisor">Supervisor</mat-option>
+  </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Anterior</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="createAdmin()">Done</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

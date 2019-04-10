@@ -1,15 +1,19 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { UsersService } from '../users.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
-import { FormBuilder,  Validators, FormGroup } from '@angular/forms';
+import { UsersService } from '../users.service';
+import { ToastrService } from 'ngx-toastr';
 
+/**
+ * @title Stepper vertical
+ */
 @Component({
   selector: 'app-users-create',
   templateUrl: './users-create.component.html',
   styleUrls: ['./users-create.component.css']
 })
 export class UsersCreateComponent implements OnInit {
+  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
@@ -65,7 +69,6 @@ export class UsersCreateComponent implements OnInit {
     this.cancel.emit(); //this.cancel.emit(); //No se si es con () o sin ()
   }
 
-
   ngOnInit() {
     this.user = new User();
     this.firstFormGroup = this._formBuilder.group({
@@ -84,5 +87,4 @@ export class UsersCreateComponent implements OnInit {
       fifthCtrl: ['', Validators.required]
     });
   }
-
 }
