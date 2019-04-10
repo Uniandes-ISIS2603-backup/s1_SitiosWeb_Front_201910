@@ -4,7 +4,7 @@ import { WebsiteListComponent } from './website-list/website-list.component';
 import {
     MatButtonModule,
     MatCardModule,
-    MatChipsModule,
+    MatChipsModule, MatExpansionModule,
     MatGridListModule,
     MatIconModule,
     MatMenuModule, MatTreeModule
@@ -20,7 +20,8 @@ import { WebsiteDetailsComponent } from './website-details/website-details.compo
         MatButtonModule,
         MatChipsModule,
         MatGridListModule,
-        MatTreeModule
+        MatTreeModule,
+        MatExpansionModule
     ],
     exports: [
         WebsiteListComponent,

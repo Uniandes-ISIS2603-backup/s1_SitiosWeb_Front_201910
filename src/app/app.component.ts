@@ -6,7 +6,7 @@ import {viewAttached} from "@angular/core/src/render3/instructions";
 
 declare let $: any;
 /**
- * The app component. This component is the base of sXXX_ZZZ-Front
+ * The app component. This component is the base of CMSites-Front
  */
 @Component({
     selector: 'app-root',
