@@ -1,7 +1,18 @@
 .mat-tab-list {
     display: none !important;
 }
-
+.animation-container{
+    width:140px;
+    height:140px;
+    position:relative;
+}
+.animation-logo{
+    width:140px;
+    height:140px;
+    position:absolute;
+    top:0px;
+    right:0px;
+}
 .toolbar-spacer {
     flex: 1 1 auto;
 }

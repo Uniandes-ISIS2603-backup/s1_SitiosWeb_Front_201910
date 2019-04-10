@@ -7,7 +7,7 @@ import {
     MatChipsModule,
     MatGridListModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule, MatTreeModule
 } from "@angular/material";
 import { WebsiteDetailsComponent } from './website-details/website-details.component';
 
@@ -19,7 +19,8 @@ import { WebsiteDetailsComponent } from './website-details/website-details.compo
         MatIconModule,
         MatButtonModule,
         MatChipsModule,
-        MatGridListModule
+        MatGridListModule,
+        MatTreeModule
     ],
     exports: [
         WebsiteListComponent,
