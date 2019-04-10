@@ -12,6 +12,9 @@
 .mat-menu-item:focus{
     outline: 0;
 }
+.mat-button:focus{
+    outline: 0;
+}
 
 .masonry-with-columns{
     display: flex;

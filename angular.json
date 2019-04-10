@@ -24,7 +24,8 @@
                             "node_modules/ngx-toastr/toastr.css",
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "src/styles.css"
+                            "src/styles.css",
+                            "src/theme.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.slim.min.js",
@@ -79,7 +80,8 @@
                         "scripts": [],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "src/styles.css"
+                            "src/styles.css",
+                            "src/theme.scss"
                         ],
                         "assets": [
                             "src/assets",

@@ -19,7 +19,7 @@ export class AuthSignUpComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private toastrService: ToastrService,
-    ) { }
+    ){}
 
     user: User;
 

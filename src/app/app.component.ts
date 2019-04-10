@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
@@ -11,7 +11,8 @@ declare let $: any;
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
 
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
 
     @ViewChild('LoginModal') loginModal : ElementRef;
     @ViewChild('RegisterModal') registerModal : ElementRef;
+    @ViewChild('createEstadoWebModal') createEstadoWebModal : ElementRef;
     @ViewChild('loginComponent') logincomponent :ElementRef;
     @ViewChild('authSignUpComponent') registercomponent :ElementRef;
 
@@ -73,7 +75,10 @@ export class AppComponent implements OnInit {
     {
         $(this.loginModal.nativeElement).modal('show');
     }
-
+    showCreateEstadoModal():void
+    {
+        $(this.createEstadoWebModal.nativeElement).modal('show');
+    }
     setUserName():void
     {
         this.name = localStorage.getItem('name');

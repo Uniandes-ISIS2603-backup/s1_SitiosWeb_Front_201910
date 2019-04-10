@@ -6,11 +6,8 @@ body {
     margin: 0;
 }
 
-.mat-tab-list {
-    display: none !important;
-}
 
-.app-toolbar {
+.mat-elevation-z6 {
     position: sticky;
     position: -webkit-sticky; /* For macOS/iOS Safari */
     top: 0; /* Sets the sticky toolbar to be on top */

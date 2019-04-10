@@ -1,4 +1,4 @@
-<mat-toolbar class="app-toolbar" color="primary" role="heading">
+<mat-toolbar class="mat-elevation-z6" color="primary" role="heading" >
     <mat-toolbar-row>
     <img src="../assets/logo.png" height="64" width="64"/>
     CMSites
@@ -24,22 +24,24 @@
 </mat-toolbar>
 
 
-<mat-tab-group id #mtg class="header-less-tabs"[selectedIndex]="selectedIndex">
+
+
+<mat-tab-group id #mtg class="header-less-tabs"[selectedIndex]="selectedIndex" >
     <mat-tab label="Usuarios">
         <app-users-list id="userListComponent" #userListComponent></app-users-list>
     </mat-tab>
     <mat-tab label="SitiosWeb">
-        <mat-sidenav-container class="example-container">
-            <mat-sidenav #sidenav mode="over">
+        <mat-sidenav-container class="example-container" (backdropClick)="historial.kill()" >
+            <mat-sidenav #sidenav mode="over" style="width: 50%" (keydown.escape)="historial.kill()" >
                 <app-estados-web-list #historial ></app-estados-web-list>
             </mat-sidenav>
             <mat-sidenav-content>
-                <app-website-list (sitioDetail)="detalle.getDetails($event);selectTab(2)"  (consultaEstados)="sidenav.toggle();historial.getEstadosWeb($event)"></app-website-list>
+                <app-website-list (sitioDetail)="detalle.setSite($event);selectTab(2)" (agregarEstado)="showCreateEstadoModal()" (consultaEstados)="sidenav.toggle();historial.getEstadosWeb($event)"></app-website-list>
             </mat-sidenav-content>
         </mat-sidenav-container>
     </mat-tab>
     <mat-tab label="Usuarios">
-        <app-website-details  #detalle></app-website-details>
+        <app-website-details  #detalle ></app-website-details>
     </mat-tab>
 </mat-tab-group>
 
@@ -84,3 +86,19 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="createEstadoWebModal" tabindex="-1" role="dialog" aria-hidden="true" #createEstadoWebModal>
+        <div class="modal-dialog modal-lg" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                <app-estados-web-create-component></app-estados-web-create-component>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    

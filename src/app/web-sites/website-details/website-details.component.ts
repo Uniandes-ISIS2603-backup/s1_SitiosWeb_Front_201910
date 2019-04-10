@@ -1,4 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Website} from "../website";
 
 
 @Component({
@@ -8,7 +9,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 })
 export class WebsiteDetailsComponent implements OnInit {
 
-  idsitio:number;
+  idsitio:Website;
 
   constructor() {}
 
@@ -16,7 +17,7 @@ export class WebsiteDetailsComponent implements OnInit {
   }
 
 
-  getDetails( site:number ):void
+  setSite( site:Website ):void
   {
     this.idsitio=site;
   }
