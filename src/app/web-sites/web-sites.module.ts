@@ -4,10 +4,10 @@ import { WebsiteListComponent } from './website-list/website-list.component';
 import {
     MatButtonModule,
     MatCardModule,
-    MatChipsModule,
+    MatChipsModule, MatExpansionModule,
     MatGridListModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule, MatTreeModule
 } from "@angular/material";
 import { WebsiteDetailsComponent } from './website-details/website-details.component';
 
@@ -19,7 +19,9 @@ import { WebsiteDetailsComponent } from './website-details/website-details.compo
         MatIconModule,
         MatButtonModule,
         MatChipsModule,
-        MatGridListModule
+        MatGridListModule,
+        MatTreeModule,
+        MatExpansionModule
     ],
     exports: [
         WebsiteListComponent,

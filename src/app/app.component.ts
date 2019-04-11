@@ -1,17 +1,19 @@
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
 
 
 declare let $: any;
+
 /**
- * The app component. This component is the base of sXXX_ZZZ-Front
+ * The app component. This component is the base of CMSites-Front
  */
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
 
@@ -20,12 +22,13 @@ export class AppComponent implements OnInit {
      */
     title: String;
     name: String;
+    navLinks: any[];
 
+    selectedIndex = 1;
 
-
-    @ViewChild('DetailModal')  modal : ElementRef;
     @ViewChild('LoginModal') loginModal : ElementRef;
     @ViewChild('RegisterModal') registerModal : ElementRef;
+    @ViewChild('createEstadoWebModal') createEstadoWebModal : ElementRef;
     @ViewChild('loginComponent') logincomponent :ElementRef;
     @ViewChild('authSignUpComponent') registercomponent :ElementRef;
 
@@ -48,16 +51,30 @@ export class AppComponent implements OnInit {
        /**
      * @ignore
      */
-    constructor(private authService: AuthService,private statesService:EstadosWebService) { }
+    constructor(private authService: AuthService,private statesService:EstadosWebService) {
+           this.navLinks = [
+               {
+                   label: 'Usuarios',
+                   link: './users',
+                   index: 0
+               }, {
+                   label: 'Paginas',
+                   link: './SiteList',
+                   index: 1
+               }, {
+                   label: 'Detalle',
+                   link: './third',
+                   index: 2
+               },
+           ];
+       }
 
     logout(): void {
         this.authService.logout()
     }
 
-    showSiteDetail():void
-    {
-        $(this.modal.nativeElement).modal('show');
-        this.change();
+    selectTab(index: number): void {
+        this.selectedIndex = index;
     }
 
     change():void
@@ -75,7 +92,10 @@ export class AppComponent implements OnInit {
     {
         $(this.loginModal.nativeElement).modal('show');
     }
-
+    showCreateEstadoModal():void
+    {
+        $(this.createEstadoWebModal.nativeElement).modal('show');
+    }
     setUserName():void
     {
         this.name = localStorage.getItem('name');

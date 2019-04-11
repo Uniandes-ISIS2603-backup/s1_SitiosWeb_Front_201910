@@ -1,12 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 
 body {
     font-family: Roboto, Arial, sans-serif;
     margin: 0;
 }
 
-.app-toolbar {
+
+.mat-elevation-z6 {
     position: sticky;
     position: -webkit-sticky; /* For macOS/iOS Safari */
     top: 0; /* Sets the sticky toolbar to be on top */

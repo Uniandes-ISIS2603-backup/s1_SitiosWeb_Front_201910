@@ -15,16 +15,20 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
+import {UsersModule} from "./users/users.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
+import {TechnologiesModule} from "./technologies/technologies.module";
 import {
     MatButtonModule,
     MatChipsModule,
     MatIconModule, MatMenuModule,
     MatSidenavModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule
 } from "@angular/material";
 import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -46,7 +50,7 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         ModalDialogModule.forRoot(),
         AuthModule,
         FormsModule,
-
+        MatFormFieldModule,
         ToastrModule.forRoot({
             timeOut: 10000,
             positionClass: 'toast-bottom-right',
@@ -59,11 +63,14 @@ import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-we
         MatTabsModule,
         MatToolbarModule,
         EstadosWebModule,
+        UsersModule,
+        AdminModule,
+        TechnologiesModule,
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,
         MatChipsModule,
-        MatMenuModule
+        MatMenuModule,
     ],
     bootstrap: [AppComponent],
     providers: [

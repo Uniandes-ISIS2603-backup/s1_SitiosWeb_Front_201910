@@ -1,15 +1,44 @@
-<p>
-  Aca va la vista detallada del sitio: {{idsitio}}, plataforma, relacionados, tecnologias etc
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-</p>
+
+
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <mat-card style="margin: 2vmin" class="detailPane">
+      <div class="container">
+      <img src="{{site.imagen}}" class="rounded"/>
+        <!-- Content here -->
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card style="margin: 2vmin" class="detailPane">
+      Simple card
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Tecnologias de desarollo
+      </mat-panel-title>
+      <mat-panel-description>
+        Tecnologias que usa el sitio web
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    aca va el panel que contiene las tecnologias usadas por un sitio web
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Sitios Relacionados
+      </mat-panel-title>
+      <mat-panel-description>
+        Sitios con los cuales se relaciona el sitio Web
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    aca va el panel de sitios relacionados
+  </mat-expansion-panel>
+</mat-accordion>
