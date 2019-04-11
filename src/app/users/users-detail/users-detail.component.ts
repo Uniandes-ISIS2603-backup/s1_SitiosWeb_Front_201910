@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../users.service';
 import { UserDetail } from '../user-detail';
@@ -27,10 +27,12 @@ export class UsersDetailComponent implements OnInit {
   */
   usuario_id: number;
 
+  @Input() id: number;
 
 
-  getEditorialDetail(): void {
-    this.userService.getUserDetail(this.usuario_id)
+
+  getUserDetail(): void {
+    this.userService.getUserDetail(this.id)
       .subscribe(userDetail => {
         this.userDetail = userDetail
       });
@@ -41,8 +43,8 @@ export class UsersDetailComponent implements OnInit {
   * We need to initialize the user so it is never considered as undefined
   */
   ngOnInit() {
-    this.usuario_id = +this.route.snapshot.paramMap.get('id');
+    //this.id = +this.route.snapshot.paramMap.get('id');
     this.userDetail = new UserDetail();
-    this.getEditorialDetail();
+    this.getUserDetail();
   }
 }
