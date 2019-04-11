@@ -1,6 +1,15 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Website} from "../website";
-import {TechnologiesListComponent} from '../../technologies/technologies-list/technologies-list.component';
+import {WebSiteDetail} from "../WebSiteDetail";
+import {MatTreeNestedDataSource} from "@angular/material";
+import {NestedTreeControl} from "@angular/cdk/tree";
+
+
+interface WebSiteDetailNode {
+  name: string;
+  children?: WebSiteDetailNode[];
+}
+
 
 @Component({
   selector: 'app-website-details',
@@ -9,17 +18,22 @@ import {TechnologiesListComponent} from '../../technologies/technologies-list/te
 })
 export class WebsiteDetailsComponent implements OnInit {
 
-  idsitio:Website;
 
-  constructor() {}
+  site :Website;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
 
+
+
   setSite( site:Website ):void
   {
-    this.idsitio=site;
+    this.site=site;
   }
 
+  panelOpenState = false;
 }

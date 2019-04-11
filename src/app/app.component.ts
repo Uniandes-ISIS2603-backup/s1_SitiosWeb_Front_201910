@@ -5,8 +5,9 @@ import {viewAttached} from "@angular/core/src/render3/instructions";
 
 
 declare let $: any;
+
 /**
- * The app component. This component is the base of sXXX_ZZZ-Front
+ * The app component. This component is the base of CMSites-Front
  */
 @Component({
     selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
      */
     title: String;
     name: String;
-
+    navLinks: any[];
 
     selectedIndex = 1;
 
@@ -50,7 +51,23 @@ export class AppComponent implements OnInit {
        /**
      * @ignore
      */
-    constructor(private authService: AuthService,private statesService:EstadosWebService) { }
+    constructor(private authService: AuthService,private statesService:EstadosWebService) {
+           this.navLinks = [
+               {
+                   label: 'Usuarios',
+                   link: './users',
+                   index: 0
+               }, {
+                   label: 'Paginas',
+                   link: './SiteList',
+                   index: 1
+               }, {
+                   label: 'Detalle',
+                   link: './third',
+                   index: 2
+               },
+           ];
+       }
 
     logout(): void {
         this.authService.logout()

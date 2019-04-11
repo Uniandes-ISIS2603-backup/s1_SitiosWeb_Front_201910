@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "sXXX_ZZZ-Front": {
+        "CMSites-Front": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -56,18 +56,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "sXXX_ZZZ-Front:build"
+                        "browserTarget": "CMSites-Front:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "sXXX_ZZZ-Front:build:production"
+                            "browserTarget": "CMSites-Front:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "sXXX_ZZZ-Front:build"
+                        "browserTarget": "CMSites-Front:build"
                     }
                 },
                 "test": {
@@ -103,7 +103,7 @@
                 }
             }
         },
-        "sXXX_ZZZ-Front-e2e": {
+        "CMSites-Front-e2e": {
             "root": "e2e",
             "sourceRoot": "e2e",
             "projectType": "application",
@@ -112,7 +112,7 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "./protractor.conf.js",
-                        "devServerTarget": "sXXX_ZZZ-Front:serve"
+                        "devServerTarget": "CMSites-Front:serve"
                     }
                 },
                 "lint": {
@@ -129,7 +129,7 @@
             }
         }
     },
-    "defaultProject": "sXXX_ZZZ-Front",
+    "defaultProject": "CMSites-Front",
     "schematics": {
         "@schematics/angular:component": {
             "prefix": "app",
