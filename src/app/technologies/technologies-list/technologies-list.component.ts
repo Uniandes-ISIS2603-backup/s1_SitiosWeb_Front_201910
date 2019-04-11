@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Technologies } from '../technologies';
 import { TechnologiesService } from '../technologies.service';
 import {MatTableDataSource} from '@angular/material';
 
@@ -7,11 +6,11 @@ import {MatTableDataSource} from '@angular/material';
  * The component for the list of editorials in the BookStore
  */
 @Component({
-    selector: 'list-technologies',
+    selector: 'app-list-technologies',
     templateUrl: './technologies-list.component.html', 
 })
 export class TechnologiesListComponent implements OnInit {
-displayedColumns: string[] = ['id','name'];
+displayedColumns: string[] = ['id','name','detail'];
     /**
      * Constructor for the component
      * @param technologiesService The author's services provider
@@ -27,7 +26,7 @@ displayedColumns: string[] = ['id','name'];
      * Asks the service to update the list of editorials
      */
     getTechnologies(): void {
-        this.technologiesService.getTechnologies().subscribe(editorials => this.technologies = new MatTableDataSource(editorials));
+        this.technologiesService.getTechnologies().subscribe(klk => this.technologies = new MatTableDataSource(klk));
     }
 
     /**
