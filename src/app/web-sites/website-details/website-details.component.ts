@@ -1,9 +1,9 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Website} from "../website";
-import {WebSiteDetail} from "../WebSiteDetail";
-import {MatTreeNestedDataSource} from "@angular/material";
-import {NestedTreeControl} from "@angular/cdk/tree";
 import {Router} from "@angular/router";
+import {TechnologyDetail} from "../../technologies/technologies-detail";
+import {TechnologiesService} from "../../technologies/technologies.service";
+import {WebsiteService} from "../website.service";
 
 
 interface WebSiteDetailNode {
@@ -19,14 +19,26 @@ interface WebSiteDetailNode {
 })
 export class WebsiteDetailsComponent implements OnInit {
 
+  @Input()
+  site_id:number;
 
   site :Website;
 
-  constructor(public router: Router) {
+  constructor(public router: Router,private sitesService: WebsiteService,) {
   }
 
   ngOnInit() {
+    this.techDetail = new TechnologyDetail();
+    this.getTechnologyDetail();
   }
+
+  getSiteDetail(): void {
+    this.sitesService.getSites(this.site_id)
+        .subscribe(detail => {
+          this.site = detail
+        });
+  }
+
 
 
 
