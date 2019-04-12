@@ -29,7 +29,8 @@ import {
 } from "@angular/material";
 import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
 import { AdminModule } from './admin/admin.module';
-
+import {ChangesModule } from './cambios/changes.module';
+ 
 
 
 
@@ -65,6 +66,7 @@ import { AdminModule } from './admin/admin.module';
         EstadosWebModule,
         UsersModule,
         AdminModule,
+        ChangesModule,
         TechnologiesModule,
         MatSidenavModule,
         MatButtonModule,
