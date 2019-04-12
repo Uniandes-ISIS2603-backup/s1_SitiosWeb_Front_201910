@@ -6,6 +6,7 @@ export class TechnologyDetail {
     version: string;
     techType: string;
     url: string;
+    description: string;
   
 
 }

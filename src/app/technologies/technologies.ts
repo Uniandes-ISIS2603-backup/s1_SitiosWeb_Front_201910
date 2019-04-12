@@ -6,6 +6,7 @@ export interface Technologies {
     version: string;
     techType: string;
     url: string;
+    description: string;
   
 
 }
@@ -17,6 +18,6 @@ export class Technologies {
     version: string;
     techType: string;
     url: string;
-  
+    description: string;
 
 }

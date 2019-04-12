@@ -10,7 +10,7 @@ import { TechnologiesService } from '../technologies.service';
   templateUrl: './technologies-create.component.html',
   styleUrls: ['./technologies-create.component.css']
 })
-export class AdminCreateComponent implements OnInit {
+export class TechnologiesCreateComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, private ngZone: NgZone, private technologiesService: TechnologiesService,
     private toastrService: ToastrService) { }

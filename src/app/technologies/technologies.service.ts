@@ -25,7 +25,7 @@ export class TechnologiesService {
     getTechnologyDetail(techId): Observable<TechnologyDetail> {
         return this.http.get<TechnologyDetail>(API_URL + technologies + '/' + techId);
     }   
-    createTechnology(tech): Observable<TechnologyDetail> {
+    createTechnology(tech): Observable<Technologies> {
         return this.http.post<Technologies>(API_URL + technologies, technologies);
     }
 }
