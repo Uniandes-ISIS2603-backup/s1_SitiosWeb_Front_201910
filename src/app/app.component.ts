@@ -2,6 +2,7 @@ import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angu
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
+import {Router} from "@angular/router";
 
 
 declare let $: any;
@@ -51,7 +52,7 @@ export class AppComponent implements OnInit {
        /**
      * @ignore
      */
-    constructor(private authService: AuthService,private statesService:EstadosWebService) {
+    constructor(private authService: AuthService,private statesService:EstadosWebService, public router: Router) {
            this.navLinks = [
                {
                    label: 'Usuarios',
@@ -86,7 +87,7 @@ export class AppComponent implements OnInit {
     showRegisterPane():void
     {
         $(this.registerModal.nativeElement).modal('show');
-
+         this.router.navigate([{outlets: {register: 'register'}}]);
     }
     showLoginPane():void
     {

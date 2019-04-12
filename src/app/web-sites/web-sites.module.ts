@@ -7,10 +7,12 @@ import {
     MatChipsModule, MatExpansionModule,
     MatGridListModule,
     MatIconModule,
-    MatMenuModule, MatTreeModule
+    MatMenuModule, MatTableModule, MatTreeModule
 } from "@angular/material";
 import { WebsiteDetailsComponent } from './website-details/website-details.component';
 import {TechnologiesModule} from "../technologies/technologies.module";
+import { WebsiteRelatedListComponent } from './website-related-list/website-related-list.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     imports: [
@@ -23,12 +25,14 @@ import {TechnologiesModule} from "../technologies/technologies.module";
         MatGridListModule,
         MatTreeModule,
         MatExpansionModule,
-        TechnologiesModule
+        TechnologiesModule,
+        MatTableModule,
+        RouterModule
     ],
     exports: [
         WebsiteListComponent,
         WebsiteDetailsComponent
     ],
-  declarations: [WebsiteListComponent, WebsiteDetailsComponent]
+  declarations: [WebsiteListComponent, WebsiteDetailsComponent, WebsiteRelatedListComponent]
 })
 export class WebSitesModule { }
