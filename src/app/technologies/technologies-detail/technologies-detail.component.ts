@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { TechnologyDetail } from '../technologies-detail';
 
 @Component({
-  selector: 'app-technology-detail',
-  templateUrl: './admin-detail.component.html',
-  styleUrls: ['./admin-detail.component.css']
+  selector: 'app-technologies-detail',
+  templateUrl: './technologies-detail.component.html',
+  styleUrls: ['./technologies-detail.component.css']
 })
 export class TechnologiesDetailComponent implements OnInit {
 

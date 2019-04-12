@@ -10,7 +10,7 @@ import {
     MatMenuModule, MatTreeModule
 } from "@angular/material";
 import { WebsiteDetailsComponent } from './website-details/website-details.component';
-import { TechnologiesListComponent} from '../technologies/TechnologiesListComponent'
+import { TechnologiesModule} from  '../technologies/technologies.module'
 
 @NgModule({
     imports: [
