@@ -10,6 +10,7 @@ import {
     MatMenuModule, MatTreeModule
 } from "@angular/material";
 import { WebsiteDetailsComponent } from './website-details/website-details.component';
+import {TechnologiesModule} from "../technologies/technologies.module";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { WebsiteDetailsComponent } from './website-details/website-details.compo
         MatChipsModule,
         MatGridListModule,
         MatTreeModule,
-        MatExpansionModule
+        MatExpansionModule,
+        TechnologiesModule
     ],
     exports: [
         WebsiteListComponent,
