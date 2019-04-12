@@ -4,7 +4,7 @@
   <mat-grid-tile>
     <mat-card style="margin: 2vmin" class="detailPane">
       <div class="container">
-      <img src="{{site.imagen}}" class="rounded"/>
+      <img src="{{site?.imagen}}" class="rounded"/>
         <!-- Content here -->
       </div>
     </mat-card>
@@ -27,10 +27,10 @@
         Tecnologias que usa el sitio web
       </mat-panel-description>
     </mat-expansion-panel-header>
-    aca va el panel que contiene las tecnologias usadas por un sitio web
+    <app-list-technologies></app-list-technologies>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel (opened)="getSitesRelated()">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Sitios Relacionados
@@ -39,6 +39,6 @@
         Sitios con los cuales se relaciona el sitio Web
       </mat-panel-description>
     </mat-expansion-panel-header>
-    aca va el panel de sitios relacionados
+    <router-outlet name="related"></router-outlet>
   </mat-expansion-panel>
 </mat-accordion>

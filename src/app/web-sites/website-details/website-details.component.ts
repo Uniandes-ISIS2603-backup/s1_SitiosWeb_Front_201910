@@ -3,6 +3,7 @@ import {Website} from "../website";
 import {WebSiteDetail} from "../WebSiteDetail";
 import {MatTreeNestedDataSource} from "@angular/material";
 import {NestedTreeControl} from "@angular/cdk/tree";
+import {Router} from "@angular/router";
 
 
 interface WebSiteDetailNode {
@@ -21,7 +22,7 @@ export class WebsiteDetailsComponent implements OnInit {
 
   site :Website;
 
-  constructor() {
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
@@ -36,4 +37,9 @@ export class WebsiteDetailsComponent implements OnInit {
   }
 
   panelOpenState = false;
+
+  getSitesRelated()
+  {
+    this.router.navigate(['/websites/related',{ outlets: { related: [this.site.id] } }]);
+  }
 }
