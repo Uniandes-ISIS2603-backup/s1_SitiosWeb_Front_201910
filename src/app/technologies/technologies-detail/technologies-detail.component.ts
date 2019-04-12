@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TechnologyDetail } from '../technologies-detail';
 
 @Component({
-  selector: 'app-admin-detail',
+  selector: 'app-technology-detail',
   templateUrl: './admin-detail.component.html',
   styleUrls: ['./admin-detail.component.css']
 })
