@@ -10,10 +10,22 @@ import { UsersService } from '../users.service';
 })
 export class UsersListComponent implements OnInit {
 
+  expande: boolean = false;
   users: User[];
+  userId: number;
 
   constructor(private usersService: UsersService) { }
 
+  expandir(id): void {
+    //if (this.expande && id != this.userId) {
+    //this.userId = id;
+    //}
+    //else {
+    this.userId = id;
+    this.expande = !this.expande;
+    //}
+
+  }
 
   /**
     * Asks the service to update the list of users

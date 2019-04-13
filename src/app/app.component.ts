@@ -2,11 +2,13 @@ import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angu
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
+import {Router} from "@angular/router";
 
 
 declare let $: any;
+
 /**
- * The app component. This component is the base of sXXX_ZZZ-Front
+ * The app component. This component is the base of CMSites-Front
  */
 @Component({
     selector: 'app-root',
@@ -21,9 +23,9 @@ export class AppComponent implements OnInit {
      */
     title: String;
     name: String;
+    navLinks: any[];
 
-
-    selectedIndex = 1;
+    selectedIndex;
 
     @ViewChild('LoginModal') loginModal : ElementRef;
     @ViewChild('RegisterModal') registerModal : ElementRef;
@@ -40,17 +42,38 @@ export class AppComponent implements OnInit {
      * Assigns a title to the web page
      */
     ngOnInit(): void {
+        this.selectedIndex=1;
         this.title = "CMSites";
         this.authService.start();
         document.getElementById("DetailModal");
         this.setUserName();
         this.establecerBarra();
+        if(this.router.url.includes('users'))
+        {
+            this.selectedIndex=0;
+        }
     }
 
        /**
      * @ignore
      */
-    constructor(private authService: AuthService,private statesService:EstadosWebService) { }
+    constructor(private authService: AuthService,private statesService:EstadosWebService, public router: Router) {
+           this.navLinks = [
+               {
+                   label: 'Usuarios',
+                   link: './users',
+                   index: 0
+               }, {
+                   label: 'Paginas',
+                   link: './SiteList',
+                   index: 1
+               }, {
+                   label: 'Detalle',
+                   link: './third',
+                   index: 2
+               },
+           ];
+       }
 
     logout(): void {
         this.authService.logout()
@@ -58,6 +81,23 @@ export class AppComponent implements OnInit {
 
     selectTab(index: number): void {
         this.selectedIndex = index;
+    }
+
+    showUserTab()
+    {
+        this.selectedIndex=0;
+        //['/websites/related',{ outlets: { related: [this.site.id] } }
+        this.router.navigate(['/users',{ outlets: { users: ['list'] } }]);
+    }
+    showMainTab()
+    {
+        this.selectedIndex=1
+        this.router.navigate(['/home']);
+    }
+    showDetailTab(site:number)
+    {
+        this.selectedIndex=2
+        this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 
     change():void
@@ -69,7 +109,7 @@ export class AppComponent implements OnInit {
     showRegisterPane():void
     {
         $(this.registerModal.nativeElement).modal('show');
-
+         this.router.navigate([{outlets: {register: 'register'}}]);
     }
     showLoginPane():void
     {

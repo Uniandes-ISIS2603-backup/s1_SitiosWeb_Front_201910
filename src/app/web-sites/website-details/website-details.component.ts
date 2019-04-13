@@ -1,8 +1,9 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Website} from "../website";
-import {WebSiteDetail} from "../WebSiteDetail";
-import {MatTreeNestedDataSource} from "@angular/material";
-import {NestedTreeControl} from "@angular/cdk/tree";
+import {Router} from "@angular/router";
+import {TechnologyDetail} from "../../technologies/technologies-detail";
+import {TechnologiesService} from "../../technologies/technologies.service";
+import {WebsiteService} from "../website.service";
 
 
 interface WebSiteDetailNode {
@@ -18,47 +19,28 @@ interface WebSiteDetailNode {
 })
 export class WebsiteDetailsComponent implements OnInit {
 
-  treeControl = new NestedTreeControl<WebSiteDetailNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<WebSiteDetailNode>();
-
+  @Input()
+  site_id:number;
 
   site :Website;
 
-  constructor() {
-    this.dataSource.data = this.TREE_DATA;
+  constructor(public router: Router,private sitesService: WebsiteService,) {
   }
 
   ngOnInit() {
+    this.techDetail = new TechnologyDetail();
+    this.getTechnologyDetail();
+  }
+
+  getSiteDetail(): void {
+    this.sitesService.getSites(this.site_id)
+        .subscribe(detail => {
+          this.site = detail
+        });
   }
 
 
 
-   TREE_DATA: WebSiteDetailNode[] = [
-    {
-      name: 'SitiosRelacionados',
-      children: [
-        {name: 'site 1'},
-        {name: 'site 2'},
-        {name: 'site 3'}
-      ]
-    },
-     {
-       name: 'Tecnologias de desarollo',
-       children: [
-         {name: 'tec 1'},
-         {name: 'tec 2'},
-         {name: 'tec 3'}
-       ]
-     },
-     {
-       name: 'Plataformas de despliegue',
-       children: [
-         {name: 'plat 1'},
-         {name: 'plat 2'},
-         {name: 'plat 3'}
-       ]
-     }
-   ];
 
 
   setSite( site:Website ):void
@@ -66,6 +48,10 @@ export class WebsiteDetailsComponent implements OnInit {
     this.site=site;
   }
 
-  hasChild = (_: number, node: WebSiteDetailNode) => !!node.children && node.children.length > 0;
+  panelOpenState = false;
 
+  getSitesRelated()
+  {
+    this.router.navigate(['/websites/related',{ outlets: { related: [this.site.id] } }]);
+  }
 }

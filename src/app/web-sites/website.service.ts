@@ -27,4 +27,21 @@ export class WebsiteService {
       },60000) ;
     });
   }
+
+  getSite(id:number) : Observable<Website[]> {
+
+   return this.http.get<Website[]>(API_URL + `${websites}/${id}`);
+  }
+
+  getSitesRelated(id: number) : Observable<Website[]> {
+
+    return new Observable<Website[]>( subscriber => {
+      this.http.get<Website[]>(API_URL + websites+`/${id}/related`).subscribe(value =>
+          subscriber.next(value));
+      setInterval(()=>{
+        this.http.get<Website[]>(API_URL + websites+`/${id}/related`).subscribe(value =>
+            subscriber.next(value))
+      },60000) ;
+    });
+  }
 }

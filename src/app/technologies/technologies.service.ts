@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Technologies } from './technologies';
 import { Observable } from 'rxjs';
-import { AppConstants } from '../appConstants'
+import { AppConstants } from '../appConstants';
+import { TechnologyDetail } from './technologies-detail';
 
 const API_URL = AppConstants.baseURL;
 const technologies = 'technologies';
@@ -21,5 +22,10 @@ export class TechnologiesService {
     getTechnologies() : Observable<Technologies[]> {
         return this.http.get<Technologies[]>(API_URL + technologies);
     }
-    
+    getTechnologyDetail(techId): Observable<TechnologyDetail> {
+        return this.http.get<TechnologyDetail>(API_URL + technologies + '/' + techId);
+    }   
+    createTechnology(tech): Observable<Technologies> {
+        return this.http.post<Technologies>(API_URL + technologies, technologies);
+    }
 }
