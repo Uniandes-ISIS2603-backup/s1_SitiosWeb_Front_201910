@@ -28,9 +28,9 @@ export class WebsiteService {
     });
   }
 
-  getSite(id:number) : Observable<Website[]> {
+  getSite(id:number) : Observable<Website> {
 
-   return this.http.get<Website[]>(API_URL + `${websites}/${id}`);
+   return this.http.get<Website>(API_URL + `${websites}/${id}`);
   }
 
   getSitesRelated(id: number) : Observable<Website[]> {

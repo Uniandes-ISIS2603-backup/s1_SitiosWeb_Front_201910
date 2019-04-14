@@ -1,44 +1,44 @@
 
 
 <mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile>
-    <mat-card style="margin: 2vmin" class="detailPane">
-      <div class="container">
-      <img src="{{site?.imagen}}" class="rounded"/>
-        <!-- Content here -->
-      </div>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-card style="margin: 2vmin" class="detailPane">
-      Simple card
-    </mat-card>
-  </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card style="margin: 2vmin" class="detailPane">
+            <div class="container">
+                <img src="{{site?.imagen}}" class="rounded"/>
+                <!-- Content here -->
+            </div>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card style="margin: 2vmin" class="detailPane">
+            Simple card
+        </mat-card>
+    </mat-grid-tile>
 </mat-grid-list>
 
 <mat-accordion>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Tecnologias de desarollo
-      </mat-panel-title>
-      <mat-panel-description>
-        Tecnologias que usa el sitio web
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <app-list-technologies></app-list-technologies>
-  </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Tecnologias de desarollo
+            </mat-panel-title>
+            <mat-panel-description>
+                Tecnologias que usa el sitio web
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-list-technologies></app-list-technologies>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel (opened)="getSitesRelated()">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Sitios Relacionados
-      </mat-panel-title>
-      <mat-panel-description>
-        Sitios con los cuales se relaciona el sitio Web
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <router-outlet name="related"></router-outlet>
-  </mat-expansion-panel>
+    <mat-expansion-panel (opened)="getSitesRelated()">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Sitios Relacionados
+            </mat-panel-title>
+            <mat-panel-description>
+                Sitios con los cuales se relaciona el sitio Web
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <router-outlet name="related"></router-outlet>
+    </mat-expansion-panel>
 </mat-accordion>

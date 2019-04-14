@@ -93,10 +93,12 @@ export class AppComponent implements OnInit {
     {
         this.selectedIndex=1
         this.router.navigate(['/home']);
+        this.router.navigate(["../", {outlets: {siteDetail: null}}],
+        );
     }
     showDetailTab(site:number)
     {
-        this.selectedIndex=2
+        this.selectedIndex=2;
         this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 
