@@ -1,9 +1,10 @@
-import { Component, OnInit, NgZone, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Admin } from '../admin';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
 import { Router } from '@angular/router';
+import {    ValidationService} from "../../validation/validation.service";
 
 
 @Component({
@@ -12,11 +13,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
+    hide = true;
 
   constructor(
     private adminService: AdminService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private _formBuilder: FormBuilder
 ) {}
 
 /**
@@ -25,7 +28,7 @@ export class AdminCreateComponent implements OnInit {
 admin: Admin;
 
 nombreCargos = ["Responsable", "Dueño", "Encargado"];
-
+    createUserForm: FormGroup;
 
 /**
 * Cancels the creation of the new book
@@ -62,7 +65,17 @@ createAdmin(): Admin {
 * This function will initialize the component
 */
 ngOnInit() {
+    this.createUserForm = this._formBuilder.group({
+        nombre: ['', Validators.required],
+        email: ['', [Validators.required,ValidationService.emailValidator]],
+        telefono: ['', [Validators.required,Validators.minLength(20)]],
+        nombreCargo:['',Validators.required],
+        password: ['', [Validators.required,Validators.minLength(8)]]
+    });
     this.admin = new Admin();
 }
-
+logValue()
+{
+    console.log(this.createUserForm.getRawValue());
+}
 }

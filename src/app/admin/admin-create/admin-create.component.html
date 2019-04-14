@@ -4,57 +4,61 @@
             <br>
             <h2 class="text-center">Add a new admin</h2>
             <br>
-            <form name="admin" (ngSubmit)="f.form.valid && createAdmin()" #f="ngForm" novalidate>
-                <div class="form-group">
-                    <label for="adminName"><b>Nombre</b></label>
-                    <input type="text" name="adminName" class="form-control" id="adminName" [(ngModel)]="admin.nombre"
-                        #bookName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminName.invalid }" required>
-                    <div class="invalid-feedback">
-                        <div>The admin's name is missing</div>
+            <mat-vertical-stepper [linear]="false" #stepper>
+                <mat-step [stepControl]="createUserForm">
+                    <form [formGroup]="createUserForm">
+                        <ng-template matStepLabel>Rellena los datos basicos del administrador</ng-template>
+                        <div class="example-container">
+                            <mat-form-field>
+                                <input matInput placeholder="Nombre Completo" formControlName="nombre" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Correo Electronico" formControlName="email" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Telefono" formControlName="telefono" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-select formControlName="nombreCargo" required>
+                                    <mat-option value="1">
+                                        Cargo 1
+                                    </mat-option>
+                                    <mat-option value="2">
+                                        Cargo 2
+                                    </mat-option>
+                                    <mat-option value="3">
+                                        Cargo 3
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="createUserForm">
+                    <form [formGroup]="createUserForm">
+                        <ng-template matStepLabel>Establece una contraseña</ng-template>
+                            <div class="example-container">
+                                <mat-form-field>
+                                    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </mat-form-field>
+                            </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    Ya casi esta
+                    <div>
+                        <button mat-button matStepperPrevious>Volver</button>
+                        <button mat-button (click)="logValue()">Log</button>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="adminEmail"><b>Correo electronico</b></label>
-                    <input type="text" name="adminEmail" class="form-control" id="adminEmail" [(ngModel)]="admin.email"
-                        #bookName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminEmail.invalid }" required>
-                    <div class="invalid-feedback">
-                        <div>The admin's email is missing</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="adminPassword"><b>Contraseña</b></label>
-                    <input type="text" name="adminPassword" class="form-control" id="adminPassword" [(ngModel)]="admin.password"
-                        #bookISBN="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminPassword.invalid }" required>
-                    <div class="invalid-feedback">
-                        <div>The book's password is missing</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="adminTelefono"><b>Telefono</b></label>
-                    <input type="text" name="adminTelefono" class="form-control" id="adminTelefono" [(ngModel)]="admini.telefono"
-                        #bookImage="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminTelefono.invalid }" required>
-                    <div class="invalid-feedback">
-                        <div>The book's phone is missing</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nombreCargo"><b>Nombre cargo</b></label>
-                    <select class="custom-select" name="nombreCargo" id="nombreCargo" [(ngModel)]="admin.nombreCargo"
-                        #bookEditorial="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nombreCargo.invalid }"
-                        required>
-                        <option [value]="nombreCargo" *ngFor="let nombreCargo of nombresCargo">{{nombreCargo}}</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        <div>The book's editorial is missing</div>
-                    </div>
-                </div>
-                <br>
-                <div class="row form-inline justify-content-center align-self-center">
-                    <button type="submit" class="btn btn-primary">Create</button>
-                    <div class="divider"></div>
-                    <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
-                </div>
-            </form>
+                </mat-step>
+            </mat-vertical-stepper>
+
             <br>
         </div>
     </div>
