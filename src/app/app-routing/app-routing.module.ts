@@ -10,20 +10,21 @@ import {AppComponent} from "../app.component";
 import {WebsiteListComponent} from "../web-sites/website-list/website-list.component";
 import {WebsiteRelatedListComponent} from "../web-sites/website-related-list/website-related-list.component";
 import {AdminCreateComponent} from "../admin/admin-create/admin-create.component";
+import {WebsiteDetailsComponent} from "../web-sites/website-details/website-details.component";
 
 const routes: Routes = [
 
 
-            {
-                path: 'login',
-                component: AuthLoginComponent,
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['GUEST']
-                    }
-                }
-            },
+    {
+         path: 'login',
+         component: AuthLoginComponent,
+         canActivate: [NgxPermissionsGuard],
+         data: {
+             permissions: {
+                 only: ['GUEST']
+             }
+         }
+    },
    {
       path: 'register',
       component: AdminCreateComponent,
@@ -34,16 +35,33 @@ const routes: Routes = [
         component: AppComponent
     },
     {
+        path: '*',
+        redirectTo:'home'
+    },
+    {
         path: 'SiteList',
         component: WebsiteListComponent
     },
     {
         path: 'users',
-        component: UsersListComponent,
+        children:[
+            {
+                path:'list',
+                component: UsersListComponent,
+                outlet:'users'
+
+            }
+        ]
     },
     {
         path: 'websites',
         children:[
+            {
+                path:':site',
+                component:WebsiteDetailsComponent,
+                outlet: 'siteDetail'
+
+            },
             {
                 path: 'related',
                 children:[

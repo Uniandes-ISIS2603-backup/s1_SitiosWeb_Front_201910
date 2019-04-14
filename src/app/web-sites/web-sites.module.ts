@@ -4,18 +4,32 @@ import { WebsiteListComponent } from './website-list/website-list.component';
 import {
     MatButtonModule,
     MatCardModule,
-    MatChipsModule, MatExpansionModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatExpansionModule,
     MatGridListModule,
     MatIconModule,
-    MatMenuModule, MatTableModule, MatTreeModule
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTreeModule
 } from "@angular/material";
 import { WebsiteDetailsComponent } from './website-details/website-details.component';
-import {TechnologiesModule} from "../technologies/technologies.module";
-import { WebsiteRelatedListComponent } from './website-related-list/website-related-list.component';
+import { TechnologiesModule} from  '../technologies/technologies.module'
+import {WebsiteRelatedListComponent} from "./website-related-list/website-related-list.component";
 import {RouterModule} from "@angular/router";
+import { WebsiteCreateComponent } from './website-create/website-create.component';
+import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
 
 @NgModule({
     imports: [
+        MatDatepickerModule,
+        MatNativeDateModule,
         CommonModule,
         MatCardModule,
         MatMenuModule,
@@ -27,12 +41,22 @@ import {RouterModule} from "@angular/router";
         MatExpansionModule,
         TechnologiesModule,
         MatTableModule,
-        RouterModule
+        RouterModule,
+        MatListModule,
+        MatRippleModule,
+        MatStepperModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatSelectModule
     ],
     exports: [
         WebsiteListComponent,
-        WebsiteDetailsComponent
+        WebsiteDetailsComponent,
+        ReactiveFormsModule
     ],
-  declarations: [WebsiteListComponent, WebsiteDetailsComponent, WebsiteRelatedListComponent]
+  declarations: [WebsiteListComponent, WebsiteDetailsComponent, WebsiteRelatedListComponent, WebsiteCreateComponent ],
+    entryComponents:[WebsiteCreateComponent]
 })
 export class WebSitesModule { }
