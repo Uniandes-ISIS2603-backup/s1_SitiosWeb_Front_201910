@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpErrorInterceptor} from './interceptors/httperrorinterceptor.service';
 import {NgxPermissionsModule} from 'ngx-permissions';
 import { ModalDialogModule } from 'ngx-modal-dialog';
+import {CdkStepperModule} from '@angular/cdk/stepper';
 
 
 import {AppComponent} from './app.component';
@@ -25,11 +26,15 @@ import {
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatBottomSheetModule,
+    MatStepperModule,
+    MatSnackBarModule
 } from "@angular/material";
 import {EstadosWebListComponent} from "./estados-web/estados-web-list/estados-web-list.component";
 import { AdminModule } from './admin/admin.module';
-
+import {ChangesModule } from './cambios/changes.module';
+ 
 
 
 
@@ -62,15 +67,19 @@ import { AdminModule } from './admin/admin.module';
         WebSitesModule,
         MatTabsModule,
         MatToolbarModule,
+        MatBottomSheetModule,
+        MatStepperModule,
         EstadosWebModule,
         UsersModule,
         AdminModule,
+        ChangesModule,
         TechnologiesModule,
         MatSidenavModule,
         MatButtonModule,
         MatIconModule,
         MatChipsModule,
         MatMenuModule,
+        MatSnackBarModule
     ],
     bootstrap: [AppComponent],
     providers: [

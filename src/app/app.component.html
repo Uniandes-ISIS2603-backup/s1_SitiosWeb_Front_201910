@@ -2,8 +2,8 @@
     <mat-toolbar-row>
     <img src="../assets/logo.png" height="64" width="64"/>
     CMSites
-        <button mat-button (click)="selectTab(0)" >Usuarios</button>
-        <button mat-button (click)="selectTab(1)" >Sitios</button>
+        <button mat-button (click)="showUserTab()" >Usuarios</button>
+        <button mat-button (click)="showMainTab()" >Sitios</button>
     <span class="toolbar-spacer"></span>
     <div *ngxPermissionsOnly="['GUEST']">
         <mat-menu #appMenu="matMenu">
@@ -28,7 +28,7 @@
 
 <mat-tab-group id #mtg class="header-less-tabs"[selectedIndex]="selectedIndex" >
     <mat-tab label="Usuarios">
-        <app-users-list id="userListComponent" #userListComponent></app-users-list>
+        <router-outlet name="users"></router-outlet>
     </mat-tab>
     <mat-tab label="SitiosWeb">
         <mat-sidenav-container class="example-container" (backdropClick)="historial.kill()" >
@@ -57,12 +57,12 @@
 </div>
             </mat-sidenav>
             <mat-sidenav-content>
-                <app-website-list (sitioDetail)="detalle.setSite($event);selectTab(2)" (agregarEstado)="showCreateEstadoModal()" (consultaEstados)="sidenav.toggle();historial.getEstadosWeb($event)"></app-website-list>
+                <app-website-list (sitioDetail)="showDetailTab($event.id)" (agregarEstado)="showCreateEstadoModal()" (consultaEstados)="sidenav.toggle();historial.getEstadosWeb($event)"></app-website-list>
             </mat-sidenav-content>
         </mat-sidenav-container>
     </mat-tab>
     <mat-tab label="Usuarios">
-        <app-website-details  #detalle ></app-website-details>
+        <router-outlet name="siteDetail"></router-outlet>
     </mat-tab>
 </mat-tab-group>
 
@@ -100,7 +100,7 @@
             <div class="modal-header">
             </div>
             <div class="modal-body">
-            <app-auth-sign-up id="registercomponent" #authSignUpComponent></app-auth-sign-up>
+                <router-outlet name="register"></router-outlet>
             </div>
             <div class="modal-footer">
             </div>
