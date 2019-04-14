@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 import { TechnologiesService } from '../technologies.service';
-import {MatTableDataSource} from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
 import { TechnologyDetail } from '../technologies-detail';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 /**
  * The component for the list of editorials in the BookStore
@@ -9,10 +10,20 @@ import { TechnologyDetail } from '../technologies-detail';
 @Component({
     selector: 'app-list-technologies',
     templateUrl: './technologies-list.component.html', 
-    styleUrls: ['./technologies-list.component.css']
-})
+    styleUrls: ['./technologies-list.component.css'],
+    animations: [
+      trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+      ],
+     })
 export class TechnologiesListComponent implements OnInit {
-displayedColumns: string[] = ['id','name','detail'];
+
+    @ViewChild('CreateTechModal') createTechModal : ElementRef;
+    displayedColumns: string[] = ['id','name'];
+    expandedElement: TechnologyDetail | null;
     /**
      * Constructor for the component
      * @param technologiesService The author's services provider
@@ -23,9 +34,13 @@ displayedColumns: string[] = ['id','name','detail'];
      * The list of editorials which belong to the BookStore
      */
     technologies: any;
-    bool: boolean = false;
     techId: number;
 
+    showCreateTechModal():void
+    {
+      console.log("hola");
+        (this.createTechModal.nativeElement).modal('show');
+    }
     /**
      * Asks the service to update the list of editorials
      */
@@ -33,10 +48,7 @@ displayedColumns: string[] = ['id','name','detail'];
         this.technologiesService.getTechnologies().subscribe(klk => this.technologies = new MatTableDataSource(klk));
     }
     getTechnologyDetail(id): void {
-      console.log(id);
       this.techId = id;
-      this.bool = !this.bool;
-  
     }
 
     /**

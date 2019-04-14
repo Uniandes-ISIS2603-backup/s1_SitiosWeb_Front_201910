@@ -1,0 +1,76 @@
+<mat-vertical-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Nombre de la tecnologia</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Nombre" formControlName="firstCtrl" required [(ngModel)]="tech.name">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Nombre de  usuario</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Username" formControlName="secondCtrl" required [(ngModel)]="tech.version">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Correo electrèctronico</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="thirdCtrl" required [(ngModel)]="tech.techType">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="fourthFrmGroup">
+          <form [formGroup]="fourthFormGroup">
+            <ng-template matStepLabel>Contraseña</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Sitio url" formControlName="fourthCtrl" required [(ngModel)]="tech.url">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step [stepControl]="fifthFormGroup">
+          <form [formGroup]="fifthFormGroup">
+            <ng-template matStepLabel>Telefono</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Phone" formControlName="fifthCtrl" required [(ngModel)]="tech.description">
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Anterior</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          Tecnología creada.
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="createTechnology()">Done</button>
+          </div>
+        </mat-step>
+
+      </mat-vertical-stepper>
+      

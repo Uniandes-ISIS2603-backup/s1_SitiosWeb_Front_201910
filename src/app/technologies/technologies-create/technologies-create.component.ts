@@ -39,7 +39,7 @@ export class TechnologiesCreateComponent implements OnInit {
     /**
      * Creates a new user
      */
-    createAdmin(): Technologies {
+    createTechnology(): Technologies {
 
       this.technologiesService.createTechnology(this.tech)
         .subscribe((tech) => {
