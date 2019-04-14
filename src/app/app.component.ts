@@ -86,26 +86,20 @@ export class AppComponent implements OnInit {
     showUserTab()
     {
         this.selectedIndex=0;
-        //['/websites/related',{ outlets: { related: [this.site.id] } }
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
         this.router.navigate(['/users',{ outlets: { users: ['list'] } }]);
     }
     showMainTab()
     {
-        this.selectedIndex=1
+        this.selectedIndex=1;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
         this.router.navigate(['/home']);
-        this.router.navigate(["../", {outlets: {siteDetail: null}}],
-        );
+
     }
     showDetailTab(site:number)
     {
         this.selectedIndex=2;
         this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
-    }
-
-    change():void
-    {
-        this.authService.printRole()
-        this.authService.start()
     }
 
     showRegisterPane():void

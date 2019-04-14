@@ -22,7 +22,6 @@ export class EstadosWebService {
             setInterval(() => {
                 this.getStateBarValue().then(
                     value => {
-                        console.log("getting states");
                         observer.next(value);
                     }
                 );

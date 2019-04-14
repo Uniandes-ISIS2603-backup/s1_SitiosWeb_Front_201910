@@ -1,20 +1,30 @@
-
-
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>
+<mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" >
         <mat-card style="margin: 2vmin" class="detailPane">
-            <div class="container">
                 <img src="{{site?.imagen}}" class="rounded"/>
-                <!-- Content here -->
-            </div>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile>
-        <mat-card style="margin: 2vmin" class="detailPane">
-            Simple card
-        </mat-card>
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+        <mat-list>
+            <mat-list-item> <b>Audiencia Esperada:</b>  {{site?.audienciaEsperada}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item> <b>Descripcion:</b>  {{site?.descripcion}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item> <b>Fecha de lanzamiento: </b> {{site?.fechaLanzamiento}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item> <b>Proposito: </b> {{site?.proposito}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item> <b>Identificador: </b> {{site?.id}}</mat-list-item>
+        </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-list>
+            <mat-list-item> <b> Nombre:</b>  {{site?.nombre}}</mat-list-item>
+            <mat-list-item> <b>URL:</b> {{site?.url}}</mat-list-item>
+        </mat-list>
     </mat-grid-tile>
 </mat-grid-list>
+
 
 <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"

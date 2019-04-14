@@ -34,14 +34,7 @@ export class WebsiteService {
   }
 
   getSitesRelated(id: number) : Observable<Website[]> {
-
-    return new Observable<Website[]>( subscriber => {
-      this.http.get<Website[]>(API_URL + websites+`/${id}/related`).subscribe(value =>
-          subscriber.next(value));
-      setInterval(()=>{
-        this.http.get<Website[]>(API_URL + websites+`/${id}/related`).subscribe(value =>
-            subscriber.next(value))
-      },60000) ;
-    });
+    console.log(`service getting sites related`)
+      return this.http.get<Website[]>(API_URL + websites+`/${id}/related`);
   }
 }

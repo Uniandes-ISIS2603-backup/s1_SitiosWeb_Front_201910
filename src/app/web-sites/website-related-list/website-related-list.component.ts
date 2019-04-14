@@ -8,7 +8,7 @@ import {WebsiteService} from "../website.service";
   templateUrl: './website-related-list.component.html',
   styleUrls: ['./website-related-list.component.css']
 })
-export class WebsiteRelatedListComponent implements OnInit {
+export class  WebsiteRelatedListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nombre', 'url'];
 
   @Input()
@@ -21,8 +21,8 @@ export class WebsiteRelatedListComponent implements OnInit {
   constructor(private route: ActivatedRoute,private websiteService: WebsiteService) { }
 
   onLoad(params) {
+    console.log(" en related sites of " + this.siteID);
     this.siteID = parseInt(params['id']);
-    console.log(" en detail " + this.siteID);
     this.getWebSites();
   }
   ngOnInit() {
@@ -32,6 +32,7 @@ export class WebsiteRelatedListComponent implements OnInit {
   getWebSites(): void {
     this.websiteService.getSitesRelated(this.siteID).subscribe(sites => {
       this.dataSource = sites;
+      console.log(`se encontraron ${sites.length} sitios relacionados`)
     });
   }
 

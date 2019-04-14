@@ -60,6 +60,7 @@ export class WebsiteDetailsComponent implements OnInit {
 
   getSitesRelated()
   {
-    this.router.navigate(['/websites/related',{ outlets: { related: [this.site.id] } }]);
+    console.log(`getting sites related to site: ${this.site.id}`);
+    this.router.navigate(['/websites/related',{ outlets: { related: [this.site.id] } }]/*, { skipLocationChange: true }*/);
   }
 }

@@ -1,4 +1,7 @@
-
+.bottom-half {
+    width: 100vw;
+    height: 80vh;
+}
 
 body {
     font-family: Roboto, Arial, sans-serif;

@@ -6,7 +6,7 @@ import {EstadoWeb} from "../estados-web/estadoWeb";
 
 export class Website {
 
-    audienciaesperada: number;
+    audienciaEsperada: number;
 
     id: number;
 
@@ -26,7 +26,7 @@ export class Website {
 
 
     constructor(audienciaesperada: number, id: number, descripcion: string, fechaLanzamiento: string, imagen: string, nombre: string, proposito: string, url :string) {
-        this.audienciaesperada = audienciaesperada;
+        this.audienciaEsperada = audienciaesperada;
         this.id = id;
         this.descripcion = descripcion;
         this.fechaLanzamiento = fechaLanzamiento;
