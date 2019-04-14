@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     selectedIndex;
 
     @ViewChild('LoginModal') loginModal : ElementRef;
-    @ViewChild('RegisterModal') registerModal : ElementRef;
+    @ViewChild('RegisterAdminModal') registerAdminModal : ElementRef;
     @ViewChild('createEstadoWebModal') createEstadoWebModal : ElementRef;
     @ViewChild('loginComponent') logincomponent :ElementRef;
     @ViewChild('authSignUpComponent') registercomponent :ElementRef;
@@ -102,10 +102,15 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 
-    showRegisterPane():void
+    showRegisterAdminPane():void
     {
-        $(this.registerModal.nativeElement).modal('show');
+        $(this.registerAdminModal.nativeElement).modal('show');
          this.router.navigate([{outlets: {register: 'register'}}]);
+    }
+    showRegisterUserPane():void
+    {
+        $(this.registerAdminModal.nativeElement).modal('show');
+        this.router.navigate([{outlets: {register: 'registerUser'}}]);
     }
     showLoginPane():void
     {
