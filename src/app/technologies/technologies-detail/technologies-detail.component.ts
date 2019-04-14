@@ -28,6 +28,7 @@ export class TechnologiesDetailComponent implements OnInit {
  @Input() tech_id: number;
 
   getTechnologyDetail(): void {
+    console.log(this.tech_id);
     this.techService.getTechnologyDetail(this.tech_id)
       .subscribe(detail => {
         this.techDetail = detail
