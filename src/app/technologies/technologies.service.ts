@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Technologies } from './technologies';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../appConstants';
-import { TechnologyDetail } from './technologies-detail':
+import { TechnologyDetail } from './technologies-detail';
 
 const API_URL = AppConstants.baseURL;
 const technologies = 'technologies';
@@ -24,7 +24,8 @@ export class TechnologiesService {
     }
     getTechnologyDetail(techId): Observable<TechnologyDetail> {
         return this.http.get<TechnologyDetail>(API_URL + technologies + '/' + techId);
+    }   
+    createTechnology(tech): Observable<Technologies> {
+        return this.http.post<Technologies>(API_URL + technologies, technologies);
     }
-
-    
 }

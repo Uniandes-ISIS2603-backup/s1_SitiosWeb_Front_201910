@@ -39,6 +39,15 @@ cancelCreation(): void {
 * Creates a new book
 */
 createAdmin(): Admin {
+    if( this.admin.nombreCargo == "Responsable" ){
+        this.admin.nivel=1;
+    } 
+    else if( this.admin.nombreCargo == "Dueño" ){
+        this.admin.nivel=3;
+    }
+    else if( this.admin.nombreCargo == "Encargado" ){
+        this.admin.nivel=2;
+    }
     this.adminService.createAdmin(this.admin)
         .subscribe(book => {
             this.admin.id = book.id;

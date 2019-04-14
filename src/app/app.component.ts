@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     name: String;
     navLinks: any[];
 
-    selectedIndex = 1;
+    selectedIndex;
 
     @ViewChild('LoginModal') loginModal : ElementRef;
     @ViewChild('RegisterModal') registerModal : ElementRef;
@@ -42,11 +42,16 @@ export class AppComponent implements OnInit {
      * Assigns a title to the web page
      */
     ngOnInit(): void {
+        this.selectedIndex=1;
         this.title = "CMSites";
         this.authService.start();
         document.getElementById("DetailModal");
         this.setUserName();
         this.establecerBarra();
+        if(this.router.url.includes('users'))
+        {
+            this.selectedIndex=0;
+        }
     }
 
        /**
@@ -78,10 +83,23 @@ export class AppComponent implements OnInit {
         this.selectedIndex = index;
     }
 
-    change():void
+    showUserTab()
     {
-        this.authService.printRole()
-        this.authService.start()
+        this.selectedIndex=0;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/users',{ outlets: { users: ['list'] } }]);
+    }
+    showMainTab()
+    {
+        this.selectedIndex=1;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/home']);
+
+    }
+    showDetailTab(site:number)
+    {
+        this.selectedIndex=2;
+        this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 
     showRegisterPane():void

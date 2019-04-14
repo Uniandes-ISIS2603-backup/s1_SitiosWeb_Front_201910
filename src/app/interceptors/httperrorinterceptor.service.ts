@@ -9,12 +9,15 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
+import {MatSnackBar} from '@angular/material';
 
 
 @Injectable()
 export class HttpErrorInterceptor  extends HttpErrorResponse {
-    
-    constructor (private toastrService: ToastrService){ super (toastrService) }
+    durationInSeconds = 5;
+
+
+    constructor (private toastrService: ToastrService,private snackBar: MatSnackBar){ super (toastrService) }
     
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
@@ -33,8 +36,9 @@ export class HttpErrorInterceptor  extends HttpErrorResponse {
                         }                      
                         else {
                              errMsg = `${error.status}: ${error.error}`;                             
-                        }                      
-                        this.toastrService.error(errMsg, errorType, {closeButton: true});
+                        }
+                        this.snackBar.open(`${errorType}: ${errMsg}`);
+                        //this.toastrService.error(errMsg, errorType, {closeButton: true});
                     }
                     
                     console.log(errMsg);
