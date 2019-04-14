@@ -2,10 +2,12 @@ import { Component, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@an
 import { TechnologiesService } from '../technologies.service';
 import { MatTableDataSource } from '@angular/material';
 import { TechnologyDetail } from '../technologies-detail';
+import { TechnologiesCreateComponent } from '../technologies-create/technologies-create.component';
+import {MatBottomSheet} from "@angular/material";
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 /**
- * The component for the list of editorials in the BookStore
+ * The component for the list of techs in the Website
  */
 @Component({
     selector: 'app-list-technologies',
@@ -26,23 +28,25 @@ export class TechnologiesListComponent implements OnInit {
     expandedElement: TechnologyDetail | null;
     /**
      * Constructor for the component
-     * @param technologiesService The author's services provider
+     * @param technologiesService The techs's services provider
      */
-    constructor(private technologiesService: TechnologiesService) { }
+    constructor(private technologiesService: TechnologiesService, private bottomSheet: MatBottomSheet) { }
     
     /**
-     * The list of editorials which belong to the BookStore
+     * The list of techs which belong to the website
      */
     technologies: any;
     techId: number;
 
     showCreateTechModal():void
     {
-      console.log("hola");
-        (this.createTechModal.nativeElement).modal('show');
+      this.bottomSheet.open(TechnologiesCreateComponent, {
+        panelClass:'bottom-half',
+        
+      });
     }
     /**
-     * Asks the service to update the list of editorials
+     * Asks the service to update the list of techs
      */
     getTechnologies(): void {
         this.technologiesService.getTechnologies().subscribe(klk => this.technologies = new MatTableDataSource(klk));
@@ -52,7 +56,7 @@ export class TechnologiesListComponent implements OnInit {
     }
 
     /**
-     * This will initialize the component by retrieving the list of editorials from the service
+     * This will initialize the component by retrieving the list of techs from the service
      * This method will be called when the component is created
      */
     ngOnInit() {

@@ -1,9 +1,10 @@
-import { Component, OnInit, NgZone, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Technologies } from '../technologies';
+import {MatBottomSheetRef} from "@angular/material";
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { ValidationService } from '../../validation/validation.service';
+import {Technologies} from '../technologies';
+import {TechnologiesService} from '../technologies.service';
 import { ToastrService } from 'ngx-toastr';
-import { TechnologiesService } from '../technologies.service';
-
 
 @Component({
   selector: 'app-technologies-create',
@@ -12,57 +13,41 @@ import { TechnologiesService } from '../technologies.service';
 })
 export class TechnologiesCreateComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder, private ngZone: NgZone, private technologiesService: TechnologiesService,
-    private toastrService: ToastrService) { }
-
-  isLinear = false;
+  constructor(private toastrService: ToastrService, private techService:TechnologiesService, private bottomSheetRef: MatBottomSheetRef<TechnologiesCreateComponent>,private _formBuilder: FormBuilder) {}
+  @Output() create = new EventEmitter();
+  @Output() cancel = new EventEmitter();
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  fourthFormGroup: FormGroup;
-  fifthFormGroup: FormGroup;
 
-  tech:Technologies;
-
-  /**
-     * The output which tells the parent component
-     * that the user no longer wants to create an user
-     */
-    @Output() cancel = new EventEmitter();
-
-    /**
-    * The output which tells the parent component
-    * that the user created a new user
-    */
-    @Output() create = new EventEmitter();
-  
-    /**
-     * Creates a new user
-     */
-    createTechnology(): Technologies {
-
-      this.technologiesService.createTechnology(this.tech)
-        .subscribe((tech) => {
-          this.tech = tech;
-          this.create.emit(); //this.create.emit(); //No se si es con () o sin ()
-          this.toastrService.success("La tecnologia fue creada con éxito", "Technology creation");
-        }, err => {
-          this.toastrService.error(err, "Error");
-        });
-      return this.tech;
-  
-  
-    }
-  
-  
-    /**
-       * Informs the parent component that the user no longer wants to create an editorial
-       */
-    cancelCreation(): void {
-      this.cancel.emit(); //this.cancel.emit(); //No se si es con () o sin ()
-    }
+  newTech: Technologies;
 
   ngOnInit() {
-    this.tech = new Technologies();
+    this.firstFormGroup = this._formBuilder.group({
+      name: ['', Validators.required],
+      version: ['', [Validators.required,ValidationService.urlValidator]],
+      techCategory: ['', [Validators.required]],
+      url: ['', [Validators.required,ValidationService.urlValidator]],
+      descripcion: ['', [Validators.required,Validators.minLength(20)]],
+    });
+
+    this.secondFormGroup = this._formBuilder.group({
+      state: ['', Validators.required]
+    });
   }
+
+  createUser(): Technologies {
+    this.techService.createTechnology(this.newTech)
+      .subscribe((tech) => {
+        this.newTech = tech;
+        this.create.emit(); //this.create.emit(); //No se si es con () o sin ()
+        this.toastrService.success("La tecnología fue creada exitosamente!", "Tech creation");
+      }, err => {
+        this.toastrService.error(err, "Error");
+      });
+    return this.newTech;
+  }
+  cancelCreation(): void {
+    this.cancel.emit(); //this.cancel.emit(); //No se si es con () o sin ()
+  }
+
 }

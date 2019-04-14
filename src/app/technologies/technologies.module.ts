@@ -6,8 +6,9 @@ import { TechnologiesCreateComponent } from './technologies-create/technologies-
 import { TechnologiesService } from './technologies.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule, MatFormFieldModule, 
-    MatInputModule, MatStepperModule, 
-    MatButtonModule, MatAutocompleteModule } from '@angular/material';
+         MatInputModule, MatStepperModule, 
+         MatButtonModule, MatAutocompleteModule,
+         MatSelectModule, } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 @NgModule({
     imports: [       
@@ -20,9 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatStepperModule, 
         MatButtonModule,
         MatAutocompleteModule,
+        MatSelectModule,
         BrowserAnimationsModule
     ],
     declarations: [TechnologiesListComponent, TechnologiesDetailComponent, TechnologiesCreateComponent],
+    entryComponents: [TechnologiesCreateComponent],
     providers: [TechnologiesService],
     exports:[TechnologiesListComponent, TechnologiesDetailComponent, TechnologiesCreateComponent]
 })

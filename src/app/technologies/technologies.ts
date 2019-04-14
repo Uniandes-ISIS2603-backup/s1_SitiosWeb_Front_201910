@@ -4,9 +4,9 @@ export interface Technologies {
     id: number;
     name: string;
     version: string;
-    techType: string;
+    techCategory: string;
     url: string;
-    description: string;
+    descripcion: string;
   
 
 }
@@ -16,8 +16,8 @@ export class Technologies {
     id: number;
     name: string;
     version: string;
-    techType: string;
+    techCategory: string;
     url: string;
-    description: string;
+    descripcion: string;
 
 }
