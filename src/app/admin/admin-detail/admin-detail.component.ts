@@ -28,7 +28,7 @@ export class AdminDetailComponent implements OnInit {
   admin_id: number;
 
   getEditorialDetail(): void {
-    this.adminService.getUserDetail(this.admin_id)
+    this.adminService.getAdminDetail(this.admin_id)
       .subscribe(adminDetail => {
         this.adminDetail = adminDetail
       });

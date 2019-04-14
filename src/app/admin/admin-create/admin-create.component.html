@@ -1,73 +1,63 @@
-<mat-vertical-stepper linear #stepper>
-	<mat-step [stepControl]="firstFormGroup">
-		<form [formGroup]="firstFormGroup">
-			<ng-template matStepLabel>Nombre completo</ng-template>
-			<mat-form-field>
-				<input matInput placeholder="Nombre" formControlName="firstCtrl" required [(ngModel)]="admin.name">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Correo electronico</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Email" formControlName="secondCtrl" required [(ngModel)]="admin.email">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Anterior</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel>Contraseña</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Password" formControlName="thirdCtrl" required [(ngModel)]="admin.password">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Anterior</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="fourthFrmGroup">
-    <form [formGroup]="fourthFormGroup">
-      <ng-template matStepLabel>Telefono</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Telefono" formControlName="fourthCtrl" required [(ngModel)]="admin.telefono">
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Anterior</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="fifthFormGroup">
-    <form [formGroup]="fifthFormGroup">
-      <ng-template matStepLabel>Nombre cargo</ng-template>
-      <mat-form-field>
-        <mat-select #fontSize value="Responsable" [(ngModel)]="admin.nombreCargo">
-          <mat-option value="Responsable">Responsable</mat-option>
-          <mat-option value="Dueño">Dueño</mat-option>
-          <mat-option value="Supervisor">Supervisor</mat-option>
-  </mat-select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Anterior</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="createAdmin()">Done</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h2 class="text-center">Add a new admin</h2>
+            <br>
+            <form name="admin" (ngSubmit)="f.form.valid && createAdmin()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="adminName"><b>Nombre</b></label>
+                    <input type="text" name="adminName" class="form-control" id="adminName" [(ngModel)]="admin.nombre"
+                        #bookName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminName.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>The admin's name is missing</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail"><b>Correo electronico</b></label>
+                    <input type="text" name="adminEmail" class="form-control" id="adminEmail" [(ngModel)]="admin.email"
+                        #bookName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminEmail.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>The admin's email is missing</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword"><b>Contraseña</b></label>
+                    <input type="text" name="adminPassword" class="form-control" id="adminPassword" [(ngModel)]="admin.password"
+                        #bookISBN="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminPassword.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>The book's password is missing</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="adminTelefono"><b>Telefono</b></label>
+                    <input type="text" name="adminTelefono" class="form-control" id="adminTelefono" [(ngModel)]="admini.telefono"
+                        #bookImage="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminTelefono.invalid }" required>
+                    <div class="invalid-feedback">
+                        <div>The book's phone is missing</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nombreCargo"><b>Nombre cargo</b></label>
+                    <select class="custom-select" name="nombreCargo" id="nombreCargo" [(ngModel)]="admin.nombreCargo"
+                        #bookEditorial="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nombreCargo.invalid }"
+                        required>
+                        <option [value]="nombreCargo" *ngFor="let nombreCargo of nombresCargo">{{nombreCargo}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        <div>The book's editorial is missing</div>
+                    </div>
+                </div>
+                <br>
+                <div class="row form-inline justify-content-center align-self-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <div class="divider"></div>
+                    <button type="button" class="btn btn-danger" (click)="cancelCreation()">Cancel</button>
+                </div>
+            </form>
+            <br>
+        </div>
     </div>
-  </mat-step>
-</mat-vertical-stepper>
+</div>
+<br>
+<br>
