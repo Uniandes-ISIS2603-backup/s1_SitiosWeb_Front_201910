@@ -24,7 +24,7 @@ export class TechnologiesCreateComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       name: ['', Validators.required],
-      version: ['', [Validators.required,ValidationService.urlValidator]],
+      version: ['', [Validators.required]],
       techCategory: ['', [Validators.required]],
       url: ['', [Validators.required,ValidationService.urlValidator]],
       descripcion: ['', [Validators.required,Validators.minLength(20)]],
@@ -35,7 +35,7 @@ export class TechnologiesCreateComponent implements OnInit {
     });
   }
 
-  createUser(): Technologies {
+  createTech(): Technologies {
     this.techService.createTechnology(this.newTech)
       .subscribe((tech) => {
         this.newTech = tech;
