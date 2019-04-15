@@ -106,6 +106,15 @@ export class EstadosWebService {
       return    this.http.get<EstadoWeb>(API_URL+`websites/${sitio}/states/last`);
   }
 
+  /**
+    * Creates an EstadoWeb
+    * @param EstadoWeb The new EstadoWeb
+    * @returns The confirmation that the EstadoWeb was created
+    */
+   createEstadoWeb(EstadoWeb): Observable<EstadoWeb> {
+    return this.http.post<EstadoWeb>(API_URL + "estadosWeb", EstadoWeb);
+}
+
   
 
 }
