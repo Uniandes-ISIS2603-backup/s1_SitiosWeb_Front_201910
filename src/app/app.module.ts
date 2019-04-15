@@ -18,6 +18,7 @@ import {AuthModule} from './auth/auth.module';
 import {WebSitesModule} from "./web-sites/web-sites.module";
 import {UsersModule} from "./users/users.module";
 import {EstadosWebModule} from "./estados-web/estados-web.module";
+import {DependenciesModule} from './dependencies/dependencies.module';
 import {TechnologiesModule} from "./technologies/technologies.module";
 import {
     MatButtonModule,
