@@ -68,6 +68,7 @@ saveChanges():void
 {
   this.site=this.siteClone;
   this.sitesService.updateSite(this.siteClone);
+  this.editMode=!this.editMode;
   console.log(this.siteClone)
 }
 

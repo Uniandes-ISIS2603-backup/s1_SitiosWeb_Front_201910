@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
     showMainTab()
     {
         this.selectedIndex=1;
-        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(["/home", {outlets: {siteDetail: null}}]);
         this.router.navigate(['/home']);
 
     }
