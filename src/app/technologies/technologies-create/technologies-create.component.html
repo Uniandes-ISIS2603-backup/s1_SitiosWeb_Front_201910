@@ -9,10 +9,10 @@
             <input matInput placeholder="Url" formControlName="url" required>
           </mat-form-field></div>
           <div> <mat-form-field>
-            <input matInput minlength="20" placeholder="Descripción" formControlName="descripcion" >
+            <input matInput minlength="20" placeholder="Descripción" formControlName="descripcion" required >
           </mat-form-field></div>
-          <div> <mat-form-field>
-              <mat-select placeholder="Tipo de tecnología" formControlName="techCategory" >
+           <mat-form-field>
+              <mat-select placeholder="Tipo de tecnología" formControlName="techCategory" required>
                   <mat-option value="ServidorDeAplicacion">
                     Servidor de aplicación
                   </mat-option>
@@ -26,7 +26,7 @@
                     Lenguaje de programación
                   </mat-option>
               </mat-select>
-          </mat-form-field></div>
+          </mat-form-field>
           <div><mat-form-field>
           <input matInput placeholder="Version" formControlName="version" required>
           </mat-form-field></div>
