@@ -6,10 +6,17 @@
         <button mat-button (click)="showMainTab()" >Sitios</button>
     <span class="toolbar-spacer"></span>
     <div *ngxPermissionsOnly="['GUEST']">
+
         <mat-menu #appMenu="matMenu">
             <button mat-menu-item (click)="showLoginPane()" >Login</button>
-            <button mat-menu-item (click)="showRegisterPane()" >Register</button>
+            <button mat-menu-item [matMenuTriggerFor]="registerMenu">Registarse</button>
         </mat-menu>
+
+        <mat-menu #registerMenu>
+            <button mat-menu-item (click)="showRegisterAdminPane()">Administrador</button>
+            <button mat-menu-item (click)="showRegisterUserPane()">Usuario</button>
+        </mat-menu>
+
 
         <button mat-flat-button color="primary"  [matMenuTriggerFor]="appMenu">Ingresar
             <mat-icon>
@@ -94,7 +101,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-hidden="true" #RegisterModal>
+<div class="modal fade" id="RegisterAdminModal" tabindex="-1" role="dialog" aria-hidden="true" #RegisterAdminModal>
     <div class="modal-dialog modal-lg" role="document" >
         <div class="modal-content">
             <div class="modal-header">
@@ -107,6 +114,7 @@
         </div>
     </div>
 </div>
+
 
 
 <div class="modal fade" id="createEstadoWebModal" tabindex="-1" role="dialog" aria-hidden="true" #createEstadoWebModal>

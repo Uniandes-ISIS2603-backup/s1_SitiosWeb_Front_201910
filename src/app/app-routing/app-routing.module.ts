@@ -11,6 +11,8 @@ import {WebsiteListComponent} from "../web-sites/website-list/website-list.compo
 import {WebsiteRelatedListComponent} from "../web-sites/website-related-list/website-related-list.component";
 import {AdminCreateComponent} from "../admin/admin-create/admin-create.component";
 import {WebsiteDetailsComponent} from "../web-sites/website-details/website-details.component";
+import {UsersCreateComponent} from "../users/users-create/users-create.component";
+import { UsersEditComponent } from '../users/users-edit/users-edit.component';
 
 const routes: Routes = [
 
@@ -29,6 +31,11 @@ const routes: Routes = [
       path: 'register',
       component: AdminCreateComponent,
       outlet: 'register'
+    },
+    {
+        path: 'registerUser',
+        component: UsersCreateComponent,
+        outlet: 'register'
     },
     {
         path: 'home',
@@ -50,6 +57,11 @@ const routes: Routes = [
                 component: UsersListComponent,
                 outlet:'users'
 
+            },
+            {
+                path: ':id',
+                component: UsersEditComponent,
+                outlet: 'edit'
             }
         ]
     },

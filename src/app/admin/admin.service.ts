@@ -20,7 +20,7 @@ export class AdminService {
     * Returns the Observable object containing the list of user retrieved from the API
     * @returns The list of admins in real time
     */
-   getUsers(): Observable<Admin[]> {
+   getAdmins(): Observable<Admin[]> {
     return this.http.get<Admin[]>(API_URL + admins);
   }
 
@@ -28,7 +28,7 @@ export class AdminService {
     * Returns the Observable object containing the admin retrieved from the API
     * @returns The admin
     */
-  getUserDetail(adminId): Observable<AdminDetail> {
+  getAdminDetail(adminId): Observable<AdminDetail> {
     return this.http.get<AdminDetail>(API_URL + admins + '/' + adminId);
   }
 
@@ -37,7 +37,7 @@ export class AdminService {
   * @param admin The user which will be created
   * @returns The confirmation of the admin's creation
   */
-  createUser(admin): Observable<Admin> {
+  createAdmin(admin): Observable<Admin> {
     return this.http.post<Admin>(API_URL + admins, admin);
   }
   

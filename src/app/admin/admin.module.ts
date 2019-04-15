@@ -7,7 +7,13 @@ import { AdminDetailComponent } from './admin-detail/admin-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { MatFormFieldModule, MatButtonModule, MatStepperModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatStepperModule,
+  MatOptionModule,
+  MatInputModule,
+  MatSelectModule, MatIconModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -16,11 +22,12 @@ import { MatFormFieldModule, MatButtonModule, MatStepperModule, MatOptionModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatFormFieldModule,
     MatButtonModule,
     MatStepperModule,
     MatOptionModule,
+    MatInputModule,
     MatSelectModule,
+    MatIconModule,
   ],
   declarations: [AdminListComponent, AdminCreateComponent, AdminDetailComponent],
   providers: [AdminService],

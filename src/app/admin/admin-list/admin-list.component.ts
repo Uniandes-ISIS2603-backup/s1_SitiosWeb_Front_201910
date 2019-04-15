@@ -18,7 +18,7 @@ export class AdminListComponent implements OnInit {
     * Asks the service to update the list of admins
     */
   getAdmins(): void {
-    this.adminService.getUsers()
+    this.adminService.getAdmins()
       .subscribe(admins => {
         this.admins = admins;
       });
