@@ -17,7 +17,6 @@ export class DependenciesCreateComponent implements OnInit {
   @Output() create = new EventEmitter();
   @Output() cancel = new EventEmitter();
   firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
 
   newDep: Dependencies;
 
@@ -27,13 +26,9 @@ export class DependenciesCreateComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(11)]],
     });
-
-    this.secondFormGroup = this._formBuilder.group({
-      state: ['', Validators.required]
-    });
   }
 
-  createTech(): Dependencies {
+  createDep(): Dependencies {
     this.depService.createDependency(this.newDep)
       .subscribe((dependecy) => {
         this.newDep = dependecy;
@@ -42,10 +37,14 @@ export class DependenciesCreateComponent implements OnInit {
       }, err => {
         this.toastrService.error(err, "Error");
       });
+      this.logValue();
     return this.newDep;
   }
   cancelCreation(): void {
     this.cancel.emit(); 
   }
-
+  logValue()
+  {
+      console.log(this.firstFormGroup.getRawValue());
+  }
 }

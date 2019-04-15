@@ -29,10 +29,6 @@ export class TechnologiesCreateComponent implements OnInit {
       url: ['', [Validators.required,ValidationService.urlValidator]],
       descripcion: ['', [Validators.required,Validators.minLength(20)]],
     });
-
-    this.secondFormGroup = this._formBuilder.group({
-      state: ['', Validators.required]
-    });
   }
 
   createTech(): Technologies {
@@ -44,10 +40,15 @@ export class TechnologiesCreateComponent implements OnInit {
       }, err => {
         this.toastrService.error(err, "Error");
       });
+      this.logValue();
     return this.newTech;
   }
   cancelCreation(): void {
     this.cancel.emit(); //this.cancel.emit(); //No se si es con () o sin ()
+  }
+  logValue()
+  {
+      console.log(this.firstFormGroup.getRawValue());
   }
 
 }
