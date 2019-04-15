@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
 import { UserDetail } from '../user-detail';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { expand } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users-detail',
@@ -12,7 +14,8 @@ export class UsersDetailComponent implements OnInit {
 
   constructor(
     private userService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public router: Router
   ) { }
 
   /**
@@ -27,9 +30,14 @@ export class UsersDetailComponent implements OnInit {
   */
   usuario_id: number;
 
+  expande: boolean=false;
+
   @Input() id: number;
 
-
+  actualizar(): void{
+    // this.router.navigate(['/users/:id',{ outlets: { edit: [this.usuario_id] } }]);
+   this.expande = !this.expande;
+  }
 
   getUserDetail(): void {
     this.userService.getUserDetail(this.id)
@@ -46,5 +54,6 @@ export class UsersDetailComponent implements OnInit {
     //this.id = +this.route.snapshot.paramMap.get('id');
     this.userDetail = new UserDetail();
     this.getUserDetail();
+    this.expande = false;
   }
 }

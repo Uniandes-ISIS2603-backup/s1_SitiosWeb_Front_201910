@@ -33,3 +33,12 @@
     </tr>
   </tbody>
 </table>
+<br>
+<div>
+  <button mat-button (click)="actualizar()">Actualizar informacion</button>
+  <div *ngIf="expande">
+    <app-users-edit user_id={{userDetail.id}}></app-users-edit>
+    </div>
+  <!-- <router-outlet name="edit"></router-outlet> -->
+  
+</div>

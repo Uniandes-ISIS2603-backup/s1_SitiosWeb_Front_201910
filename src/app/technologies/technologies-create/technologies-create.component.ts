@@ -24,18 +24,14 @@ export class TechnologiesCreateComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       name: ['', Validators.required],
-      version: ['', [Validators.required,ValidationService.urlValidator]],
+      version: ['', [Validators.required]],
       techCategory: ['', [Validators.required]],
       url: ['', [Validators.required,ValidationService.urlValidator]],
       descripcion: ['', [Validators.required,Validators.minLength(20)]],
     });
-
-    this.secondFormGroup = this._formBuilder.group({
-      state: ['', Validators.required]
-    });
   }
 
-  createUser(): Technologies {
+  createTech(): Technologies {
     this.techService.createTechnology(this.newTech)
       .subscribe((tech) => {
         this.newTech = tech;
@@ -44,10 +40,15 @@ export class TechnologiesCreateComponent implements OnInit {
       }, err => {
         this.toastrService.error(err, "Error");
       });
+      this.logValue();
     return this.newTech;
   }
   cancelCreation(): void {
     this.cancel.emit(); //this.cancel.emit(); //No se si es con () o sin ()
+  }
+  logValue()
+  {
+      console.log(this.firstFormGroup.getRawValue());
   }
 
 }

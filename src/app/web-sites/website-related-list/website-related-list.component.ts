@@ -9,7 +9,7 @@ import {WebsiteService} from "../website.service";
   styleUrls: ['./website-related-list.component.css']
 })
 export class  WebsiteRelatedListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nombre', 'url'];
+ displayedColumns: string[] = ['id', 'nombre', 'url'];
 
   @Input()
   siteID: number;
@@ -26,7 +26,9 @@ export class  WebsiteRelatedListComponent implements OnInit {
     this.getWebSites();
   }
   ngOnInit() {
-    this.loader = this.route.params.subscribe((params: Params) => this.onLoad(params));
+    console.log("creating related sites pane with id: "+this.siteID);
+      this.getWebSites();
+    //this.loader = this.route.params.subscribe((params: Params) => this.onLoad(params));
   }
 
   getWebSites(): void {
