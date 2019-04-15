@@ -12,6 +12,7 @@ import {WebsiteRelatedListComponent} from "../web-sites/website-related-list/web
 import {AdminCreateComponent} from "../admin/admin-create/admin-create.component";
 import {WebsiteDetailsComponent} from "../web-sites/website-details/website-details.component";
 import {UsersCreateComponent} from "../users/users-create/users-create.component";
+import { UsersEditComponent } from '../users/users-edit/users-edit.component';
 
 const routes: Routes = [
 
@@ -56,6 +57,11 @@ const routes: Routes = [
                 component: UsersListComponent,
                 outlet:'users'
 
+            },
+            {
+                path: ':id',
+                component: UsersEditComponent,
+                outlet: 'edit'
             }
         ]
     },
