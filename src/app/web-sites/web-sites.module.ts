@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebsiteListComponent } from './website-list/website-list.component';
 import {
-    MatButtonModule,
+    MatButtonModule, MatButtonToggleModule,
     MatCardModule,
     MatChipsModule,
     MatDatepickerModule,
@@ -49,7 +49,8 @@ import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
         MatInputModule,
         ReactiveFormsModule,
         MatDatepickerModule,
-        MatSelectModule
+        MatSelectModule,
+        MatButtonToggleModule
     ],
     exports: [
         WebsiteListComponent,

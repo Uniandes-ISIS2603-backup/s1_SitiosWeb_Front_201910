@@ -19,11 +19,14 @@ interface WebSiteDetailNode {
 })
 export class WebsiteDetailsComponent implements OnInit {
 
+  editMode=false;
+
   @Input()
   site_id:number;
 
   site :Website;
 
+  siteClone:Website;
   loader: any;
 
   constructor(public router: Router,private sitesService: WebsiteService,
@@ -45,6 +48,7 @@ export class WebsiteDetailsComponent implements OnInit {
     this.sitesService.getSite(this.site_id)
         .subscribe(detail => {
           this.site = detail;
+          this.siteClone=this.site;
           var thumbnaiAPI= "https://api.thumbnail.ws/api/ab18504260d333b42490e206a93767ae1b0adff77399/thumbnail/get?width=480&url=";
 
           this.site.imagen=thumbnaiAPI+this.site.url;
@@ -54,13 +58,32 @@ export class WebsiteDetailsComponent implements OnInit {
 
 
 
+toogleEdit():void
+{
+  this.editMode=!this.editMode;
 
+}
+
+saveChanges():void
+{
+  this.site=this.siteClone;
+  this.sitesService.updateSite(this.siteClone);
+  console.log(this.siteClone)
+}
 
   panelOpenState = false;
 
   getSitesRelated()
   {
     console.log(`getting sites related to site: ${this.site.id}`);
-    this.router.navigate(['/websites/related',{ outlets: { related: [this.site.id] } }]/*, { skipLocationChange: true }*/);
+    this.router.navigate(['/websites/related',{ outlets: { related: [this.site.id] } }]/*, { skipLocationChange: true }*/).then(
+        value => {
+          console.log(value)
+        }
+    );
+  }
+
+  namechange() {
+
   }
 }

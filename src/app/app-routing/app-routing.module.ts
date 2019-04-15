@@ -42,10 +42,6 @@ const routes: Routes = [
         component: AppComponent
     },
     {
-        path: '*',
-        redirectTo:'home'
-    },
-    {
         path: 'SiteList',
         component: WebsiteListComponent
     },

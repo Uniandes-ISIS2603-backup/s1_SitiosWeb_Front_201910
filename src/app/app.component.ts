@@ -2,7 +2,7 @@ import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angu
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 declare let $: any;
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
        /**
      * @ignore
      */
-    constructor(private authService: AuthService,private statesService:EstadosWebService, public router: Router) {
+    constructor(private authService: AuthService,private statesService:EstadosWebService, public router: Router, private route: ActivatedRoute) {
            this.navLinks = [
                {
                    label: 'Usuarios',
