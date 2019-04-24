@@ -37,4 +37,9 @@ export class WebsiteService {
     console.log(`service getting sites related`)
       return this.http.get<Website[]>(API_URL + websites+`/${id}/related`);
   }
+
+  updateSite(site:Website):Observable<Website>
+  {
+    return this.http.put<Website>(API_URL+websites,site);
+  }
 }
