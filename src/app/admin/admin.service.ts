@@ -7,7 +7,7 @@ import { AdminDetail } from './admin-detail';
 
 
 const API_URL = AppConstants.baseURL;
-const admins = 'admins';
+const admins = '/s1_sitios-api/api/admins';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +40,14 @@ export class AdminService {
   createAdmin(admin): Observable<Admin> {
     return this.http.post<Admin>(API_URL + admins, admin);
   }
+
+    /**
+    * Updates an user
+    * @param user The editorial which will be update
+    * @returns The confirmation of the user's update
+    */
+   updateAdmin(admin): Observable<AdminDetail> {
+    return this.http.put<AdminDetail>(API_URL + admins + '/' + admin.id, admin);
+}
   
 }

@@ -12,8 +12,11 @@ import {
   MatStepperModule,
   MatOptionModule,
   MatInputModule,
-  MatSelectModule, MatIconModule
+  MatSelectModule, 
+  MatIconModule, 
+  MatTabsModule,
 } from '@angular/material';
+import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
   imports: [
@@ -28,8 +31,9 @@ import {
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatTabsModule,
   ],
-  declarations: [AdminListComponent, AdminCreateComponent, AdminDetailComponent],
+  declarations: [AdminListComponent, AdminCreateComponent, AdminDetailComponent, AdminEditComponent],
   providers: [AdminService],
   exports: [AdminListComponent, AdminCreateComponent, AdminDetailComponent]
 })

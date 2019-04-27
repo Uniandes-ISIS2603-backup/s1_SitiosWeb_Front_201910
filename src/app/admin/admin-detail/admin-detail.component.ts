@@ -21,24 +21,35 @@ export class AdminDetailComponent implements OnInit {
   adminDetail: AdminDetail;
 
 
-
+  expande: boolean = false;
   /**
   * The admin's id retrieved from the address
   */
-  admin_id: number;
+  adminId: number;
 
-  getEditorialDetail(): void {
-    this.adminService.getAdminDetail(this.admin_id)
+  getAdminDetail(): void {
+    this.adminService.getAdminDetail(this.adminId)
       .subscribe(adminDetail => {
         this.adminDetail = adminDetail
       });
   }
 
+  expandir(): void
+  {
+    this.expande = true;
+  }
+
+  noExpandir(): void{
+    this.expande = false;
+
+  }
+
 
   ngOnInit() {
-    this.admin_id = +this.route.snapshot.paramMap.get('id');
+    this.adminId =+ this.route.snapshot.paramMap.get('id');
     this.adminDetail = new AdminDetail();
-    this.getEditorialDetail();
+    this.getAdminDetail();
+    this.expande = false;
   }
 
 }

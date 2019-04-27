@@ -13,6 +13,9 @@ import {AdminCreateComponent} from "../admin/admin-create/admin-create.component
 import {WebsiteDetailsComponent} from "../web-sites/website-details/website-details.component";
 import {UsersCreateComponent} from "../users/users-create/users-create.component";
 import { UsersEditComponent } from '../users/users-edit/users-edit.component';
+import { AdminListComponent } from '../admin/admin-list/admin-list.component';
+import { AdminEditComponent } from '../admin/admin-edit/admin-edit.component';
+import { AdminDetailComponent } from '../admin/admin-detail/admin-detail.component';
 
 const routes: Routes = [
 
@@ -60,6 +63,14 @@ const routes: Routes = [
                 outlet: 'edit'
             }
         ]
+    },
+    {
+        path: 'admins/list/:id',
+        component: AdminDetailComponent,
+    },
+    {
+        path: 'admins/list',
+        component: AdminListComponent,
     },
     {
         path: 'websites',

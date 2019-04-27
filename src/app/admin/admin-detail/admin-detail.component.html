@@ -23,6 +23,14 @@
     </tr>
   </thead>
 </table>
+<br>
+<div>
+  <button mat-button (click)="expandir()">Actualizar informacion</button>
+  <div *ngIf="expande">
+    <app-admin-edit></app-admin-edit>
+  </div>
+</div>
+<!--
 <table class="table">
   <tbody>
     <tr *ngFor="let e of userDetail.dependencia">
@@ -32,3 +40,4 @@
     </tr>
   </tbody>
 </table>
+-->
