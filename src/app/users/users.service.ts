@@ -7,7 +7,7 @@ import { UserDetail } from './user-detail';
 
 
 const API_URL = AppConstants.baseURL;
-const users = 'users';
+const users = '/s1_sitios-api/api/users';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +47,7 @@ export class UsersService {
     * @param user The editorial which will be update
     * @returns The confirmation of the user's update
     */
-   updateEditorial(user): Observable<UserDetail> {
+   updateUser(user): Observable<UserDetail> {
     return this.http.put<UserDetail>(API_URL + users + '/' + user.id, user);
 }
 

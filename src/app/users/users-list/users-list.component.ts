@@ -27,6 +27,9 @@ export class UsersListComponent implements OnInit {
 
   }
 
+  expandir2(): void{
+    this.expande = !this.expande;
+  }
   /**
     * Asks the service to update the list of users
     */
@@ -39,6 +42,8 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    this.expande = false;
+    this.userId = -1;
   }
 
 }

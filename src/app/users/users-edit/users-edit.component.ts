@@ -12,7 +12,7 @@ export class UsersEditComponent implements OnInit {
 
   /**
     * The component's constructor
-    * @param editorialService The editorial's service
+    * @param userService The user's service
     * @param toastrService The toastr to show messages to the user 
     */
   constructor(
@@ -21,43 +21,43 @@ export class UsersEditComponent implements OnInit {
   ) { }
 
   /**
-  * The id of the editorial that the user wants to edit
+  * The id of the user that the user wants to edit
   * This is passed as a parameter by the parent component
   */
   @Input() user_id: number;
 
   /**
   * The output which tells the parent component
-  * that the user no longer wants to create an editorial
+  * that the user no longer wants to create an user
   */
   @Output() cancel = new EventEmitter();
 
   /**
   * The output which tells the parent component
-  * that the user updated a new editorial
+  * that the user updated a new user
   */
   @Output() update = new EventEmitter();
 
   /**
-  * The editorial to edit
+  * The user to edit
   */
   user: UserDetail;
 
   /**
-  * Retrieves the information of the editorial
+  * Retrieves the information of the user
   */
   getUser(): void {
     this.userService.getUserDetail(this.user_id)
-      .subscribe(editorial => {
-        this.user = editorial;
+      .subscribe(user => {
+        this.user = user;
       });
   }
 
   /**
-  * Updates the editorial's information
+  * Updates the user's information
   */
   editUser(): void {
-    this.userService.updateEditorial(this.user)
+    this.userService.updateUser(this.user)
       .subscribe(() => {
         this.update.emit();
         this.toastrService.success("The user's information was updated", "User edition");
@@ -65,7 +65,7 @@ export class UsersEditComponent implements OnInit {
   }
 
   /**
-  * Informs the parent component that the user no longer wants to update the editorial
+  * Informs the parent component that the user no longer wants to update the user
   */
   cancelEdition(): void {
     this.cancel.emit();

@@ -15,20 +15,13 @@ export class UsersDetailComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
-    public router: Router
+    public router: Router,
   ) { }
 
   /**
   * The user whose details we want to show
   */
   userDetail: UserDetail;
-
-
-
-  /**
-  * The user's id retrieved from the address
-  */
-  usuario_id: number;
 
   expande: boolean=false;
 
@@ -52,6 +45,8 @@ export class UsersDetailComponent implements OnInit {
   */
   ngOnInit() {
     //this.id = +this.route.snapshot.paramMap.get('id');
+    console.log('/users/'+this.id);
+    this.router.navigate(['/users/'+this.id]);
     this.userDetail = new UserDetail();
     this.getUserDetail();
     this.expande = false;
