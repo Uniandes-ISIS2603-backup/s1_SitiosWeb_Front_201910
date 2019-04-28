@@ -73,6 +73,7 @@ import {ChangesModule } from './cambios/changes.module';
         EstadosWebModule,
         UsersModule,
         AdminModule,
+        DependenciesModule,
         ChangesModule,
         TechnologiesModule,
         MatSidenavModule,

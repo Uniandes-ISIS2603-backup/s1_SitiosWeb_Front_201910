@@ -38,7 +38,8 @@ export class AdminListComponent implements OnInit {
 
   getAdminDetail(id:number): void {
     this.expande = true;
-    this.router.navigate(['admins/list/'+id]);
+    this.selectedIndex = id;
+    this.router.navigate(['/admins/'+id]);
   }
 
   ngOnInit() {

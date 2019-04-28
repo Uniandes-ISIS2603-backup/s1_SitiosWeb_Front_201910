@@ -5,6 +5,7 @@
             <button mat-button (click)="showUserTab()" >Usuarios</button>
             <button mat-button (click)="showMainTab()" >Sitios</button>
             <button mat-button (click)="showAdminTab()" >Admins</button>
+            <button mat-button (click)="showDependenciaTab()" >Dependencia</button>
         <span class="toolbar-spacer"></span>
         <div *ngxPermissionsOnly="['GUEST']">
     
@@ -70,7 +71,10 @@
             </mat-sidenav-container>
         </mat-tab>
         <mat-tab label="Admins">
-            <router-outlet></router-outlet>
+            <router-outlet name="admins"></router-outlet>
+        </mat-tab>
+        <mat-tab label="Dependencies">
+            <router-outlet name="dependencies"></router-outlet>
         </mat-tab>
         <mat-tab label="Usuarios">
             <router-outlet name="siteDetail"></router-outlet>

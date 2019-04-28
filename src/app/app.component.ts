@@ -82,11 +82,19 @@ export class AppComponent implements OnInit {
     selectTab(index: number): void {
         this.selectedIndex = index;
     }
+    showDependenciaTab()
+    {
+        this.selectedIndex=3;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/dependencies',  { outlets: { dependencies: ['list'] } }]);
+
+    }
     showAdminTab()
     {
         this.selectedIndex=2;
         this.router.navigate(["../", {outlets: {siteDetail: null}}]);
-        this.router.navigate(['/admins/list']);
+        this.router.navigate(['/admins', { outlets: { admins: ['list'] } }]);
+        console.log("ertne;rta")
 
     }
     showUserTab()
@@ -104,7 +112,7 @@ export class AppComponent implements OnInit {
     }
     showDetailTab(site:number)
     {
-        this.selectedIndex=3;
+        this.selectedIndex=4;
         this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 
