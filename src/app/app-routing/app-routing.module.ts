@@ -18,6 +18,7 @@ import { AdminEditComponent } from '../admin/admin-edit/admin-edit.component';
 import { AdminDetailComponent } from '../admin/admin-detail/admin-detail.component';
 import { DependenciesDetailComponent } from '../dependencies/dependencies-detail/dependencies-detail.component';
 import { DependenciesListComponent } from '../dependencies/dependencies-list/dependencies-list.component';
+import { ChangesListComponent } from '../cambios/changes-list/changes-list.component';
 
 const routes: Routes = [
 
@@ -64,6 +65,16 @@ const routes: Routes = [
                 component: UsersEditComponent,
                 outlet: 'edit'
             }
+        ]
+    },
+    {
+        path: 'changes',
+        children:[
+            {
+                path:'list',
+                component: ChangesListComponent,
+                outlet:'changes'
+            },
         ]
     },
     {

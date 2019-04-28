@@ -68,10 +68,25 @@ export class AppComponent implements OnInit {
                    link: './SiteList',
                    index: 1
                }, {
-                   label: 'Detalle',
-                   link: './third',
+                   label: 'Administradores',
+                   link: './admins',
                    index: 2
                },
+               {
+                label: 'Dependencias',
+                link: './dependencies',
+                index: 3
+            },
+            {
+                label: 'Cambios',
+                link: './changes',
+                index: 4
+            },
+            {
+                label: 'Detalle',
+                link: './third',
+                index: 5
+            },
            ];
        }
 
@@ -81,6 +96,12 @@ export class AppComponent implements OnInit {
 
     selectTab(index: number): void {
         this.selectedIndex = index;
+    }
+    showChangeTab()
+    {
+        this.selectedIndex=4;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/changes',  { outlets: { changes: ['list'] } }]);
     }
     showDependenciaTab()
     {
@@ -94,7 +115,6 @@ export class AppComponent implements OnInit {
         this.selectedIndex=2;
         this.router.navigate(["../", {outlets: {siteDetail: null}}]);
         this.router.navigate(['/admins', { outlets: { admins: ['list'] } }]);
-        console.log("ertne;rta")
 
     }
     showUserTab()
@@ -112,7 +132,7 @@ export class AppComponent implements OnInit {
     }
     showDetailTab(site:number)
     {
-        this.selectedIndex=4;
+        this.selectedIndex=5;
         this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 

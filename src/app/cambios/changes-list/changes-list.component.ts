@@ -11,7 +11,7 @@ import { ChangesService } from '../changes.service';
 export class ChangesListComponent implements OnInit {
 
   changes: Change[];
-
+  expande: boolean;
   constructor(private changeService: ChangesService) { }
 
   /**
@@ -24,8 +24,17 @@ export class ChangesListComponent implements OnInit {
       });
   }
 
+  getDetailChange(id: number): void {
+    console.log('No hace nada');
+  }
+
+  createChange(): void {
+    this.expande=!this.expande;
+  }
+
   ngOnInit() {
     this.getChanges();
+    this.expande=false;
   }
 
 }
