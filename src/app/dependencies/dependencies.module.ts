@@ -7,7 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule, MatFormFieldModule, 
          MatInputModule, MatStepperModule, 
          MatButtonModule, MatAutocompleteModule,
-         MatSelectModule, } from '@angular/material';
+         MatSelectModule,
+         MatMenuModule, } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependenciesListComponent } from './dependencies-list/dependencies-list.component';
 import { DependenciesEditComponent } from './dependencies-edit/dependencies-edit.component'; 
@@ -21,6 +22,7 @@ import { DependenciesEditComponent } from './dependencies-edit/dependencies-edit
         MatInputModule,
         MatStepperModule, 
         MatButtonModule,
+        MatMenuModule,
         MatAutocompleteModule,
         MatSelectModule,
         BrowserAnimationsModule
@@ -28,6 +30,6 @@ import { DependenciesEditComponent } from './dependencies-edit/dependencies-edit
     declarations: [DependenciesDetailComponent, DependenciesCreateComponent, DependenciesListComponent, DependenciesEditComponent],
     entryComponents: [DependenciesCreateComponent],
     providers: [DependenciesService],
-    exports:[DependenciesDetailComponent, DependenciesCreateComponent]
+    exports:[DependenciesDetailComponent, DependenciesCreateComponent, DependenciesListComponent, DependenciesEditComponent]
 })
 export class DependenciesModule {}

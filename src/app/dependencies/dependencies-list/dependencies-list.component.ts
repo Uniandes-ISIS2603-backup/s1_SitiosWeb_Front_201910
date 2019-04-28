@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DependenciesService } from '../dependencies.service';
+import { Dependencies } from '../dependencies';
 
 @Component({
   selector: 'app-dependencies-list',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DependenciesListComponent implements OnInit {
 
-  constructor() { }
+  depenId: number;
+  dependencies: Dependencies[];
+  constructor(private dependencyService: DependenciesService) { }
+
+  getDependencies(): void {
+    this.dependencyService.getDependencies()
+      .subscribe(dependencies => {
+        this.dependencies = dependencies;
+      });
+  }
 
   ngOnInit() {
+    this.getDependencies();
+    this.depenId = -1;
   }
 
 }

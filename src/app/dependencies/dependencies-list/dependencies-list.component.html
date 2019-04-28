@@ -1,3 +1,16 @@
-<p>
-  dependencies-list works!
-</p>
+<p>Works!</p>
+
+<div class="masonry-with-columns">
+  <div *ngFor="let depen of dependencies" style="margin: 2vmin">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{depen.nombre}}</h5>
+        <h5 class="card-title">{{depen.email}}</h5>
+        <h5 class="card-title">{{depen.telefono}}</h5>
+        <mat-menu>
+          <button mat-menu-item>Administrador</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>
