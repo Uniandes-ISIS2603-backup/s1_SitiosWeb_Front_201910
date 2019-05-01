@@ -12,6 +12,7 @@ export class ChangesListComponent implements OnInit {
 
   changes: Change[];
   expande: boolean;
+  edit;
   constructor(private changeService: ChangesService) { }
 
   /**
@@ -24,8 +25,8 @@ export class ChangesListComponent implements OnInit {
       });
   }
 
-  getDetailChange(id: number): void {
-    console.log('No hace nada');
+  editar(id: number): void {
+    this.edit[id] = !this.edit[id];
   }
 
   createChange(): void {
@@ -35,6 +36,7 @@ export class ChangesListComponent implements OnInit {
   ngOnInit() {
     this.getChanges();
     this.expande=false;
+    this.edit = new Array()
   }
 
 }

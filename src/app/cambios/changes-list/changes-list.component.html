@@ -15,29 +15,33 @@
           <tr>
             <th scope="col">Id Asociado</th>
             <th scope="col">Lugar Cambio</th>
+            <th scope="col">Descripcion</th>
             <th scope="col">Fecha Cambio</th>
             <th scope="col">Previo</th>
             <th scope="col">Nuevo</th>
             <th></th>
           </tr>
         </thead>
-        <tr *ngFor="let ch of changes; let i = index;">
+        <tr *ngFor="let ch of changes; let i = index">
           <td scope="row">
-            <input type="text" [(ngModel)]="ch.idAsociado">
+            <input type="text" [(ngModel)]="ch.idAsociado" [disabled]="!this.edit[i]">
           </td>
           <td>
-            <input type="text" [(ngModel)]="ch.lugarCambio" required>
+            <input type="text" [(ngModel)]="ch.lugarCambio" [disabled]="!this.edit[i]">
           </td>
           <td>
-            <input type="text" [(ngModel)]="ch.fechaCambio" required>
+            <input type="text" [(ngModel)]="ch.descripcion" [disabled]="!this.edit[i]">
           </td>
           <td>
-            <input type="text" [(ngModel)]="ch.previo" required>
+            <input type="text" [(ngModel)]="ch.fechaCambio" [disabled]="!this.edit[i]">
           </td>
           <td>
-            <input type="text" [(ngModel)]="ch.nuevo" required>
+            <input type="text" [(ngModel)]="ch.previo" [disabled]="!this.edit[i]">
           </td>
-          <td><button class="btn btn-success" (click)=getDetailChange(ch.id)>Detalle</button></td>
+          <td>
+            <input type="text" [(ngModel)]="ch.nuevo" [disabled]="!this.edit[i]">
+          </td>
+          <td><button class="btn btn-success" (click)=editar(i)>Editar</button></td>
         </tr>
       </table>
     </div>
