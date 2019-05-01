@@ -29,7 +29,7 @@ export class AdminListComponent implements OnInit {
   expandir(id): void{
     console.log("asdfsadf"+id);
     this.selectedIndex = id;
-    this.expande = true;
+    this.expande = !this.expande;
   }
 
   noExpandir(): void{
@@ -37,9 +37,9 @@ export class AdminListComponent implements OnInit {
   }
 
   getAdminDetail(id:number): void {
-    this.expande = true;
+    this.expande = !this.expande;
     this.selectedIndex = id;
-    this.router.navigate(['/admins/'+id]);
+    //this.router.navigate(['/admins/'+id]);
   }
 
   ngOnInit() {

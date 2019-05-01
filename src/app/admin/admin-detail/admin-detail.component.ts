@@ -36,7 +36,8 @@ export class AdminDetailComponent implements OnInit {
 
   expandir(): void
   {
-    this.expande = true;
+    console.log(this.expande);
+    this.expande = !this.expande;
   }
 
   noExpandir(): void{
@@ -44,6 +45,9 @@ export class AdminDetailComponent implements OnInit {
 
   }
 
+  deleteAdmin(): void{
+    this.adminService.deleteAdmin(this.adminId);
+  }
 
   ngOnInit() {
     this.adminDetail = new AdminDetail();
