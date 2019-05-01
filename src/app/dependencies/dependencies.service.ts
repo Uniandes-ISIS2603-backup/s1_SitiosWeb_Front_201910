@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { AppConstants } from '../appConstants';
 import { DependenciesDetail } from './dependencies-detail';
 
-const API_URL = AppConstants.baseURL;
-const dependencies = '/s1_sitios-api/api/dependencies';
+const API_URL = '/../../assets';//AppConstants.baseURL;
+const dependencies = "/dependencias.json";//'/s1_sitios-api/api/dependencies';
 
 
 @Injectable()
@@ -19,7 +19,8 @@ export class DependenciesService {
     constructor(private http: HttpClient) { }
 
     getDependencies(): Observable<Dependencies[]> {
-        return this.http.get<Dependencies[]>(API_URL + Dependencies);
+        console.log(API_URL + Dependencies)
+        return this.http.get<Dependencies[]>(API_URL + dependencies);
     }
 
     getDependencyDetail(depId): Observable<DependenciesDetail> {
