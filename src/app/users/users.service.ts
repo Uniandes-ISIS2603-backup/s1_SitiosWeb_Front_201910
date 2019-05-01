@@ -47,8 +47,14 @@ export class UsersService {
     * @param user The editorial which will be update
     * @returns The confirmation of the user's update
     */
-   updateUser(user): Observable<UserDetail> {
+  updateUser(user): Observable<UserDetail> {
     return this.http.put<UserDetail>(API_URL + users + '/' + user.id, user);
-}
+  }
+
+  deleteUser(id: number): Observable<User> {
+    const url = API_URL + users + "/" + id;
+
+    return this.http.delete<User>(url);
+  }
 
 }

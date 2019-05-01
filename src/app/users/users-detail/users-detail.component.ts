@@ -39,6 +39,11 @@ export class UsersDetailComponent implements OnInit {
       });
   }
 
+  deleteUser(): void {
+    this.userService.deleteUser(this.userDetail.id)
+        .subscribe(()=> "Customer Deleted Successfully!");
+  }
+
   /**
   * The method which initializes the component
   * We need to initialize the user so it is never considered as undefined
