@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DependenciesService } from '../dependencies.service';
 import { ActivatedRoute } from '@angular/router';
 import { DependenciesDetail } from '../dependencies-detail';
@@ -20,14 +20,14 @@ export class DependenciesDetailComponent implements OnInit {
   */
   depDetail: DependenciesDetail;
 
-
+  expande: boolean;
 
   /**
   * The dependency's id retrieved from the address
   */
- @Input() dep_id: number;
+  @Input() dep_id: number;
 
- getDependencyDetail(): void {
+  getDependencyDetail(): void {
     console.log(this.dep_id);
     this.depService.getDependencyDetail(this.dep_id)
       .subscribe(detail => {
@@ -35,10 +35,18 @@ export class DependenciesDetailComponent implements OnInit {
       });
   }
 
+  expandir(): void {
+    this.expande = !this.expande;
+  }
+
+  deleteUser(): void {
+    
+  }
 
   ngOnInit() {
     this.depDetail = new DependenciesDetail();
     this.getDependencyDetail();
+    this.expande = false;
   }
 
 }

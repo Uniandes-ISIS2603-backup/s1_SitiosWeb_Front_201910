@@ -11,6 +11,7 @@ export class DependenciesListComponent implements OnInit {
 
   depenId: number;
   dependencies: Dependencies[];
+  expandir: boolean;
   constructor(private dependencyService: DependenciesService) { }
 
   getDependencies(): void {
@@ -20,9 +21,15 @@ export class DependenciesListComponent implements OnInit {
       });
   }
 
+  detail(id:number):void {
+    this.depenId = id;
+    this.expandir = !this.expandir;
+  }
+
   ngOnInit() {
     this.getDependencies();
     this.depenId = -1;
+    this.expandir = false;
   }
 
 }

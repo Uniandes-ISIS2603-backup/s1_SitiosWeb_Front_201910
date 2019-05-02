@@ -29,4 +29,13 @@ export class DependenciesService {
     createDependency(dep): Observable<Dependencies> {
         return this.http.post<Dependencies>(API_URL + dependencies, dep);
     }
+
+    /**
+     * Updates an user
+    * @param user The editorial which will be update
+    * @returns The confirmation of the user's update
+    */
+    updateDependency(depen): Observable<DependenciesDetail> {
+        return this.http.put<DependenciesDetail>(API_URL + dependencies + '/' + depen.id, depen);
+    }
 }

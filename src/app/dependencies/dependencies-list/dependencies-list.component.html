@@ -1,18 +1,19 @@
 <div *ngIf="!expande">
-    <div class="masonry-with-columns">
-      <div *ngFor="let depen of dependencies" class="card" style="width: 18rem;margin: 2vmin;">
-        <img src="" class="card-img-top" alt="">
-        <div class="card-body">
-          <li class="card-text">Nombre: {{depen.nombre}}</li>
-          <br>
-          <li class="card-text">Correo: {{depen.email}} </li>
-          <br>
-          <li class="card-text">Telefono: {{depen.telefono}} </li>
-          <br>
-          <button class="btn btn-success" color="accent">Administrador</button>
-          <br>
-          <button mat-flat-button color="accent">Ver Perfil</button>
-        </div>
+  <div class="masonry-with-columns">
+    <div *ngFor="let depen of dependencies" class="card" style="width: 18rem;margin: 2vmin;">
+      <img src="" class="card-img-top" alt="">
+      <div class="card-body">
+        <li class="card-text">Nombre: {{depen.nombre}}</li>
+        <br>
+        <li class="card-text">Correo: {{depen.email}} </li>
+        <br>
+        <li class="card-text">Telefono: {{depen.telefono}} </li>
+        <br>
+        <button mat-flat-button color="accent" (click)='detail(depen.id)'>Ver Perfil</button>
       </div>
     </div>
   </div>
+  <div *ngIf="expandir">
+    <app-dependencies-detail dep_id={{depenId}}></app-dependencies-detail>
+  </div>
+</div>
