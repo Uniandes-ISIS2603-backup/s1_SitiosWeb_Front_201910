@@ -24,21 +24,10 @@
   </thead>
 </table>
 <br>
-<div>
+<div *ngxPermissionsExcept="['Administrador']">
   <button mat-button (click)="expandir()">Actualizar informacion</button>
   <button mat-button (click)="deleteUser()">Eliminar</button>
   <div *ngIf="expande">
     <app-admin-edit></app-admin-edit>
   </div>
 </div>
-<!--
-<table class="table">
-  <tbody>
-    <tr *ngFor="let e of userDetail.dependencia">
-      <th scope="row">1</th>
-      <td>2</td>
-      <td>...</td>
-    </tr>
-  </tbody>
-</table>
--->

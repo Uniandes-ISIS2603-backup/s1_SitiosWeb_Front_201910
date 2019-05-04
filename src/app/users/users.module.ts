@@ -14,6 +14,7 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule, MatStepperModule, 
 import { UsersEditComponent } from './users-edit/users-edit.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPermissionsModule } from 'ngx-permissions';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,6 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPermissionsModule,
+    
   ],
   declarations: [UsersListComponent, UsersDetailComponent, UsersCreateComponent, UsersEditComponent],
   providers: [UsersService],

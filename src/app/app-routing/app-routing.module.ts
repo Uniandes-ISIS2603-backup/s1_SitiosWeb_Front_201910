@@ -1,17 +1,17 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {NgxPermissionsGuard} from 'ngx-permissions';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 import { AuthLoginComponent } from '../auth/auth-login/auth-login.component';
 import { AuthSignUpComponent } from '../auth/auth-sign-up/auth-sign-up.component';
-import {UsersListComponent} from "../users/users-list/users-list.component";
-import {AppComponent} from "../app.component";
-import {WebsiteListComponent} from "../web-sites/website-list/website-list.component";
-import {WebsiteRelatedListComponent} from "../web-sites/website-related-list/website-related-list.component";
-import {AdminCreateComponent} from "../admin/admin-create/admin-create.component";
-import {WebsiteDetailsComponent} from "../web-sites/website-details/website-details.component";
-import {UsersCreateComponent} from "../users/users-create/users-create.component";
+import { UsersListComponent } from "../users/users-list/users-list.component";
+import { AppComponent } from "../app.component";
+import { WebsiteListComponent } from "../web-sites/website-list/website-list.component";
+import { WebsiteRelatedListComponent } from "../web-sites/website-related-list/website-related-list.component";
+import { AdminCreateComponent } from "../admin/admin-create/admin-create.component";
+import { WebsiteDetailsComponent } from "../web-sites/website-details/website-details.component";
+import { UsersCreateComponent } from "../users/users-create/users-create.component";
 import { UsersEditComponent } from '../users/users-edit/users-edit.component';
 import { AdminListComponent } from '../admin/admin-list/admin-list.component';
 import { AdminEditComponent } from '../admin/admin-edit/admin-edit.component';
@@ -24,19 +24,19 @@ const routes: Routes = [
 
 
     {
-         path: 'login',
-         component: AuthLoginComponent,
-         canActivate: [NgxPermissionsGuard],
-         data: {
-             permissions: {
-                 only: ['GUEST']
-             }
-         }
+        path: 'login',
+        component: AuthLoginComponent,
+        canActivate: [NgxPermissionsGuard],
+        data: {
+            permissions: {
+                only: ['GUEST']
+            }
+        }
     },
-   {
-      path: 'register',
-      component: AdminCreateComponent,
-      outlet: 'register'
+    {
+        path: 'register',
+        component: AdminCreateComponent,
+        outlet: 'register'
     },
     {
         path: 'registerUser',
@@ -53,11 +53,11 @@ const routes: Routes = [
     },
     {
         path: 'users',
-        children:[
+        children: [
             {
-                path:'list',
+                path: 'list',
                 component: UsersListComponent,
-                outlet:'users'
+                outlet: 'users'
 
             },
             {
@@ -69,31 +69,43 @@ const routes: Routes = [
     },
     {
         path: 'changes',
-        children:[
+        children: [
             {
-                path:'list',
+                path: 'list',
                 component: ChangesListComponent,
-                outlet:'changes'
+                outlet: 'changes',
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             },
         ]
     },
     {
         path: 'dependencies',
-        children:[
+        children: [
             {
-                path:'list',
+                path: 'list',
                 component: DependenciesListComponent,
-                outlet:'dependencies'
+                outlet: 'dependencies',
+                canActivate: [NgxPermissionsGuard],
+                data: {
+                    permissions: {
+                        only: ['ADMIN']
+                    }
+                }
             },
         ]
     },
     {
         path: 'admins',
-        children:[
+        children: [
             {
-                path:'list',
+                path: 'list',
                 component: AdminListComponent,
-                outlet:'admins'
+                outlet: 'admins',
 
             },
         ]

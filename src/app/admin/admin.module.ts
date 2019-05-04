@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { AdminService } from './admin.service';
@@ -16,6 +16,7 @@ import {
   MatIconModule, 
   MatTabsModule,
 } from '@angular/material';
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
     MatSelectModule,
     MatIconModule,
     MatTabsModule,
+    NgxPermissionsModule,
   ],
   declarations: [AdminListComponent, AdminCreateComponent, AdminDetailComponent, AdminEditComponent],
   providers: [AdminService],
