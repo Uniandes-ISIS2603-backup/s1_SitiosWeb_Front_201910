@@ -11,11 +11,11 @@
           <li class="card-text">Telefono: {{a.telefono}} </li>
           <li class="card-text">Dependencia: </li>
           <li class="card-text">Sitio web asociado: </li>
-          <button mat-flat-button color="primary" (click)=getAdminDetail(a.id)>Ver Perfil</button>
+          <button mat-flat-button color="primary" [routerLink]="[ '/admins/list', a.id ]">Ver Perfil</button>
         </div>
   </div>
   <div *ngIf="expande">
-    <app-admin-detail adminId = {{selectedIndex}}></app-admin-detail>
+    <router-outlet></router-outlet>
   </div>
   
 </div>
