@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DependenciesService } from '../dependencies.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DependenciesDetail } from '../dependencies-detail';
 
 @Component({
@@ -12,7 +12,7 @@ export class DependenciesDetailComponent implements OnInit {
 
   constructor(
     private depService: DependenciesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   /**
@@ -25,7 +25,7 @@ export class DependenciesDetailComponent implements OnInit {
   /**
   * The dependency's id retrieved from the address
   */
-  @Input() dep_id: number;
+  dep_id: number;
 
   getDependencyDetail(): void {
     console.log(this.dep_id);
@@ -44,6 +44,7 @@ export class DependenciesDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dep_id =+ this.route.snapshot.paramMap.get('id');
     this.depDetail = new DependenciesDetail();
     this.getDependencyDetail();
     this.expande = false;

@@ -65,12 +65,12 @@ const routes: Routes = [
         component: ChangesListComponent
     },
     {
-        path: 'dependencies/list',
-        component: DependenciesListComponent
+        path: 'dependencies/list/:id',
+        component: DependenciesDetailComponent
     },
     {
-        path: 'admins/list/:id',
-        component: AdminDetailComponent
+        path: 'dependencies/list',
+        component: DependenciesListComponent
     },
     {
         path: 'admins/list',
