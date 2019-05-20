@@ -25,7 +25,7 @@ export class UsersDetailComponent implements OnInit {
 
   expande: boolean=false;
 
-  @Input() id: number;
+  id: number;
 
   actualizar(): void{
     // this.router.navigate(['/users/:id',{ outlets: { edit: [this.usuario_id] } }]);
@@ -51,7 +51,7 @@ export class UsersDetailComponent implements OnInit {
   ngOnInit() {
     //this.id = +this.route.snapshot.paramMap.get('id');
     console.log('/users/'+this.id);
-    this.router.navigate(['/users/'+this.id]);
+    this.id =+ this.route.snapshot.paramMap.get('id');
     this.userDetail = new UserDetail();
     this.getUserDetail();
     this.expande = false;

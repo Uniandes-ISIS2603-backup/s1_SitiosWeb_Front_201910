@@ -53,10 +53,6 @@ const routes: Routes = [
         component: WebsiteListComponent
     },
     {
-        path: 'users/list/:id/edit',
-        component: UsersEditComponent
-    },
-    {
         path: 'users/list/:id',
         component: UsersDetailComponent
     },

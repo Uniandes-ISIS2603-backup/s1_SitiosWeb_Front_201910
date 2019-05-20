@@ -10,20 +10,11 @@
         <li class="card-text">Correo: {{u.email}} </li>
         <li class="card-text">Telefono: {{u.telefono}} </li>
         <li class="card-text">Numero de Tickets: {{u.numeroTickets}} </li>
-        <button mat-flat-button color="accent" (click)="expandir(u.id)">Ver Perfil</button>
+        <button mat-flat-button color="accent" [routerLink]="[ '/users/list', u.id ]">Ver Perfil</button>
       </div>
     </div>
   </div>
 </div>
-
-<ng-container *ngIf="userId==-1 && expande; else elseTemplate">
-    <h1>Por favor seleccione ver perfil!</h1>
-</ng-container>
-<ng-template #elseTemplate>
-    <div *ngIf="expande" ng>
-        <app-users-detail id={{userId}}></app-users-detail>
-      </div>
-</ng-template>
 
   
  
