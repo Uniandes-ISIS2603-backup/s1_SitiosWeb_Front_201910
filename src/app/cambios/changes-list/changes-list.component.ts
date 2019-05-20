@@ -11,7 +11,9 @@ import { ChangesService } from '../changes.service';
 export class ChangesListComponent implements OnInit {
 
   changes: Change[];
-
+  expande: boolean;
+  edit;
+  busqueda:string;
   constructor(private changeService: ChangesService) { }
 
   /**
@@ -24,8 +26,26 @@ export class ChangesListComponent implements OnInit {
       });
   }
 
+  editar(id: number): void {
+    this.edit[id] = !this.edit[id];
+  }
+
+  createChange(): void {
+    this.expande=!this.expande;
+  }
+
+  buscar():void {
+    console.log(this.busqueda);
+    this.changeService.filterChange("id", this.busqueda).subscribe( changes => {
+      this.changes = changes;
+    });
+  }
+
   ngOnInit() {
     this.getChanges();
+    this.expande=false;
+    this.edit = new Array()
+    
   }
 
 }

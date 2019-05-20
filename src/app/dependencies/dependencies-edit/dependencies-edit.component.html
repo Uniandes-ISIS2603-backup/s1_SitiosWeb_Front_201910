@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <br>
+        <h2 class="text-center">Editar administrador</h2>
+        <br>
+        <form name="user" (ngSubmit)="f.form.valid && editDepen()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="adminName"><b>Nombre</b></label>
+                <input type="text" name="adminName" class="form-control" id="depenName" [(ngModel)]="depen.nombreDependencia"
+                    #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && depenName.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>The depen's name is missing</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="depenEmail"><b>Correo electronico</b></label>
+                <input type="text" name="depenEmail" class="form-control" id="adminEmail" [(ngModel)]="depen.email"
+                    #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && depenEmail.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>The depen's email is missing</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="depenTelefono"><b>Telefono</b></label>
+                <input type="text" name="depenTelefono" class="form-control" id="depenTelefono" [(ngModel)]="depen.telefono"
+                    #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && depenTelefono.invalid }"
+                    required>
+                <div class="invalid-feedback">
+                    <div>The depen's phone is missing</div>
+                </div>
+            </div>
+            <div class="row form-inline justify-content-center align-self-center">
+                <button type="submit" class="btn btn-primary">Edit</button>
+                <div class="divider"></div>
+                <button type="button" class="btn btn-danger" (click)="cancelEdition()">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-3"></div>
+  </div>

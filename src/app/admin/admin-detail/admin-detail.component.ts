@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { ActivatedRoute } from '@angular/router';
 import { AdminDetail } from '../admin-detail';
@@ -21,24 +21,38 @@ export class AdminDetailComponent implements OnInit {
   adminDetail: AdminDetail;
 
 
-
+  expande: boolean = false;
   /**
   * The admin's id retrieved from the address
   */
-  admin_id: number;
+  @Input() adminId: number;
 
-  getEditorialDetail(): void {
-    this.adminService.getAdminDetail(this.admin_id)
+  getAdminDetail(): void {
+    this.adminService.getAdminDetail(this.adminId)
       .subscribe(adminDetail => {
         this.adminDetail = adminDetail
       });
   }
 
+  expandir(): void
+  {
+    console.log(this.expande);
+    this.expande = !this.expande;
+  }
+
+  noExpandir(): void{
+    this.expande = false;
+
+  }
+
+  deleteAdmin(): void{
+    this.adminService.deleteAdmin(this.adminId);
+  }
 
   ngOnInit() {
-    this.admin_id = +this.route.snapshot.paramMap.get('id');
     this.adminDetail = new AdminDetail();
-    this.getEditorialDetail();
+    this.getAdminDetail();
+    this.expande = false;
   }
 
 }

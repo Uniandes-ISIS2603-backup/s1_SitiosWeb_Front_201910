@@ -6,7 +6,7 @@ import { AppConstants } from '../appConstants'
 
 
 const API_URL = AppConstants.baseURL;
-const cambios = 'changes '; //No estoy seguro de la ruta
+const cambios = '/s1_sitios-api/api/changes'; //No estoy seguro de la ruta
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,11 @@ export class ChangesService {
   */
   createChange(cambio): Observable<Change> {
     return this.http.post<Change>(API_URL + cambios, cambio);
+  }
+
+  filterChange(atributo:string, param:string):Observable<Change[]> {
+    console.log(API_URL + cambios + "/filter?atribute="+atributo+"&param="+param);
+    return this.http.get<Change[]>(API_URL + cambios + "/filter?atribute="+atributo+"&param="+param);
   }
 
 }
