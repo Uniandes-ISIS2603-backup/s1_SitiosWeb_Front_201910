@@ -33,6 +33,7 @@ export class DependenciesDetailComponent implements OnInit {
       .subscribe(detail => {
         this.depDetail = detail
       });
+      console.log(this.depDetail);
   }
 
   expandir(): void {

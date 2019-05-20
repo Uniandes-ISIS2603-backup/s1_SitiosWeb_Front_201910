@@ -73,6 +73,10 @@ const routes: Routes = [
         component: DependenciesListComponent
     },
     {
+        path: 'admins/list/:id',
+        component: AdminDetailComponent
+    },
+    {
         path: 'admins/list',
         component: AdminListComponent
     },
