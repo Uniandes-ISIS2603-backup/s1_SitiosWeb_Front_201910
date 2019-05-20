@@ -33,4 +33,9 @@ export class ChangesService {
     return this.http.post<Change>(API_URL + cambios, cambio);
   }
 
+  filterChange(atributo:string, param:string):Observable<Change[]> {
+    console.log(API_URL + cambios + "/filter?atribute="+atributo+"&param="+param);
+    return this.http.get<Change[]>(API_URL + cambios + "/filter?atribute="+atributo+"&param="+param);
+  }
+
 }

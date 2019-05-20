@@ -1,6 +1,10 @@
 <h2 class="text-center">Lista de Cambios</h2>
+
 <div class="row">
   <div class="col-sm">
+    <div id="myBtnContainer">
+      <input placeholder="Id del cambio"  [(ngModel)]="busqueda" type="search"><button (click)="buscar()">Buscar</button>
+    </div>
   </div>
   <div class="col-sm">
     <div class="container-fluid">

@@ -74,12 +74,6 @@ const routes: Routes = [
                 path: 'list',
                 component: ChangesListComponent,
                 outlet: 'changes',
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['ADMIN']
-                    }
-                }
             },
         ]
     },
@@ -90,12 +84,7 @@ const routes: Routes = [
                 path: 'list',
                 component: DependenciesListComponent,
                 outlet: 'dependencies',
-                canActivate: [NgxPermissionsGuard],
-                data: {
-                    permissions: {
-                        only: ['ADMIN']
-                    }
-                }
+                
             },
         ]
     },
