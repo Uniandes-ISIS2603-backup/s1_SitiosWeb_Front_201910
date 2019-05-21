@@ -6,7 +6,7 @@ import { AppConstants } from '../appConstants';
 import { DependenciesDetail } from './dependencies-detail';
 
 const API_URL = AppConstants.baseURL;
-const dependencies = "/s1_sitios-api/api/dependencies";
+const dependencies = "dependencies";
 
 
 @Injectable()

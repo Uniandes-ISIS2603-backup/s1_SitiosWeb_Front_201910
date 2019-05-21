@@ -7,7 +7,7 @@ import { UserDetail } from './user-detail';
 
 
 const API_URL = AppConstants.baseURL;
-const users = '/s1_sitios-api/api/users';
+const users = 'users';
 
 @Injectable({
   providedIn: 'root'

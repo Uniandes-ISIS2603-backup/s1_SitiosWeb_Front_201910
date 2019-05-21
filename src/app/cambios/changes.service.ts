@@ -6,7 +6,7 @@ import { AppConstants } from '../appConstants'
 
 
 const API_URL = AppConstants.baseURL;
-const cambios = '/s1_sitios-api/api/changes'; //No estoy seguro de la ruta
+const cambios = 'changes'; //No estoy seguro de la ruta
 
 @Injectable({
   providedIn: 'root'
