@@ -1,3 +1,5 @@
+<button routerLink="/admins/list">Volver</button>
+<div style="width: 25%; margin: 0 auto;">
 <table class="table">
   <thead>
     <tr>
@@ -19,7 +21,7 @@
       <th scope="col">Telefono: {{adminDetail.telefono}}</th>
     </tr>
     <tr>
-      <th scope="col">Falta dependencia, sitios web asociados y las notificaciones</th>
+      <th scope="col"><a routerLink="dependency/{{adminDetail.dependencia.id}}">Dependencia: {{adminDetail.dependencia.nombreDependencia}}</a></th>
     </tr>
   </thead>
 </table>
@@ -30,4 +32,6 @@
   <div *ngIf="expande">
     <app-admin-edit></app-admin-edit>
   </div>
+</div>
+<router-outlet></router-outlet>
 </div>

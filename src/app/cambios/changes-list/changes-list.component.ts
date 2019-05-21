@@ -14,6 +14,10 @@ export class ChangesListComponent implements OnInit {
   expande: boolean;
   edit;
   busqueda:string;
+  id:string;
+  lugarCambio:string;
+  descripcion: string;
+
   constructor(private changeService: ChangesService) { }
 
   /**
@@ -34,9 +38,9 @@ export class ChangesListComponent implements OnInit {
     this.expande=!this.expande;
   }
 
-  buscar():void {
-    console.log(this.busqueda);
-    this.changeService.filterChange("id", this.busqueda).subscribe( changes => {
+  buscar(filtro: string):void {
+    console.log(filtro);
+    this.changeService.filterChange(filtro, this.busqueda).subscribe( changes => {
       this.changes = changes;
     });
   }
@@ -45,7 +49,9 @@ export class ChangesListComponent implements OnInit {
     this.getChanges();
     this.expande=false;
     this.edit = new Array()
-    
+    this.id = "id";
+    this.lugarCambio = "lugarCambio";
+    this.descripcion = "descripcion";
   }
 
 }

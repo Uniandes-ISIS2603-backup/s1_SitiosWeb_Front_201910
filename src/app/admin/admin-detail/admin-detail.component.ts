@@ -25,7 +25,7 @@ export class AdminDetailComponent implements OnInit {
   /**
   * The admin's id retrieved from the address
   */
-  @Input() adminId: number;
+  adminId: number;
 
   getAdminDetail(): void {
     this.adminService.getAdminDetail(this.adminId)
@@ -50,6 +50,7 @@ export class AdminDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.adminId =+ this.route.snapshot.paramMap.get('id');
     this.adminDetail = new AdminDetail();
     this.getAdminDetail();
     this.expande = false;

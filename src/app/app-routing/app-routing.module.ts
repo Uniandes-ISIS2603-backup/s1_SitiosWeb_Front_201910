@@ -19,6 +19,7 @@ import { AdminDetailComponent } from '../admin/admin-detail/admin-detail.compone
 import { DependenciesDetailComponent } from '../dependencies/dependencies-detail/dependencies-detail.component';
 import { DependenciesListComponent } from '../dependencies/dependencies-list/dependencies-list.component';
 import { ChangesListComponent } from '../cambios/changes-list/changes-list.component';
+import { UsersDetailComponent } from '../users/users-detail/users-detail.component';
 
 const routes: Routes = [
 
@@ -52,81 +53,44 @@ const routes: Routes = [
         component: WebsiteListComponent
     },
     {
-        path: 'users',
-        children: [
-            {
-                path: 'list',
-                component: UsersListComponent,
-                outlet: 'users'
-
-            },
-            {
-                path: ':id',
-                component: UsersEditComponent,
-                outlet: 'edit'
-            }
-        ]
+        path: 'users/list/:id',
+        component: UsersDetailComponent
     },
     {
-        path: 'changes',
-        children: [
-            {
-                path: 'list',
-                component: ChangesListComponent,
-                outlet: 'changes',
-            },
-        ]
+        path: 'users/list',
+        component: UsersListComponent
     },
     {
-        path: 'dependencies',
-        children: [
-            {
-                path: 'list',
-                component: DependenciesListComponent,
-                outlet: 'dependencies',
-                
-            },
-        ]
+        path: 'changes/list',
+        component: ChangesListComponent
     },
     {
-        path: 'admins',
-        children: [
-            {
-                path: 'list',
-                component: AdminListComponent,
-                outlet: 'admins',
-
-            },
-        ]
+        path: 'admins/list/:id/dependency/:idDep',
+        component: DependenciesDetailComponent
     },
     {
-        path: 'websites',
-        children:[
-            {
-                path:':site',
-                component:WebsiteDetailsComponent,
-                outlet: 'siteDetail'
-
-            },
-            {
-                path: 'related',
-                children:[
-                    {
-                        path: ':id',
-                        component: WebsiteRelatedListComponent,
-                        outlet: 'related'
-                    }
-                ],
-            }
-        ]
+        path: 'admins/list/:id',
+        component: AdminDetailComponent
     },
+    {
+        path: 'admins/list',
+        component: AdminListComponent
+    },
+    {
+        path: 'websites/list/:site',
+        component: WebsiteDetailsComponent,
+    },
+    {
+        path: 'websites/related/:id',
+        component: WebsiteRelatedListComponent,
+    }
 
 ];
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})
+        RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
     ],
     exports: [RouterModule],
     declarations: []

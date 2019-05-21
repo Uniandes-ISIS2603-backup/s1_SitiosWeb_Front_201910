@@ -1,29 +1,27 @@
-<p>No sirve por que faltan objetos detail</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id: {{depDetail.id}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Nombre: {{depDetail.nombreDependencia}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Telefono: {{depDetail.telefono}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Correo electrónico: {{depDetail.email}}</th>
-    </tr>
-    <tr>
-      <th scope="col">
-        <button class="btn btn-success" color="accent">Administrador</button>
-      </th>
-    </tr>
-  </thead>
-  <div>
-    <button mat-button (click)="expandir()">Actualizar informacion</button>
-    <button mat-button (click)="deleteUser()">Eliminar</button>
-    <div *ngIf="expande">
-      <app-dependencies-edit></app-dependencies-edit>
+<button [routerLink]="[ '/admins/list', adminId ]">Volver</button>
+<div style="width: 25%; margin: 0 auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id: {{depDetail.id}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Nombre: {{depDetail.nombreDependencia}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Telefono: {{depDetail.telefono}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Correo electrónico: {{depDetail.email}}</th>
+      </tr>
+    </thead>
+    <div>
+      <button mat-button (click)="expandir()">Actualizar informacion</button>
+      <button mat-button (click)="deleteDependency()">Eliminar</button>
+      <div *ngIf="expande">
+        <app-dependencies-edit></app-dependencies-edit>
+      </div>
     </div>
-  </div>
-</table>
+  </table>
+</div>
+<router-outlet></router-outlet>

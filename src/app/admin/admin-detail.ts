@@ -1,3 +1,6 @@
+import { Dependencies } from "../dependencies/dependencies";
+import { Website } from "../web-sites/website";
+
 export class AdminDetail {
 
     id:number;
@@ -14,9 +17,7 @@ export class AdminDetail {
 
     nombreCargo:string;
 
-    //dependencia:Dependencia;
-
-    //sitioWeb:SitioWeb;
+    dependencia:Dependencies;
 
     notificaciones:any[];
 }
