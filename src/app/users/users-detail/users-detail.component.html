@@ -1,31 +1,33 @@
 <button routerLink="/users/list">Volver</button>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id: {{userDetail.id}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Nombre: {{userDetail.nombre}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Username: {{userDetail.userName}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Correo: {{userDetail.email}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Telefono: {{userDetail.telefono}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Numero de tickets: {{userDetail.numeroTickets}}</th>
-    </tr>
-  </thead>
-</table>
-<br>
-<div *ngxPermissionsExcept="['Administrador']">
-  <button mat-button (click)="actualizar()">Actualizar informacion</button>
-  <button mat-button (click)="deleteUser()">Eliminar</button>
-  <div *ngIf="expande">
-    <app-users-edit user_id={{userDetail.id}}></app-users-edit>
+<div style="width: 25%; margin: 0 auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id: {{userDetail.id}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Nombre: {{userDetail.nombre}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Username: {{userDetail.userName}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Correo: {{userDetail.email}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Telefono: {{userDetail.telefono}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Numero de tickets: {{userDetail.numeroTickets}}</th>
+      </tr>
+    </thead>
+  </table>
+  <br>
+  <div *ngxPermissionsExcept="['Administrador']">
+    <button mat-button (click)="actualizar()">Actualizar informacion</button>
+    <button mat-button (click)="deleteUser()">Eliminar</button>
+    <div *ngIf="expande">
+      <app-users-edit user_id={{userDetail.id}}></app-users-edit>
+    </div>
   </div>
 </div>

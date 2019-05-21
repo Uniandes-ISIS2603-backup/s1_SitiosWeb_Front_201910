@@ -6,10 +6,12 @@
       <img src="" class="card-img-top" alt="">
       <div class="card-body">
         <h5 class="card-title">{{u.userName}}</h5>
+        <ul class=list-unstyled mt-3 mb-4>
         <li class="card-text">Nombre: {{u.nombre}}</li>
         <li class="card-text">Correo: {{u.email}} </li>
         <li class="card-text">Telefono: {{u.telefono}} </li>
         <li class="card-text">Numero de Tickets: {{u.numeroTickets}} </li>
+        </ul>>
         <button mat-flat-button color="accent" [routerLink]="[ '/users/list', u.id ]">Ver Perfil</button>
       </div>
     </div>
