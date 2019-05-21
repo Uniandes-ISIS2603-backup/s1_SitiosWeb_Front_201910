@@ -1,55 +1,71 @@
-<h2 class="text-center">Lista de Cambios</h2>
-
-<div class="row">
-  <div class="col-sm">
-    <div id="myBtnContainer">
-      <input placeholder="Id del cambio"  [(ngModel)]="busqueda" type="search"><button (click)="buscar()">Buscar</button>
-    </div>
-  </div>
-  <div class="col-sm">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-success" (click)=createChange()>
-        Crear Cambio
-      </button>
-      <div *ngIf="expande">
-        <app-changes-create></app-changes-create>
+<div class="container-fluid">
+  <h2 class="text-center">Lista de Cambios</h2>
+  <div class="row">
+    <nav vlass="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <input matInput placeholder="Id del cambio" [(ngModel)]="busqueda" type="search"><button
+              (click)="buscar(id)">Buscar</button>
+          </li>
+          <li class="nav-item">
+            <input matInput placeholder="Lugar cambio" [(ngModel)]="busqueda" type="search"><button
+              (click)="buscar(lugarCambio)">Buscar</button>
+          </li>
+          <li class="nav-item">
+            <input matInput placeholder="Descripcion" [(ngModel)]="busqueda" type="search"><button
+              (click)="buscar(descripcion)">Buscar</button>
+          </li>
+        </ul>
       </div>
-      <table class="table table-hover">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">Id Asociado</th>
-            <th scope="col">Lugar Cambio</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Fecha Cambio</th>
-            <th scope="col">Previo</th>
-            <th scope="col">Nuevo</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tr *ngFor="let ch of changes; let i = index">
-          <td scope="row">
-            <input type="text" [(ngModel)]="ch.idAsociado" [disabled]="!this.edit[i]">
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ch.lugarCambio" [disabled]="!this.edit[i]">
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ch.descripcion" [disabled]="!this.edit[i]">
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ch.fechaCambio" [disabled]="!this.edit[i]">
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ch.previo" [disabled]="!this.edit[i]">
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ch.nuevo" [disabled]="!this.edit[i]">
-          </td>
-          <td><button class="btn btn-success" (click)=editar(i)>Editar</button></td>
-        </tr>
-      </table>
+    </nav>
+    <div class="span6" style="float: none; margin: 0 auto;">
+      <div class="col-sm">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-success" (click)=createChange()>
+            Crear Cambio
+          </button>
+          <div *ngIf="expande">
+            <app-changes-create></app-changes-create>
+          </div>
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Id Asociado</th>
+                <th scope="col">Lugar Cambio</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Fecha Cambio</th>
+                <th scope="col">Previo</th>
+                <th scope="col">Nuevo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr *ngFor="let ch of changes; let i = index">
+              <td scope="row">
+                <input type="text" [(ngModel)]="ch.idAsociado" [disabled]="!this.edit[i]">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="ch.lugarCambio" [disabled]="!this.edit[i]">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="ch.descripcion" [disabled]="!this.edit[i]">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="ch.fechaCambio" [disabled]="!this.edit[i]">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="ch.previo" [disabled]="!this.edit[i]">
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="ch.nuevo" [disabled]="!this.edit[i]">
+              </td>
+              <td><button class="btn btn-success" (click)=editar(i)>Editar</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm">
+      </div>
     </div>
-  </div>
-  <div class="col-sm">
   </div>
 </div>
