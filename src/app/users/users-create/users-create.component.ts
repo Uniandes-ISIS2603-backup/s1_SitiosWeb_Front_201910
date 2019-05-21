@@ -51,7 +51,7 @@ export class UsersCreateComponent implements OnInit {
     this.userService.createUser(this.user)
       .subscribe((user) => {
         this.user = user;
-        this.create.emit(); //this.create.emit(); //No se si es con () o sin ()
+        this.create.emit(); 
         this.toastrService.success("The user was created", "User creation");
       }, err => {
         this.toastrService.error(err, "Error");

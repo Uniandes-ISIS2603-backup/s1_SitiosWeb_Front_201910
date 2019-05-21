@@ -28,6 +28,7 @@ export class AdminDetailComponent implements OnInit {
   adminId: number;
 
   getAdminDetail(): void {
+    console.log(this.adminId + " Id del admin")
     this.adminService.getAdminDetail(this.adminId)
       .subscribe(adminDetail => {
         this.adminDetail = adminDetail
@@ -54,6 +55,9 @@ export class AdminDetailComponent implements OnInit {
     this.adminDetail = new AdminDetail();
     this.getAdminDetail();
     this.expande = false;
+    console.log("Entro a admin detail");
+    console.log(this.adminDetail);
+
   }
 
 }

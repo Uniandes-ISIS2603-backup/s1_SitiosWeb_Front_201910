@@ -33,7 +33,6 @@ export class ChangesCreateComponent implements OnInit {
   createChange(): Change {
     this.changeService.createChange(this.change)
       .subscribe((change) => {
-        console.log("Entra")
         change.fechaCambio = new Date();
         this.change = change;
         this.create.emit(); //this.create.emit(); //No se si es con () o sin ()
