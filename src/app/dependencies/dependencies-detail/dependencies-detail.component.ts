@@ -27,6 +27,8 @@ export class DependenciesDetailComponent implements OnInit {
   */
   dep_id: number;
 
+  adminId: number;
+
   getDependencyDetail(): void {
     console.log(this.dep_id);
     this.depService.getDependencyDetail(this.dep_id)
@@ -40,12 +42,15 @@ export class DependenciesDetailComponent implements OnInit {
     this.expande = !this.expande;
   }
 
-  deleteUser(): void {
+  deleteDependency(): void {
     
   }
 
   ngOnInit() {
-    this.dep_id =+ this.route.snapshot.paramMap.get('id');
+    this.dep_id =+ this.route.snapshot.paramMap.get('idDep');
+    this.adminId =+ this.route.snapshot.paramMap.get('id');
+    console.log(this.dep_id);
+    console.log(this.adminId);
     this.depDetail = new DependenciesDetail();
     this.getDependencyDetail();
     this.expande = false;

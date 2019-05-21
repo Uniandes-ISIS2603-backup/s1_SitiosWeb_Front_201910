@@ -1,3 +1,5 @@
+import { Dependencies } from "../dependencies/dependencies";
+
 export class AdminDetail {
 
     id:number;
@@ -14,7 +16,7 @@ export class AdminDetail {
 
     nombreCargo:string;
 
-    //dependencia:Dependencia;
+    dependencia:Dependencies;
 
     //sitioWeb:SitioWeb;
 

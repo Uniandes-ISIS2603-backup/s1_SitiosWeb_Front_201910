@@ -1,3 +1,4 @@
+<button [routerLink]="[ '/admins/list', adminId ]">Volver</button>
 <table class="table">
   <thead>
     <tr>
@@ -12,17 +13,13 @@
     <tr>
       <th scope="col">Correo electrónico: {{depDetail.email}}</th>
     </tr>
-    <tr>
-      <th scope="col">
-        <button class="btn btn-success" color="accent">Administrador: {{depDetail.encargadoDependencia.id}} Aqui poner el admin</button>
-      </th>
-    </tr>
   </thead>
   <div>
     <button mat-button (click)="expandir()">Actualizar informacion</button>
-    <button mat-button (click)="deleteUser()">Eliminar</button>
+    <button mat-button (click)="deleteDependency()">Eliminar</button>
     <div *ngIf="expande">
       <app-dependencies-edit></app-dependencies-edit>
     </div>
   </div>
 </table>
+<router-outlet></router-outlet>

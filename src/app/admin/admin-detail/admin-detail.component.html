@@ -1,3 +1,4 @@
+<button routerLink="/admins/list">Volver</button>
 <table class="table">
   <thead>
     <tr>
@@ -19,8 +20,11 @@
       <th scope="col">Telefono: {{adminDetail.telefono}}</th>
     </tr>
     <tr>
-      <th scope="col">Falta dependencia, sitios web asociados y las notificaciones</th>
+      <th scope="col"> <a routerLink="dependency/{{adminDetail.dependencia.id}}" >Dependencia: {{adminDetail.dependencia.nombreDependencia}}</a></th>
     </tr>
+    <tr>
+        <th scope="col">sitios web y las notificaciones</th>
+      </tr>
   </thead>
 </table>
 <br>
@@ -31,3 +35,4 @@
     <app-admin-edit></app-admin-edit>
   </div>
 </div>
+<router-outlet></router-outlet>
