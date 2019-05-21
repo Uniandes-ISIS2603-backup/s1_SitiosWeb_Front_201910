@@ -4,6 +4,7 @@ import { WebsiteService } from '../website.service';
 import { EstadosWebService} from "../../estados-web/estados-web.service";
 import {MatBottomSheet} from "@angular/material";
 import {WebsiteCreateComponent} from "../website-create/website-create.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,13 +15,9 @@ import {WebsiteCreateComponent} from "../website-create/website-create.component
 export class WebsiteListComponent implements OnInit {
 
 
-  constructor(private websiteService: WebsiteService,private webstateService: EstadosWebService,private bottomSheet: MatBottomSheet ) { }
+  constructor(private websiteService: WebsiteService,public router: Router,private webstateService: EstadosWebService,private bottomSheet: MatBottomSheet ) { }
 
-  @Output() consultaEstados = new EventEmitter<number>()
 
-  @Output() agregarEstado = new EventEmitter<number>()
-
-    @Output() sitioDetail = new EventEmitter<Website>();
 
   websites : Website[] ;
 
@@ -40,19 +37,6 @@ export class WebsiteListComponent implements OnInit {
 
   }
 
-    consultarEstados(site:number){
-        this.consultaEstados.emit(site);
-        
-
-    }
-
-    consultarDetalle(site:Website){
-        this.sitioDetail.emit(site);
-    }
-
-    agregarUnEstado(site:number){
-      this.agregarEstado.emit(site);
-  }
 
   ngOnInit() {
     this.getWebSites();
@@ -62,7 +46,11 @@ export class WebsiteListComponent implements OnInit {
     openCreateSheet() {
         this.bottomSheet.open(WebsiteCreateComponent, {
             panelClass:'bottom-half',
-            
         });
+    }
+
+    showstatehistory(site:number ) {
+
+        this.router.navigate(['/websites/states/'+site]);
     }
 }

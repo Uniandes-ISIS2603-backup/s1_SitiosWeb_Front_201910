@@ -7,6 +7,8 @@ import { Component,Inject, Input, OnInit } from '@angular/core';
 })
 export class EstadosWebCreateComponentComponent implements OnInit {
 
+
+  @Input()
   idsitio:number;
 
   constructor() {}
@@ -15,8 +17,5 @@ export class EstadosWebCreateComponentComponent implements OnInit {
   }
 
 
-  createEstadoWeb( site:number ):void
-  {
-    this.idsitio=site;
-  }
+
 }

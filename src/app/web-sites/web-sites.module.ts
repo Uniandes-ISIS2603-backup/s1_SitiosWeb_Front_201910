@@ -14,7 +14,7 @@ import {
     MatMenuModule,
     MatNativeDateModule,
     MatRippleModule,
-    MatSelectModule,
+    MatSelectModule, MatSidenavModule,
     MatStepperModule,
     MatTableModule,
     MatTreeModule
@@ -50,7 +50,8 @@ import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
         ReactiveFormsModule,
         MatDatepickerModule,
         MatSelectModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatSidenavModule
     ],
     exports: [
         WebsiteListComponent,

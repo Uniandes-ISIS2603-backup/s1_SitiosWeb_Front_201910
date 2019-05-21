@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { EstadoWeb } from '../estadoWeb';
 import { EstadosWebService } from '../estados-web.service';
 
 import {st} from "@angular/core/src/render3";
 import {Observable, Subscription} from "rxjs";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Website} from "../../web-sites/website";
 
 
 @Component({
@@ -13,9 +15,14 @@ import {Observable, Subscription} from "rxjs";
 })
 export class EstadosWebListComponent  implements  OnInit{
 
-  displayedColumns: string[] = ['id', 'estado', 'descripcion', 'fecha',];
+  @Input()
+  site_id:number;
 
-  constructor(private estadosWebService: EstadosWebService) { }
+  loader: any;
+
+  displayedColumns: string[] = ['id', 'estado', 'descripcion', 'fecha'];
+
+  constructor(private estadosWebService: EstadosWebService,public router: Router,private route: ActivatedRoute) { }
 
   estadosWeb : EstadoWeb[] ;
 
@@ -35,6 +42,15 @@ export class EstadosWebListComponent  implements  OnInit{
   }
 
   ngOnInit(): void {
+    console.log("entrando a panel lista de estados");
+    this.loader = this.route.params.subscribe((params: Params) => this.onLoad(params));
     this.mustkill=false;
+
+  }
+  onLoad(params) {
+    console.log("recibiendo parametros");
+    this.site_id = parseInt(params['site']);
+    console.log("recibiendo lista de estados");
+    this.getEstadosWeb(this.site_id);
   }
 }
