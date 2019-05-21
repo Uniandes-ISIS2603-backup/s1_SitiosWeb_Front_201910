@@ -7,7 +7,7 @@ import { AdminDetail } from './admin-detail';
 
 
 const API_URL = AppConstants.baseURL;
-const admins = '/s1_sitios-api/api/admins';
+const admins = 'admins';
 
 @Injectable({
   providedIn: 'root'
