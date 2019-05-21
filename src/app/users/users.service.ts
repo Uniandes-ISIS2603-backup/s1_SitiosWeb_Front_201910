@@ -38,8 +38,8 @@ export class UsersService {
   * @param user The user which will be created
   * @returns The confirmation of the user's creation
   */
-  createUser(user): Observable<User> {
-    return this.http.post<User>(API_URL + users, user);
+  createUser(user): Observable<UserDetail> {
+    return this.http.post<UserDetail>(API_URL + users, user);
   }
 
   /**
