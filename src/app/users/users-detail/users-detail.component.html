@@ -19,20 +19,7 @@
     <tr>
       <th scope="col">Numero de tickets: {{userDetail.numeroTickets}}</th>
     </tr>
-    <tr>
-      <th scope="col">Tickets</th>
-    </tr>
   </thead>
-</table>
-<table class="table">
-  <tbody>
-    <tr *ngFor="let e of userDetail.tickets">
-      <th scope="row">Informacion de tickets: e.id</th>
-      <td>e.descripcion</td>
-      <td>e.fecha</td>
-      <td>e.estado</td>
-    </tr>
-  </tbody>
 </table>
 <br>
 <div *ngxPermissionsExcept="['Administrador']">

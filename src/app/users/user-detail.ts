@@ -15,8 +15,6 @@ export class UserDetail {
 
     telefono:string;
 
-    tickets:any[];
-
 //    constructor(id:number, name:string, username:string, email:string, numeroTickets:number, password:string, telephone:string, tickets:any[]){
 //        this.id = id;
 //        this.username = username;

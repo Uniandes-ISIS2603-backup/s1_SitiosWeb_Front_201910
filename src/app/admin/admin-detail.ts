@@ -1,4 +1,5 @@
 import { Dependencies } from "../dependencies/dependencies";
+import { Website } from "../web-sites/website";
 
 export class AdminDetail {
 
@@ -17,8 +18,6 @@ export class AdminDetail {
     nombreCargo:string;
 
     dependencia:Dependencies;
-
-    //sitioWeb:SitioWeb;
 
     notificaciones:any[];
 }
