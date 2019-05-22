@@ -20,6 +20,8 @@ import { DependenciesDetailComponent } from '../dependencies/dependencies-detail
 import { DependenciesListComponent } from '../dependencies/dependencies-list/dependencies-list.component';
 import { ChangesListComponent } from '../cambios/changes-list/changes-list.component';
 import { UsersDetailComponent } from '../users/users-detail/users-detail.component';
+import {EstadosWebCreateComponentComponent} from "../estados-web/estados-web-create-component/estados-web-create-component.component";
+import {EstadosWebListComponent} from "../estados-web/estados-web-list/estados-web-list.component";
 
 const routes: Routes = [
 
@@ -84,14 +86,29 @@ const routes: Routes = [
         path: 'admins/list',
         component: AdminListComponent
     },
+
     {
-        path: 'websites/list/:site',
-        component: WebsiteDetailsComponent,
-    },
-    {
-        path: 'websites/related/:id',
-        component: WebsiteRelatedListComponent,
+        path: 'websites',
+        children:[
+            {
+                path: 'states/:site',
+                component: EstadosWebListComponent
+            },
+            {
+                path: 'states/create/:site',
+                component: EstadosWebCreateComponentComponent,
+            },
+            {
+                path: 'related/:id',
+                component: WebsiteRelatedListComponent,
+            },
+            {
+                path: 'list/:site',
+                component: WebsiteDetailsComponent,
+            }
+        ]
     }
+
 
 ];
 

@@ -14,7 +14,7 @@ import {
     MatMenuModule,
     MatNativeDateModule,
     MatRippleModule,
-    MatSelectModule,
+    MatSelectModule, MatSidenavModule,
     MatStepperModule,
     MatTableModule,
     MatTreeModule
@@ -25,6 +25,7 @@ import {WebsiteRelatedListComponent} from "./website-related-list/website-relate
 import {RouterModule} from "@angular/router";
 import { WebsiteCreateComponent } from './website-create/website-create.component';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
+import {NgxPermissionsModule} from "ngx-permissions";
 
 @NgModule({
     imports: [
@@ -50,7 +51,9 @@ import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
         ReactiveFormsModule,
         MatDatepickerModule,
         MatSelectModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        MatSidenavModule,
+        NgxPermissionsModule
     ],
     exports: [
         WebsiteListComponent,

@@ -32,6 +32,11 @@ export class WebsiteService {
    return this.http.get<Website>(API_URL + `${websites}/${id}`);
   }
 
+  createSite(site:Website) : Observable<Website> {
+
+    return this.http.post<Website>(API_URL + websites,site);
+  }
+
   getSitesRelated(id: number) : Observable<Website[]> {
     console.log(`service getting sites related`)
       return this.http.get<Website[]>(API_URL + websites+`/${id}/related`);
