@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
 import { AdminDetail } from '../admin-detail';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin-edit',
@@ -17,14 +18,9 @@ export class AdminEditComponent implements OnInit {
    */
   constructor(
     private adminService: AdminService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private route: ActivatedRoute,
   ) { }
-
-  /**
-  * The id of the admin that the user wants to edit
-  * This is passed as a parameter by the parent component
-  */
-  @Input() adminId: number;
 
   /**
   * The output which tells the parent component
@@ -47,7 +43,7 @@ export class AdminEditComponent implements OnInit {
    * Retrieves the information of the admin
    */
   getAdmin(): void {
-    this.adminService.getAdminDetail(this.adminId)
+    this.adminService.getAdminDetail(this.admin.id)
       .subscribe(admin => {
         this.admin = admin;
       });
@@ -76,6 +72,7 @@ export class AdminEditComponent implements OnInit {
   */
   ngOnInit() {
     this.admin = new AdminDetail();
+    this.admin.id =+ this.route.snapshot.paramMap.get('id'); 
     this.getAdmin();
   }
 

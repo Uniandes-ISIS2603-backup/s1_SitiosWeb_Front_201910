@@ -36,6 +36,7 @@ export class DependenciesService {
     * @returns The confirmation of the user's update
     */
     updateDependency(depen): Observable<DependenciesDetail> {
+        console.log(API_URL + dependencies + '/' + depen.id);
         return this.http.put<DependenciesDetail>(API_URL + dependencies + '/' + depen.id, depen);
     }
 }
