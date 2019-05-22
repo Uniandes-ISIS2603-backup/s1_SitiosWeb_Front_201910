@@ -57,7 +57,6 @@ export class AdminEditComponent implements OnInit {
   * Updates the admin's information
   */
   editAdmin(): void {
-    console.log(this.admin);
     this.adminService.updateAdmin(this.admin)
       .subscribe(() => {
         this.update.emit();
@@ -78,8 +77,6 @@ export class AdminEditComponent implements OnInit {
   ngOnInit() {
     this.admin = new AdminDetail();
     this.getAdmin();
-    console.log("Entra a edit");
-    console.log(this.admin);
   }
 
 }

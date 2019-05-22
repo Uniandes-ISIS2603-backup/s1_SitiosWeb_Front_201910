@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../user';
 import { UsersService } from '../users.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserDetail } from '../user-detail';
 
 /**
  * @title Stepper vertical
@@ -30,7 +31,7 @@ export class UsersCreateComponent implements OnInit {
   /**
   * The new user
   */
-  user: User;
+  user: UserDetail;
 
   /**
      * The output which tells the parent component
@@ -47,10 +48,19 @@ export class UsersCreateComponent implements OnInit {
   /**
    * Creates a new user
    */
-  createUser(): User {
+  createUser(): UserDetail {
+    console.log("user create");
+    console.log(this.user);
+    this.user.id = 1;
+    this.user.numeroTickets = 0;
+    this.user.type = "usuarioDetailDTO";
     this.userService.createUser(this.user)
       .subscribe((user) => {
+        console.log(user.name);
+        console.log(user);
         this.user = user;
+        console.log(user);
+        console.log(this.user.name);
         this.create.emit(); 
         this.toastrService.success("The user was created", "User creation");
       }, err => {
@@ -70,7 +80,8 @@ export class UsersCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = new User();
+    console.log("user create")
+    this.user = new UserDetail();
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });

@@ -55,9 +55,6 @@ export class AdminDetailComponent implements OnInit {
     this.adminDetail = new AdminDetail();
     this.getAdminDetail();
     this.expande = false;
-    console.log("Entro a admin detail");
-    console.log(this.adminDetail);
-
   }
 
 }

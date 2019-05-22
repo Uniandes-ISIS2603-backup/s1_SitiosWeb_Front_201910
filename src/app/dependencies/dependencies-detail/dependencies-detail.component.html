@@ -16,8 +16,10 @@
       </tr>
     </thead>
     <div>
-      <button mat-button (click)="expandir()">Actualizar informacion</button>
-      <button mat-button (click)="deleteDependency()">Eliminar</button>
+      <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
+        <button mat-button (click)="expandir()">Actualizar informacion</button>
+        <button mat-button (click)="deleteDependency()">Eliminar</button>
+      </div>
       <div *ngIf="expande">
         <app-dependencies-edit></app-dependencies-edit>
       </div>

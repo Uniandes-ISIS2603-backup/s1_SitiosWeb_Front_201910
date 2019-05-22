@@ -22,9 +22,11 @@
     <div class="span6" style="float: none; margin: 0 auto;">
       <div class="col-sm">
         <div class="container-fluid">
-          <button type="button" class="btn btn-success" (click)=createChange()>
-            Crear Cambio
-          </button>
+          <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
+            <button type="button" class="btn btn-success" (click)=createChange()>
+              Crear Cambio
+            </button>
+          </div>
           <div *ngIf="expande">
             <app-changes-create></app-changes-create>
           </div>

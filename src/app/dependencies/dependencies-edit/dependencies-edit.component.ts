@@ -52,6 +52,7 @@ export class DependenciesEditComponent implements OnInit {
   * Updates the admin's information
   */
   editDependency(): void {
+    console.log("Dependencia update");
     this.depenService.updateDependency(this.depen)
       .subscribe(() => {
         this.update.emit();
