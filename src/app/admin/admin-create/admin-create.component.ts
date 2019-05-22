@@ -1,91 +1,89 @@
-import { Component, OnInit, NgZone, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Admin } from '../admin';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
+import { ValidationService } from "../../validation/validation.service";
+import { AdminDetail } from '../admin-detail';
+import { Dependencies } from '../../dependencies/dependencies';
 
 
 @Component({
-  selector: 'app-admin-create',
-  templateUrl: './admin-create.component.html',
-  styleUrls: ['./admin-create.component.css']
+    selector: 'app-admin-create',
+    templateUrl: './admin-create.component.html',
+    styleUrls: ['./admin-create.component.css']
 })
 export class AdminCreateComponent implements OnInit {
+    hide = true;
 
-  constructor(private _formBuilder: FormBuilder, private ngZone: NgZone, private adminService: AdminService,
-    private toastrService: ToastrService) { }
-
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  fourthFormGroup: FormGroup;
-  fifthFormGroup: FormGroup;
-
-  admin:Admin;
-
-  /**
-     * The output which tells the parent component
-     * that the user no longer wants to create an user
-     */
-    @Output() cancel = new EventEmitter();
+    constructor(
+        private adminService: AdminService,
+        private toastrService: ToastrService,
+        private router: Router,
+        private _formBuilder: FormBuilder
+    ) { }
 
     /**
-    * The output which tells the parent component
-    * that the user created a new user
+    * The new book
     */
-    @Output() create = new EventEmitter();
-  
+    admin: AdminDetail;
+
+    nombreCargos = ["Responsable", "Dueño", "Encargado"];
+    createUserForm: FormGroup;
+
     /**
-     * Creates a new user
-     */
-    createAdmin(): Admin {
-      if( this.admin.nombreCargo === "Responsable" ){
-        this.admin.nivel = 2;
-      }
-      else if( this.admin.nombreCargo === "Dueño" ){
-        this.admin.nivel = 3;
-      }
-      else if( this.admin.nombreCargo === "Supervisor" ){
-        this.admin.nivel = 1;
-      }
-      this.adminService.createUser(this.admin)
-        .subscribe((admin) => {
-          this.admin = admin;
-          this.create.emit(); //this.create.emit(); //No se si es con () o sin ()
-          this.toastrService.success("The user was created", "User creation");
-        }, err => {
-          this.toastrService.error(err, "Error");
-        });
-      return this.admin;
-  
-  
-    }
-  
-  
-    /**
-       * Informs the parent component that the user no longer wants to create an editorial
-       */
+    * Cancels the creation of the new book
+    * Redirects to the books' list page
+    */
     cancelCreation(): void {
-      this.cancel.emit(); //this.cancel.emit(); //No se si es con () o sin ()
+        this.toastrService.warning('The admin wasn\'t created', 'Admin creation');
     }
 
-  ngOnInit() {
-    this.admin = new Admin();
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    });
-    this.fourthFormGroup = this._formBuilder.group({
-      fourthCtrl: ['', Validators.required]
-    });
-    this.fifthFormGroup = this._formBuilder.group({
-      fifthCtrl: ['', Validators.required]
-    });
-  }
+    /**
+    * Creates a new book
+    */
+    createAdmin(): AdminDetail {
+        if (this.admin.nombreCargo == "1") {
+            this.admin.nivel = 1;
+        }
+        else if (this.admin.nombreCargo == "2") {
+            this.admin.nivel = 3;
+        }
+        else if (this.admin.nombreCargo == "3") {
+            this.admin.nivel = 2;
+        }
+        this.admin.dependencia = new Dependencies();
+        this.admin.notificaciones = [];
+        this.admin.sitiosWeb = [];
+        this.admin.cambios = [];
+        this.admin.id = 101;
+        console.log(this.admin);
+        this.adminService.createAdmin(this.admin)
+            .subscribe(admin => {
+                console.log(this.admin)
+                this.admin = admin;
+            }, err => {
+                this.toastrService.error(err, 'Error');
+            });
+        return this.admin;
+    }
+
+    /**
+    * This function will initialize the component
+    */
+    ngOnInit() {
+        this.createUserForm = this._formBuilder.group({
+            nombre: ['', Validators.required],
+            email: ['', [Validators.required, ValidationService.emailValidator]],
+            telefono: ['', [Validators.required, Validators.minLength(20)]],
+            nombreCargo: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(8)]]
+        });
+        this.admin = new AdminDetail();
+    }
+    logValue() {
+        console.log("Crear administrador")
+        console.log(this.admin)
+        console.log(this.createUserForm.getRawValue());
+    }
 }

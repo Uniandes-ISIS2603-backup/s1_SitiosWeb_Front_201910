@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+      <br>
+      <h2 class="text-center">Editar administrador</h2>
+      <br>
+      <form name="user" (ngSubmit)="f.form.valid && editAdmin()" #f="ngForm" novalidate>
+          <div class="form-group">
+              <label for="adminName"><b>Nombre</b></label>
+              <input type="text" name="adminName" class="form-control" id="adminName" [(ngModel)]="admin.nombre"
+                  #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminName.invalid }"
+                  required>
+              <div class="invalid-feedback">
+                  <div>The admin's name is missing</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="adminEmail"><b>Correo electronico</b></label>
+              <input type="text" name="adminEmail" class="form-control" id="adminEmail" [(ngModel)]="admin.email"
+                  #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminEmail.invalid }"
+                  required>
+              <div class="invalid-feedback">
+                  <div>The admin's email is missing</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="adminPassword"><b>Contraseña</b></label>
+              <input type="text" name="adminPassword" class="form-control" id="adminPassword" [(ngModel)]="admin.password"
+                  #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminPassword.invalid }"
+                  required>
+              <div class="invalid-feedback">
+                  <div>The admin's password is missing</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="adminTelefono"><b>Telefono</b></label>
+              <input type="text" name="adminTelefono" class="form-control" id="adminTelefono" [(ngModel)]="admin.telefono"
+                  #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminTelefono.invalid }"
+                  required>
+              <div class="invalid-feedback">
+                  <div>The admin's phone is missing</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="adminNombreCargo"><b>Nombre Cargo</b></label>
+            <input type="text" name="adminTelefono" class="form-control" id="adminNombreCargo" [(ngModel)]="admin.nombreCargo"
+                #editorialName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && adminNombreCargo.invalid }"
+                required>
+            <div class="invalid-feedback">
+                <div>The admin's nombre cargo is missing</div>
+            </div>
+        </div>
+          <div class="row form-inline justify-content-center align-self-center">
+              <button type="submit" class="btn btn-primary" (click)="editAdmin()">Edit</button>
+              <div class="divider"></div>
+              <button type="button" class="btn btn-danger" (click)="cancelEdition()">Cancel</button>
+          </div>
+      </form>
+  </div>
+  <div class="col-3"></div>
+</div>

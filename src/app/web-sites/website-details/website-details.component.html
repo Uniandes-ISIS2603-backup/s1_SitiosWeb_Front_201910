@@ -6,21 +6,80 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="2">
         <mat-list>
-            <mat-list-item> <b>Audiencia Esperada:</b>  {{site?.audienciaEsperada}}</mat-list-item>
+            <mat-list-item> <b>Audiencia Esperada:</b>
+
+                    <div *ngIf="editMode;else showOnlyModeAudence">
+                        <input matInput placeholder="Audiencia Esperada" [(ngModel)]="siteClone.audienciaEsperada" value="{{site?.audienciaEsperada}}">
+                    </div>
+                    <ng-template #showOnlyModeAudence>
+                        {{site?.audienciaEsperada}}
+                    </ng-template>
+
+                 </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item> <b>Descripcion:</b>  {{site?.descripcion}}</mat-list-item>
+            <mat-list-item> <b>Descripcion:</b>
+                <div *ngIf="editMode;else showOnlyModeDesc">
+                    <input matInput placeholder="Descripcion" [(ngModel)]="siteClone.descripcion" value="{{site?.descripcion}}">
+                </div>
+                <ng-template #showOnlyModeDesc>
+                    {{site?.descripcion}}
+                </ng-template>
+
+                </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item> <b>Fecha de lanzamiento: </b> {{site?.fechaLanzamiento}}</mat-list-item>
+            <mat-list-item> <b>Fecha de lanzamiento: </b>
+                <div *ngIf="editMode;else showOnlyModeDate">
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="siteClone.fechaLanzamiento" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </div>
+                <ng-template #showOnlyModeDate>
+                    {{site?.fechaLanzamiento}}
+                </ng-template>
+
+                </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item> <b>Proposito: </b> {{site?.proposito}}</mat-list-item>
+            <mat-list-item> <b>Proposito: </b>
+                <div *ngIf="editMode;else showOnlyModePurpose">
+                    <input matInput placeholder="Proposito" [(ngModel)]="siteClone.proposito" value="{{site?.proposito}}">
+                </div>
+                <ng-template #showOnlyModePurpose>
+                    {{site?.proposito}}
+                </ng-template>
+
+                </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item> <b>Identificador: </b> {{site?.id}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+
+                <div *ngxPermissionsOnly="['ADMIN']"><button mat-raised-button color="accent"  (click)="toogleEdit()" >Edit Mode Toogle </button></div>
+                <div *ngIf="editMode">
+                    <br>
+                    <button mat-raised-button color="accent"  (click)="saveChanges()" >Save Changes</button>
+                </div>
+            </mat-list-item>
+
         </mat-list>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-list>
-            <mat-list-item> <b> Nombre:</b>  {{site?.nombre}}</mat-list-item>
-            <mat-list-item> <b>URL:</b> {{site?.url}}</mat-list-item>
+            <mat-list-item> <b> Nombre:</b>
+                <div *ngIf="editMode;else showOnlyModeName">
+                    <input matInput placeholder="Nombre"  [(ngModel)]="siteClone.nombre" value="{{site?.nombre}} ">
+                </div>
+                <ng-template #showOnlyModeName>
+                    {{site?.nombre}}
+                </ng-template>
+            </mat-list-item>
+            <mat-list-item> <b>URL:</b>
+                <div *ngIf="editMode;else showOnlyModeUrl">
+                    <input matInput placeholder="Url" [(ngModel)]="siteClone.url" value="{{site?.url}}">
+                </div>
+                <ng-template #showOnlyModeUrl>
+                    {{site?.url}}
+                </ng-template>
+                </mat-list-item>
         </mat-list>
     </mat-grid-tile>
 </mat-grid-list>
@@ -49,6 +108,10 @@
                 Sitios con los cuales se relaciona el sitio Web
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <router-outlet name="related"></router-outlet>
+        <div *ngIf="site">
+        <app-website-related-list siteID="{{site?.id}}"></app-website-related-list>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>
+
+<router-outlet name="related"></router-outlet>

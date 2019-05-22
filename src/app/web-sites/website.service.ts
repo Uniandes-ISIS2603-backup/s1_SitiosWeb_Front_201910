@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Website } from './website';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../appConstants'
-import {EstadoWeb} from "../estados-web/estadoWeb";
 
 const API_URL = AppConstants.baseURL;
 const websites = 'websites';
@@ -33,8 +32,18 @@ export class WebsiteService {
    return this.http.get<Website>(API_URL + `${websites}/${id}`);
   }
 
+  createSite(site:Website) : Observable<Website> {
+
+    return this.http.post<Website>(API_URL + websites,site);
+  }
+
   getSitesRelated(id: number) : Observable<Website[]> {
     console.log(`service getting sites related`)
       return this.http.get<Website[]>(API_URL + websites+`/${id}/related`);
+  }
+
+  updateSite(site:Website):Observable<Website>
+  {
+    return this.http.put<Website>(API_URL+websites,site);
   }
 }

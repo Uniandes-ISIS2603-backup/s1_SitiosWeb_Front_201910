@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from '../admin';
 import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-list',
@@ -10,21 +11,39 @@ import { AdminService } from '../admin.service';
 export class AdminListComponent implements OnInit {
 
   admins: Admin[];
-
-  constructor(private adminService: AdminService) { }
+  selectedIndex: number;
+  expande: boolean;
+  constructor(private adminService: AdminService, public router: Router) { }
 
 
   /**
     * Asks the service to update the list of admins
     */
   getAdmins(): void {
-    this.adminService.getUsers()
+    this.adminService.getAdmins()
       .subscribe(admins => {
         this.admins = admins;
       });
   }
 
+  expandir(id): void{
+    console.log("asdfsadf"+id);
+    this.selectedIndex = id;
+    this.expande = !this.expande;
+  }
+
+  noExpandir(): void{
+    this.expande = false;
+  }
+
+  getAdminDetail(id:number): void {
+    this.expande = !this.expande;
+    this.selectedIndex = id;
+    //this.router.navigate(['/admins/'+id]);
+  }
+
   ngOnInit() {
+    this.expande = false;
     this.getAdmins();
   }
 }

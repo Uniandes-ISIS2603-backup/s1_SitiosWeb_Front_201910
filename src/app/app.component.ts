@@ -2,7 +2,7 @@ import {Component, OnInit, ElementRef, ViewChild, ViewEncapsulation} from '@angu
 import {AuthService} from './auth/auth.service';
 import {EstadosWebService} from './estados-web/estados-web.service'
 import {viewAttached} from "@angular/core/src/render3/instructions";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 declare let $: any;
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     selectedIndex;
 
     @ViewChild('LoginModal') loginModal : ElementRef;
-    @ViewChild('RegisterModal') registerModal : ElementRef;
+    @ViewChild('RegisterAdminModal') registerAdminModal : ElementRef;
     @ViewChild('createEstadoWebModal') createEstadoWebModal : ElementRef;
     @ViewChild('loginComponent') logincomponent :ElementRef;
     @ViewChild('authSignUpComponent') registercomponent :ElementRef;
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
        /**
      * @ignore
      */
-    constructor(private authService: AuthService,private statesService:EstadosWebService, public router: Router) {
+    constructor(private authService: AuthService,private statesService:EstadosWebService, public router: Router, private route: ActivatedRoute) {
            this.navLinks = [
                {
                    label: 'Usuarios',
@@ -68,10 +68,25 @@ export class AppComponent implements OnInit {
                    link: './SiteList',
                    index: 1
                }, {
-                   label: 'Detalle',
-                   link: './third',
+                   label: 'Administradores',
+                   link: './admins',
                    index: 2
                },
+               {
+                label: 'Dependencias',
+                link: './dependencies',
+                index: 3
+            },
+            {
+                label: 'Cambios',
+                link: './changes',
+                index: 4
+            },
+            {
+                label: 'Detalle',
+                link: './third',
+                index: 5
+            },
            ];
        }
 
@@ -82,7 +97,26 @@ export class AppComponent implements OnInit {
     selectTab(index: number): void {
         this.selectedIndex = index;
     }
+    showChangeTab()
+    {
+        this.selectedIndex=4;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/changes',  { outlets: { changes: ['list'] } }]);
+    }
+    showDependenciaTab()
+    {
+        this.selectedIndex=3;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/dependencies',  { outlets: { dependencies: ['list'] } }]);
 
+    }
+    showAdminTab()
+    {
+        this.selectedIndex=2;
+        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(['/admins', { outlets: { admins: ['list'] } }]);
+
+    }
     showUserTab()
     {
         this.selectedIndex=0;
@@ -92,20 +126,25 @@ export class AppComponent implements OnInit {
     showMainTab()
     {
         this.selectedIndex=1;
-        this.router.navigate(["../", {outlets: {siteDetail: null}}]);
+        this.router.navigate(["/home", {outlets: {siteDetail: null}}]);
         this.router.navigate(['/home']);
 
     }
     showDetailTab(site:number)
     {
-        this.selectedIndex=2;
+        this.selectedIndex=5;
         this.router.navigate(['/websites',{ outlets: { siteDetail: [site] } }]);
     }
 
-    showRegisterPane():void
+    showRegisterAdminPane():void
     {
-        $(this.registerModal.nativeElement).modal('show');
+        $(this.registerAdminModal.nativeElement).modal('show');
          this.router.navigate([{outlets: {register: 'register'}}]);
+    }
+    showRegisterUserPane():void
+    {
+        $(this.registerAdminModal.nativeElement).modal('show');
+        this.router.navigate([{outlets: {register: 'registerUser'}}]);
     }
     showLoginPane():void
     {
@@ -120,7 +159,9 @@ export class AppComponent implements OnInit {
         this.name = localStorage.getItem('name');
 
     }
-
+    cerrarSesion():void{
+        this.authService.logout();
+    }
     establecerBarra():void
     {
         this.statesService.getStatesValues().subscribe(value => {

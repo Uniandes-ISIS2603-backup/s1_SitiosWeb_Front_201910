@@ -1,3 +1,17 @@
-<p>
-  estados-web-create-component works!
-</p>
+<form>
+  <h1>Agregar un nuevo estado Web</h1>
+  <div class="form-group">
+    <mat-form-field>
+    <mat-select  placeholder="Estado" [(value)]="estado" required>
+      <mat-option value="ACTIVO">ACTIVO</mat-option>
+      <mat-option value="INACTIVO">INACTIVO</mat-option>
+      <mat-option value="ENFALLA">ENFALLA</mat-option>
+      <mat-option value="OTROS">OTROS</mat-option>
+    </mat-select>
+    </mat-form-field>
+    <mat-form-field >
+      <textarea matInput name="descriptiontextarea" placeholder="Descripcion" [(ngModel)]="descripcion"  required></textarea>
+    </mat-form-field>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="crearsitioAsociado()">Crear Estado!</button>
+</form>

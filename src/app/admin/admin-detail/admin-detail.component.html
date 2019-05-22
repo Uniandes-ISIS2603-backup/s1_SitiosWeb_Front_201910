@@ -1,34 +1,43 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id: {{adminDetail.id}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Nombre: {{adminDetail.nombre}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Correo: {{adminDetail.email}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Nivel: {{adminDetail.nivel}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Nombre cargo: {{adminDetail.nombreCargo}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Telefono: {{adminDetail.telefono}}</th>
-    </tr>
-    <tr>
-      <th scope="col">Falta dependencia, sitios web asociados y las notificaciones</th>
-    </tr>
-  </thead>
-</table>
-<table class="table">
-  <tbody>
-    <tr *ngFor="let e of userDetail.dependencia">
-      <th scope="row">1</th>
-      <td>2</td>
-      <td>...</td>
-    </tr>
-  </tbody>
-</table>
+<button routerLink="/admins/list">Volver</button>
+<div style="width: 25%; margin: 0 auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id: {{adminDetail.id}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Nombre: {{adminDetail.nombre}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Correo: {{adminDetail.email}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Nivel: {{adminDetail.nivel}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Nombre cargo: {{adminDetail.nombreCargo}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Telefono: {{adminDetail.telefono}}</th>
+      </tr>
+      <tr>
+      <ng-container *ngIf="adminDetail.dependencia != null; else elseTemplate">
+          <th scope="col"><a routerLink="dependency/{{adminDetail.dependencia.id}}">Dependencia:
+            {{adminDetail.dependencia.nombreDependencia}}</a></th>
+      </ng-container>
+      <ng-template #elseTemplate>
+          <th scope="col">No hay dependencia</th>
+      </ng-template>
+      </tr>
+    </thead>
+  </table>
+  <br>
+  <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
+    <button mat-button (click)="expandir()">Actualizar informacion</button>
+    <button mat-button (click)="deleteAdmin()">Eliminar</button>
+    <div *ngIf="expande">
+      <app-admin-edit></app-admin-edit>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
