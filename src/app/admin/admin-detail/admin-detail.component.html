@@ -32,7 +32,7 @@
     </thead>
   </table>
   <br>
-  <div *ngxPermissionsExcept="['Administrador']">
+  <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
     <button mat-button (click)="expandir()">Actualizar informacion</button>
     <button mat-button (click)="deleteUser()">Eliminar</button>
     <div *ngIf="expande">
