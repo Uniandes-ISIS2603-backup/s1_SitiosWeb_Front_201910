@@ -52,7 +52,8 @@
             <mat-list-item> <b>Identificador: </b> {{site?.id}}</mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
-                <button mat-raised-button color="accent"  (click)="toogleEdit()" >Edit Mode Toogle </button>
+
+                <div *ngxPermissionsOnly="['ADMIN']"><button mat-raised-button color="accent"  (click)="toogleEdit()" >Edit Mode Toogle </button></div>
                 <div *ngIf="editMode">
                     <br>
                     <button mat-raised-button color="accent"  (click)="saveChanges()" >Save Changes</button>

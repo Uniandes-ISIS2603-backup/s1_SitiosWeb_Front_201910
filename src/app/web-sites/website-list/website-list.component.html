@@ -9,19 +9,19 @@
     <img src="{{site.imagen}}" height="180" width="286" id="thumbnail"/>
     <div class="card-body" >
       <h5 class="card-title">{{site.nombre}}</h5>
-      <mat-menu #appMenu="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="estadosWeb">Estados Web</button>
+      <mat-menu #appMenu="matMenu" >
+        <button *ngxPermissionsOnly="['ADMIN']" mat-menu-item [matMenuTriggerFor]="estadosWeb">Estados Web</button>
         <button mat-button [routerLink]="[ '/websites/list/',site.id ]" routerLinkActive="active" >Informacion</button>
       </mat-menu>
 
       <mat-menu #estadosWeb>
 
         <button mat-button (click)="sidenav.toggle();showstatehistory(site.id);"> Historial estados</button>
-        <button mat-button [routerLink]="[ '/websites/states/create/',site.id]" routerLinkActive="active" >Agregar Estado</button>
+        <button  mat-button [routerLink]="[ '/websites/states/create/',site.id]" routerLinkActive="active" >Agregar Estado</button>
 
       </mat-menu>
 
-      <div style="display: flex;justify-content: space-between">
+      <div style="display: flex;justify-content: space-between" >
         <mat-chip-list><mat-chip [ngClass]="{'ACTIVO' : site.state?.estado=='ACTIVO' ,'INACTIVO' : site.state?.estado=='INACTIVO','ENFALLA' : site.state?.estado=='ENFALLA' }">{{site.state?.estado}}</mat-chip></mat-chip-list>
         <button mat-icon-button [matMenuTriggerFor]="appMenu">
           <mat-icon>more_vert</mat-icon>
@@ -30,11 +30,14 @@
     </div>
   </div>
   </div>
-  <div class="add-container mat-elevation-z4"
-       matRipple
-       (click)="openCreateSheet()" >
-    Create new Site
-  </div>
+      <div *ngxPermissionsOnly="['ADMIN']">
+        <div class="add-container mat-elevation-z4"
+             matRipple
+             (click)="openCreateSheet()" >
+          Create new Site
+        </div>
+      </div>
+
 </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
