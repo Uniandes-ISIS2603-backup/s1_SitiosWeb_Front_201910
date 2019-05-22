@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UsersService } from '../users.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserDetail } from '../user-detail';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users-edit',
@@ -17,15 +18,17 @@ export class UsersEditComponent implements OnInit {
     */
   constructor(
     private userService: UsersService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    public router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   /**
   * The id of the user that the user wants to edit
   * This is passed as a parameter by the parent component
   */
-  @Input() user_id: number;
-
+ @Input() user_id: number;
+ 
   /**
   * The output which tells the parent component
   * that the user no longer wants to create an user
@@ -47,7 +50,7 @@ export class UsersEditComponent implements OnInit {
   * Retrieves the information of the user
   */
   getUser(): void {
-    this.userService.getUserDetail(this.user_id)
+    this.userService.getUserDetail(this.user.id)
       .subscribe(user => {
         this.user = user;
       });
@@ -76,6 +79,7 @@ export class UsersEditComponent implements OnInit {
   */
   ngOnInit() {
     this.user = new UserDetail();
+    this.user.id =+ this.route.snapshot.paramMap.get('id');
     this.getUser();
   }
 

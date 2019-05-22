@@ -27,6 +27,8 @@ export class DependenciesDetailComponent implements OnInit {
   */
   dep_id: number;
 
+  link:string;
+
   adminId: number;
 
   getDependencyDetail(): void {
@@ -49,8 +51,15 @@ export class DependenciesDetailComponent implements OnInit {
   ngOnInit() {
     this.dep_id =+ this.route.snapshot.paramMap.get('idDep');
     this.adminId =+ this.route.snapshot.paramMap.get('id');
+
+    if( this.adminId == 0 ){
+      this.link = '/dependency/list'
+    } else{
+      this.link = 'admin/list/'+this.adminId;
+    }
     console.log(this.dep_id);
     console.log(this.adminId);
+    console.log(this.link)
     this.depDetail = new DependenciesDetail();
     this.getDependencyDetail();
     this.expande = false;

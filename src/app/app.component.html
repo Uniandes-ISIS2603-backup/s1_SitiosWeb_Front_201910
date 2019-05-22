@@ -1,103 +1,109 @@
-<mat-toolbar class="mat-elevation-z6" color="primary" role="heading" >
-        <mat-toolbar-row>
-        <img src="../assets/logo.png" height="64" width="64"/>
+<mat-toolbar class="mat-elevation-z6" color="primary" role="heading">
+    <mat-toolbar-row>
+        <img src="../assets/logo.png" height="64" width="64" />
         CMSites
-            <button mat-button [routerLink]="[ '/users/list' ]" routerLinkActive="active">Usuarios</button>
-            <button mat-button [routerLink]="[ '/SiteList' ]" routerLinkActive="active">Sitios</button>
-            <button mat-button [routerLink]="[ '/admins/list' ]" routerLinkActive="active" >Admins</button>
-            <button mat-button [routerLink]="[ '/dependencies/list' ]" routerLinkActive="active" >Dependencia</button>
-            <button mat-button [routerLink]="[ '/changes/list' ]" routerLinkActive="active" >Cambios</button>
+        <button mat-button [routerLink]="[ '/users/list' ]" routerLinkActive="active">Usuarios</button>
+        <button mat-button [routerLink]="[ '/SiteList' ]" routerLinkActive="active">Sitios</button>
+        <button mat-button [routerLink]="[ '/admins/list' ]" routerLinkActive="active">Admins</button>
+        <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
+            <button mat-button [routerLink]="[ '/dependencies/list' ]" routerLinkActive="active">Dependencia</button>
+        </div>
+        <button mat-button [routerLink]="[ '/changes/list' ]" routerLinkActive="active">Cambios</button>
         <span class="toolbar-spacer"></span>
         <div *ngxPermissionsOnly="['GUEST']">
-    
+
             <mat-menu #appMenu="matMenu">
-                <button mat-menu-item (click)="showLoginPane()" >Login</button>
+                <button mat-menu-item (click)="showLoginPane()">Login</button>
                 <button mat-menu-item [matMenuTriggerFor]="registerMenu">Registarse</button>
             </mat-menu>
-    
+
             <mat-menu #registerMenu>
                 <button mat-menu-item (click)="showRegisterAdminPane()">Administrador</button>
                 <button mat-menu-item (click)="showRegisterUserPane()">Usuario</button>
             </mat-menu>
-    
-    
-            <button mat-flat-button color="primary"  [matMenuTriggerFor]="appMenu">Ingresar
+
+
+            <button mat-flat-button color="primary" [matMenuTriggerFor]="appMenu">Ingresar
                 <mat-icon>
                     face
                 </mat-icon>
             </button>
         </div>
-            <div *ngxPermissionsExcept="['GUEST']">
-                <mat-chip id="welcomeMesage">Welcome:  {{name}}</mat-chip>
-            </div>
-        </mat-toolbar-row>
-    </mat-toolbar>
-    
-    
-    
-    
-    <mat-tab-group id #mtg class="header-less-tabs"[selectedIndex]="selectedIndex" >
-        <mat-tab label="Usuarios">
-            <router-outlet></router-outlet>
-        </mat-tab>
-    </mat-tab-group>
-    
-    
-    
-    
-    <div id = "footer">
+        <div *ngxPermissionsExcept="['GUEST']">
+            <mat-chip id="welcomeMesage">Welcome: {{name}}</mat-chip>
+            <button mat-flat-button color="primary" (click)="cerrarSesion()">Logout</button>
+        </div>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<mat-tab-group id #mtg class="header-less-tabs" [selectedIndex]="selectedIndex">
+    <mat-tab label="Usuarios">
+        <router-outlet></router-outlet>
+    </mat-tab>
+</mat-tab-group>
+
+
+
+
+<div id="footer">
     <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" id="activo">Activo</div>
-        <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" id="incativo">Inactivo</div>
-        <div class="progress-bar bg-danger" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" id="falla" >Falla</div>
-        <div class="progress-bar bg-info" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" id="otros">Otros</div>
-       </div>
+        <div class="progress-bar bg-success" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0"
+            aria-valuemax="100" id="activo">Activo</div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0"
+            aria-valuemax="100" id="incativo">Inactivo</div>
+        <div class="progress-bar bg-danger" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0"
+            aria-valuemax="100" id="falla">Falla</div>
+        <div class="progress-bar bg-info" role="progressbar" style="width: 1%" aria-valuenow="15" aria-valuemin="0"
+            aria-valuemax="100" id="otros">Otros</div>
     </div>
-    
-    
-    
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-hidden="true" #LoginModal>
-        <div class="modal-dialog modal-lg" role="document" >
-            <div class="modal-content">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body">
-                    <app-auth-login id="loginComponent" #loginComponent></app-auth-login>
-                </div>
-                <div class="modal-footer">
-                </div>
+</div>
+
+
+
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-hidden="true" #LoginModal>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <app-auth-login id="loginComponent" #loginComponent></app-auth-login>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
-    
-    <div class="modal fade" id="RegisterAdminModal" tabindex="-1" role="dialog" aria-hidden="true" #RegisterAdminModal>
-        <div class="modal-dialog modal-lg" role="document" >
-            <div class="modal-content">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body">
-                    <router-outlet name="register"></router-outlet>
-                </div>
-                <div class="modal-footer">
-                </div>
+</div>
+
+<div class="modal fade" id="RegisterAdminModal" tabindex="-1" role="dialog" aria-hidden="true" #RegisterAdminModal>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <router-outlet name="register"></router-outlet>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
-    
-    
-    
-    <div class="modal fade" id="createEstadoWebModal" tabindex="-1" role="dialog" aria-hidden="true" #createEstadoWebModal>
-            <div class="modal-dialog modal-lg" role="document" >
-                <div class="modal-content">
-                    <div class="modal-header">
-                    </div>
-                    <div class="modal-body">
-                    <app-estados-web-create-component></app-estados-web-create-component>
-                    </div>
-                    <div class="modal-footer">
-                    </div>
-                </div>
+</div>
+
+
+
+<div class="modal fade" id="createEstadoWebModal" tabindex="-1" role="dialog" aria-hidden="true" #createEstadoWebModal>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <app-estados-web-create-component></app-estados-web-create-component>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
-        
-    
+    </div>
+</div>

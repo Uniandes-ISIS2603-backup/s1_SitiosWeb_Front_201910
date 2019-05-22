@@ -37,8 +37,8 @@ export class AdminService {
   * @param admin The user which will be created
   * @returns The confirmation of the admin's creation
   */
-  createAdmin(admin): Observable<Admin> {
-    return this.http.post<Admin>(API_URL + admins, admin);
+  createAdmin(admin): Observable<AdminDetail> {
+    return this.http.post<AdminDetail>(API_URL + admins, admin);
   }
 
   /**

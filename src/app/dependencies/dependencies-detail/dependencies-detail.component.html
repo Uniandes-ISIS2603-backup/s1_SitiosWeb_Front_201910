@@ -1,4 +1,9 @@
-<button [routerLink]="[ '/admins/list', adminId ]">Volver</button>
+<ng-container *ngIf="adminId != 0; else elseTemplate">
+    <button [routerLink]="[ '/admins/list', adminId ]">Volver</button>
+</ng-container>
+<ng-template #elseTemplate>
+    <button routerLink="/dependencies/list">Volver</button>
+</ng-template>
 <div style="width: 25%; margin: 0 auto;">
   <table class="table">
     <thead>
@@ -16,8 +21,10 @@
       </tr>
     </thead>
     <div>
-      <button mat-button (click)="expandir()">Actualizar informacion</button>
-      <button mat-button (click)="deleteDependency()">Eliminar</button>
+      <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
+        <button mat-button (click)="expandir()">Actualizar informacion</button>
+        <button mat-button (click)="deleteDependency()">Eliminar</button>
+      </div>
       <div *ngIf="expande">
         <app-dependencies-edit></app-dependencies-edit>
       </div>

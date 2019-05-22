@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DependenciesListComponent } from './dependencies-list/dependencies-list.component';
 import { DependenciesEditComponent } from './dependencies-edit/dependencies-edit.component';
 import { RouterModule } from '@angular/router';
+import { NgxPermissionsModule } from 'ngx-permissions';
 @NgModule({
     imports: [
         CommonModule,
@@ -33,7 +34,7 @@ import { RouterModule } from '@angular/router';
         MatSelectModule,
         MatMenuModule,
         RouterModule,
-
+        NgxPermissionsModule,
     ],
     declarations: [DependenciesDetailComponent, DependenciesCreateComponent, DependenciesListComponent, DependenciesEditComponent],
     entryComponents: [DependenciesCreateComponent],

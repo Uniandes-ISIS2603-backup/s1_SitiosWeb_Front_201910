@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
 import { UserDetail } from '../user-detail';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
-import { expand } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users-detail',
@@ -49,7 +47,6 @@ export class UsersDetailComponent implements OnInit {
   * We need to initialize the user so it is never considered as undefined
   */
   ngOnInit() {
-    //this.id = +this.route.snapshot.paramMap.get('id');
     this.id =+ this.route.snapshot.paramMap.get('id');
     this.userDetail = new UserDetail();
     this.getUserDetail();

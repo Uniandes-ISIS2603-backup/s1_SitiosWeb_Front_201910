@@ -1,5 +1,6 @@
 import { Dependencies } from "../dependencies/dependencies";
 import { Website } from "../web-sites/website";
+import { Change } from "../cambios/change";
 
 export class AdminDetail {
 
@@ -26,5 +27,9 @@ export class AdminDetail {
 
     dependencia:Dependencies;
 
-    notificaciones:any[];
+    notificaciones:Notification[];
+
+    sitiosWeb: Website[];
+
+    cambios:Change[];
 }

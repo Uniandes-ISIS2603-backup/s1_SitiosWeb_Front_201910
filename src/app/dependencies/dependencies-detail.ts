@@ -6,4 +6,5 @@ export class DependenciesDetail {
     nombreDependencia: string;
     email: string;
     telefono: string;
+    admins: Admin;
 }

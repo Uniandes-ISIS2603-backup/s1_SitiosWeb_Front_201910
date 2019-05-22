@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DependenciesService } from '../dependencies.service';
 import { Dependencies } from '../dependencies';
 import { DependenciesDetail } from '../dependencies-detail';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dependencies-edit',
@@ -12,7 +13,8 @@ import { DependenciesDetail } from '../dependencies-detail';
 export class DependenciesEditComponent implements OnInit {
 
   constructor(private toastrService: ToastrService,
-    private depenService: DependenciesService
+    private depenService: DependenciesService,
+    private route: ActivatedRoute
   ) { }
 
   /**
@@ -52,6 +54,8 @@ export class DependenciesEditComponent implements OnInit {
   * Updates the admin's information
   */
   editDependency(): void {
+    console.log("Dependencia update");
+    console.log(this.depen);
     this.depenService.updateDependency(this.depen)
       .subscribe(() => {
         this.update.emit();
@@ -71,6 +75,7 @@ export class DependenciesEditComponent implements OnInit {
   */
   ngOnInit() {
     this.depen = new DependenciesDetail();
+    this.depen.id =+ this.route.snapshot.paramMap.get('idDep');
     this.getDependency();
   }
 }

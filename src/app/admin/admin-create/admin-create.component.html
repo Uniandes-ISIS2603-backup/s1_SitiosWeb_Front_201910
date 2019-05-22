@@ -10,16 +10,16 @@
                         <ng-template matStepLabel>Rellena los datos basicos del administrador</ng-template>
                         <div class="example-container">
                             <mat-form-field>
-                                <input matInput placeholder="Nombre Completo" formControlName="nombre" required>
+                                <input matInput placeholder="Nombre Completo" formControlName="nombre"  [(ngModel)]="admin.nombre" required>
                             </mat-form-field>
                             <mat-form-field>
-                                <input matInput placeholder="Correo Electronico" formControlName="email" required>
+                                <input matInput placeholder="Correo Electronico" formControlName="email" [(ngModel)]="admin.email" required>
                             </mat-form-field>
                             <mat-form-field>
-                                <input matInput placeholder="Telefono" formControlName="telefono" required>
+                                <input matInput placeholder="Telefono" formControlName="telefono"  [(ngModel)]="admin.telefono" required>
                             </mat-form-field>
                             <mat-form-field>
-                                <mat-select formControlName="nombreCargo" required>
+                                <mat-select formControlName="nombreCargo"  [(ngModel)]="admin.nombreCargo" required>
                                     <mat-option value="1">
                                         Cargo 1
                                     </mat-option>
@@ -43,7 +43,7 @@
                         <ng-template matStepLabel>Establece una contraseña</ng-template>
                             <div class="example-container">
                                 <mat-form-field>
-                                    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                                    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password"  [(ngModel)]="admin.password">
                                     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </mat-form-field>
                             </div>
@@ -54,7 +54,7 @@
                     Ya casi esta
                     <div>
                         <button mat-button matStepperPrevious>Volver</button>
-                        <button mat-button (click)="logValue()">Log</button>
+                        <button mat-button (click)="createAdmin()">Log</button>
                     </div>
                 </mat-step>
             </mat-vertical-stepper>
