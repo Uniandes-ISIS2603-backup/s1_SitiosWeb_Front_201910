@@ -4,22 +4,22 @@
     <div class="example-container">
       <ng-template matStepLabel>Ingresa los datos basicos del sitio web</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Nombre" formControlName="name" required>
+        <input matInput placeholder="Nombre" formControlName="name"  type="text" [(ngModel)]="newSite.nombre" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Url" formControlName="url" required>
+        <input matInput placeholder="Url" formControlName="url"  type="text" [(ngModel)]="newSite.url" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput minlength="50" placeholder="Descripcion" formControlName="description" required>
+        <input matInput minlength="50" placeholder="Descripcion" formControlName="description" type="text" [(ngModel)]="newSite.descripcion" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput minlength="20" placeholder="Proposito" formControlName="purpose" required>
+        <input matInput minlength="20" placeholder="Proposito" formControlName="purpose" type="text" [(ngModel)]="newSite.proposito" required>
       </mat-form-field>
       <mat-form-field>
-      <input matInput maxlength="5" placeholder="Audiencia esperada" formControlName="audience" required>
+      <input matInput maxlength="5" placeholder="Audiencia esperada" formControlName="audience" type="number" [(ngModel)]="newSite.audienciaEsperada" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Fecha de creacion" formControlName="chosenDate">
+        <input matInput [matDatepicker]="picker" placeholder="Fecha de creacion" formControlName="chosenDate" (dateChange)="changedDate($event)">>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
@@ -32,39 +32,12 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Establece el primer estado del sitio</ng-template>
-      <div class="example-container">
-      <mat-form-field>
-        <mat-select  formControlName="state" required>
-        <mat-option value="ENFALLA">
-          En Falla
-        </mat-option>
-        <mat-option value="ACTIVO">
-          Activo
-        </mat-option>
-        <mat-option value="INACTIVO">
-          Inactivo
-        </mat-option>
-        <mat-option value="OTRO">
-          Otro
-        </mat-option>
-        </mat-select>
-      </mat-form-field>
-      </div>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     Sitio listo para ser creado
     <div>
       <button mat-button matStepperPrevious>Atras</button>
-      <button mat-button (click)="stepper.reset()">Crear</button>
+      <button mat-button (click)="crearSitio() ">Crear</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
