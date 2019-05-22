@@ -53,6 +53,14 @@ const routes: Routes = [
         component: WebsiteListComponent
     },
     {
+        path: 'dependencies/list/:idDep',
+        component: DependenciesDetailComponent
+    },
+    {
+        path: 'dependencies/list',
+        component: DependenciesListComponent
+    },
+    {
         path: 'users/list/:id',
         component: UsersDetailComponent
     },

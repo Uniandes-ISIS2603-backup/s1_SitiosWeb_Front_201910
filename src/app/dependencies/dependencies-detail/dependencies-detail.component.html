@@ -1,4 +1,9 @@
-<button [routerLink]="[ '/admins/list', adminId ]">Volver</button>
+<ng-container *ngIf="adminId != 0; else elseTemplate">
+    <button [routerLink]="[ '/admins/list', adminId ]">Volver</button>
+</ng-container>
+<ng-template #elseTemplate>
+    <button routerLink="/dependencies/list">Volver</button>
+</ng-template>
 <div style="width: 25%; margin: 0 auto;">
   <table class="table">
     <thead>
