@@ -159,7 +159,9 @@ export class AppComponent implements OnInit {
         this.name = localStorage.getItem('name');
 
     }
-
+    cerrarSesion():void{
+        this.authService.logout();
+    }
     establecerBarra():void
     {
         this.statesService.getStatesValues().subscribe(value => {
