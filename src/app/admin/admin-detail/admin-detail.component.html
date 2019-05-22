@@ -34,7 +34,7 @@
   <br>
   <div *ngxPermissionsExcept="['GUEST', 'CLIENT']">
     <button mat-button (click)="expandir()">Actualizar informacion</button>
-    <button mat-button (click)="deleteUser()">Eliminar</button>
+    <button mat-button (click)="deleteAdmin()">Eliminar</button>
     <div *ngIf="expande">
       <app-admin-edit></app-admin-edit>
     </div>
