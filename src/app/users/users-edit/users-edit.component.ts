@@ -24,6 +24,12 @@ export class UsersEditComponent implements OnInit {
   ) { }
 
   /**
+  * The id of the user that the user wants to edit
+  * This is passed as a parameter by the parent component
+  */
+ @Input() user_id: number;
+ 
+  /**
   * The output which tells the parent component
   * that the user no longer wants to create an user
   */
